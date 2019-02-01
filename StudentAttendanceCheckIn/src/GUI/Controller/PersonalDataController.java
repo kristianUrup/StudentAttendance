@@ -57,5 +57,10 @@ public class PersonalDataController implements Initializable
     private void handleCheckIn(ActionEvent event)
     {
     }
+
+    @FXML
+    private void handleDeleteBtn(ActionEvent event)
+    {
+    }
     
 }
