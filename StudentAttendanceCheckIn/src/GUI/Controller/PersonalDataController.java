@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import GUI.Controller.Teacher.*;
 
 /**
  * FXML Controller class
@@ -61,13 +62,24 @@ public class PersonalDataController implements Initializable
     @FXML
     private void handleCheckIn(ActionEvent event) throws IOException
     {
-        int cprNr = Integer.parseInt(txtCprNr.getText());
+        double cprNr = Integer.parseInt(txtCprNr.getText());
         if(cprNr == 1)
         {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreenController"));
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
             Parent root = (Parent) loader.load();
             
-            GUI.Controller.Student.StudentScreenController sccontroller = loader.getController();
+            StudentScreenController sscontroller = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        else if(cprNr == 2)
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
+            Parent root = (Parent) loader.load();
+            
+            TeacherScreenController tscontroller = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -77,6 +89,7 @@ public class PersonalDataController implements Initializable
     @FXML
     private void handleDeleteBtn(ActionEvent event)
     {
+        txtCprNr.clear();
     }
     
 }
