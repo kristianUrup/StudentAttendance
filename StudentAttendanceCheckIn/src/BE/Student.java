@@ -12,10 +12,12 @@ package BE;
 public class Student extends Person
 {
     private double absence;
+    private String klasse;
     
-    public Student(int id, String name, int age, String cpr, String email, double absence) {
+    public Student(int id, String name, int age, String cpr, String email, double absence, String klasse) {
         super(id, name, age, cpr, email);
         this.absence = absence;
+        this.klasse = klasse;
         
     }
 
@@ -29,4 +31,11 @@ public class Student extends Person
         this.absence = absence;
     }
     
+    public void setKlasse(String klasse) {
+        this.klasse = klasse;
+    }
+    
+    public String getKlasse() {
+        return klasse;
+    }
 }
