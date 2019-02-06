@@ -70,6 +70,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label fx:id="cprNrLabel" layoutX="211.0" layoutY="87.0" prefHeight="41.0" prefWidth="178.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

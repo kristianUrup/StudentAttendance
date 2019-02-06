@@ -18,6 +18,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import GUI.Controller.Teacher.*;
+import GUI.Controller.Student.*;
+import java.awt.event.MouseEvent;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -49,6 +52,8 @@ public class PersonalDataController implements Initializable
     private Button eight;
     @FXML
     private TextField txtCprNr;
+    @FXML
+    private Label cprNrLabel;
 
     /**
      * Initializes the controller class.
@@ -90,6 +95,22 @@ public class PersonalDataController implements Initializable
     private void handleDeleteBtn(ActionEvent event)
     {
         txtCprNr.clear();
+    }
+    
+    public void numberTabs()
+    {
+        String alreadyTyped = cprNrLabel.getText();
+        String txtValue = null;
+        if(one.isPressed())
+        {
+            txtValue = "1";
+        }
+        else if(two.isPressed())
+        {
+            txtValue = "2";
+        }
+        
+        cprNrLabel.setText(alreadyTyped + txtValue);
     }
     
 }
