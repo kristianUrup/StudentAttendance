@@ -6,6 +6,7 @@
 package DAL;
 
 import BE.Student;
+import BE.Teacher;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Kristian Urup laptop
  */
-public class StudentDAOMock implements StudentDaoInterface
+public class PersonDAOMock implements PersonDaoInterface
 {
         public List<Student> getAllStudents()
     {
@@ -31,4 +32,20 @@ public class StudentDAOMock implements StudentDaoInterface
         students.add(kristian);
         return students;
     }
+        
+        public List<Teacher> getAllTeachers()
+    {
+        List<Teacher> teachers = new ArrayList();
+        
+        Teacher mathias = new Teacher(2, "Mathias", 19, "020200-1888", "Megasej@gmail.com");
+        Teacher frederik = new Teacher(1, "Frederik", 20, "030399-1022", "noob@gmail.com");
+        Teacher jørgen = new Teacher(3, "Jørgen", 20, "202099-1021", "Flotfyr@hotmail.com");
+        Teacher kristian = new Teacher(4, "Kristian", 24, "200294-1001", "hejson@gmail.com");
+        
+        teachers.add(mathias);
+        teachers.add(frederik);
+        teachers.add(jørgen);
+        teachers.add(kristian);
+        return teachers;
+    } 
 }

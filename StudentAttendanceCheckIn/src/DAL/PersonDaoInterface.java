@@ -5,6 +5,7 @@
  */
 package DAL;
 
+import BE.Student;
 import BE.Teacher;
 import java.util.List;
 
@@ -12,7 +13,8 @@ import java.util.List;
  *
  * @author Kristian Urup laptop
  */
-public interface TeacherDaoInterface
+public interface PersonDaoInterface
 {
+    public List<Student> getAllStudents();
     public List<Teacher> getAllTeachers();
 }
