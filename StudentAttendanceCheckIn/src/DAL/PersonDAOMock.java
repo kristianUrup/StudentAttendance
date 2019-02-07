@@ -15,6 +15,8 @@ import java.util.List;
  *
  * @author Kristian Urup laptop
  */
+
+
 public class PersonDAOMock implements PersonDaoInterface
 {
 
@@ -38,23 +40,22 @@ public class PersonDAOMock implements PersonDaoInterface
         students.add(kristian);
         return students;
     }
-
+    
     public List<Teacher> getAllTeachers()
     {
         List<Teacher> teachers = new ArrayList();
-
         teachers.add(søren);
         teachers.add(jeppe);
         teachers.add(stig);
         teachers.add(henning);
-        
+
         return teachers;
     }
 
     public List<Person> getAllPersons()
     {
         List<Person> persons = new ArrayList();
-        
+
         persons.add(mathias);
         persons.add(frederik);
         persons.add(jørgen);
@@ -63,7 +64,7 @@ public class PersonDAOMock implements PersonDaoInterface
         persons.add(jeppe);
         persons.add(stig);
         persons.add(henning);
-        
+
         return persons;
     }
 }
