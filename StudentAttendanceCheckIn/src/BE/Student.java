@@ -5,37 +5,71 @@
  */
 package BE;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author Frederik Jensen
  */
 public class Student extends Person
 {
-    private double absence;
-    private String klasse;
+
+    private final DoubleProperty absence;
+    private final StringProperty klasse;
+    private final StringProperty dayMostAbsent;
     
-    public Student(int id, String name, int age, String cpr, String email, double absence, String klasse) {
+    public Student(int id, String name, int age, String cpr, String email, double absence, String klasse, String dayMostAbsent) {
         super(id, name, age, cpr, email);
-        this.absence = absence;
-        this.klasse = klasse;
-        
+        this.absence = new SimpleDoubleProperty(absence);
+        this.klasse = new SimpleStringProperty(klasse);
+        this.dayMostAbsent = new SimpleStringProperty(dayMostAbsent);
+    }
+    
+    public String getDayMostAbsent()
+    {
+        return dayMostAbsent.get();
+    }
+
+    public void setDayMostAbsent(String value)
+    {
+        dayMostAbsent.set(value);
+    }
+
+    public StringProperty dayMostAbsentProperty()
+    {
+        return dayMostAbsent;
+    } 
+
+    public String getKlasse()
+    {
+        return klasse.get();
+    }
+
+    public void setKlasse(String value)
+    {
+        klasse.set(value);
+    }
+
+    public StringProperty klasseProperty()
+    {
+        return klasse;
     }
 
     public double getAbsence()
     {
-        return absence;
+        return absence.get();
     }
 
-    public void setAbsence(double absence)
+    public void setAbsence(double value)
     {
-        this.absence = absence;
+        absence.set(value);
     }
-    
-    public void setKlasse(String klasse) {
-        this.klasse = klasse;
-    }
-    
-    public String getKlasse() {
-        return klasse;
+
+    public DoubleProperty absenceProperty()
+    {
+        return absence;
     }
 }

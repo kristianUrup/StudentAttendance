@@ -5,69 +5,101 @@
  */
 package BE;
 
+import java.util.logging.Logger;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author Frederik Jensen
  */
 public abstract class Person
 {
-    private final int ID;
-    private String name;
-    private int age;
-    private String cpr;
-    private String email;
+
+    private final StringProperty name;
+    private final StringProperty cpr;
+    private final StringProperty email;
+    private final IntegerProperty id;
+    private final IntegerProperty age;
+
     
     public Person(int id, String name, int age, String cpr, String email) {
-        this.ID = id;
-        this.name = name;
-        this.age = age;
-        this.cpr = cpr;
-        this.email = email;
+        this.name = new SimpleStringProperty(name);
+        this.id = new SimpleIntegerProperty(id);
+        this.age = new SimpleIntegerProperty(age);
+        this.cpr = new SimpleStringProperty(cpr);
+        this.email = new SimpleStringProperty(email);
+    }
+     
+    public String getName()
+    {
+        return name.get();
     }
 
-    public String getName()
+    public void setName(String value)
+    {
+        name.set(value);
+    }
+
+    public StringProperty nameProperty()
     {
         return name;
     }
-
-    public int getAge()
-    {
-        return age;
-    }
-
-    public String getCpr()
-    {
-        return cpr;
-    }
-
+    
     public String getEmail()
+    {
+        return email.get();
+    }
+
+    public void setEmail(String value)
+    {
+        email.set(value);
+    }
+
+    public StringProperty emailProperty()
     {
         return email;
     }
 
-    public void setName(String name)
+    public String getCpr()
     {
-        this.name = name;
+        return cpr.get();
     }
 
-    public void setAge(int age)
+    public void setCpr(String value)
     {
-        this.age = age;
+        cpr.set(value);
     }
 
-    public void setCpr(String cpr)
+    public StringProperty cprProperty()
     {
-        this.cpr = cpr;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-
-    public int getID()
-    {
-        return ID;
+        return cpr;
     }
     
+    public int getAge()
+    {
+        return age.get();
+    }
+
+    public void setAge(int value)
+    {
+        age.set(value);
+    }
+
+    public IntegerProperty ageProperty()
+    {
+        return age;
+    }
+    
+    public int getId()
+    {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty()
+    {
+        return id;
+    }
 }
