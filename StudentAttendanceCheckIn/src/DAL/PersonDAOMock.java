@@ -30,6 +30,7 @@ public class PersonDAOMock implements PersonDaoInterface
     Student jørgen = new Student(3, "Jørgen", 20, "202099-1021", "Flotfyr@hotmail.com", 4.7, dm, "Onsdag");
     Student kristian = new Student(4, "Kristian", 24, "200294-1001", "hejson@gmail.com", 3.2, dm, "Fredag");
 
+    @Override
     public List<Student> getAllStudents()
     {
         List<Student> students = new ArrayList();
@@ -41,6 +42,7 @@ public class PersonDAOMock implements PersonDaoInterface
         return students;
     }
     
+    @Override
     public List<Teacher> getAllTeachers()
     {
         List<Teacher> teachers = new ArrayList();
@@ -52,6 +54,7 @@ public class PersonDAOMock implements PersonDaoInterface
         return teachers;
     }
 
+    @Override
     public List<Person> getAllPersons()
     {
         List<Person> persons = new ArrayList();

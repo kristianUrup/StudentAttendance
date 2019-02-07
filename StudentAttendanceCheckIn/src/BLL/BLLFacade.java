@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package BLL;
 
 import BE.Person;
 import BE.Student;
@@ -12,13 +12,13 @@ import java.util.List;
 
 /**
  *
- * @author Kristian Urup laptop
+ * @author Frederik
  */
-public interface PersonDaoInterface
-{
+public interface BLLFacade {
+    
+    public List<Person> getAllPersons();
+    
     public List<Student> getAllStudents();
     
     public List<Teacher> getAllTeachers();
-    
-    public List<Person> getAllPersons();
 }

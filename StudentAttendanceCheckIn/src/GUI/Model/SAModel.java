@@ -3,40 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BLL;
+package GUI.Model;
 
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
-import DAL.PersonDAOMock;
-import DAL.PersonDaoInterface;
+import BLL.BLLFacade;
+import BLL.PersonManager;
 import java.util.List;
 
 /**
  *
- * @author Kristian Urup laptop
+ * @author Frederik
  */
-public class PersonManager implements BLLFacade {
-
-    PersonDaoInterface pdao;
-
-    public PersonManager() {
-        pdao = new PersonDAOMock();
+public class SAModel {
+    
+    BLLFacade pm;
+    public SAModel() {
+        pm = new PersonManager();
     }
-
-    @Override
+    
     public List<Person> getAllPersons() {
-        return pdao.getAllPersons();
+        return pm.getAllPersons();
     }
-
-    @Override
+    
     public List<Student> getAllStudents() {
-        return pdao.getAllStudents();
+        return pm.getAllStudents();
     }
-
-    @Override
+    
     public List<Teacher> getAllTeachers() {
-        return pdao.getAllTeachers();
+       return pm.getAllTeachers(); 
     }
-
 }

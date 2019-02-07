@@ -5,6 +5,9 @@
  */
 package GUI.Controller;
 
+import BE.Person;
+import BE.Student;
+import BE.Teacher;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +23,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import GUI.Controller.Teacher.*;
 import GUI.Controller.Student.*;
+import GUI.Model.SAModel;
+import java.util.EventObject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 /**
@@ -27,16 +37,22 @@ import javafx.scene.control.Label;
  *
  * @author Kristian Urup laptop
  */
-public class PersonalDataController implements Initializable
-{
+public class PersonalDataController implements Initializable {
+
+    private final SAModel SAM;
+    private int textLimit;
+    private final Pattern CPRPATTERN;
 
     @FXML
     private TextField txtCprNr;
 
-    int textLimit;
-
     @FXML
     private Label cprNrLabel;
+
+    public PersonalDataController() {
+        SAM = new SAModel();
+        CPRPATTERN = Pattern.compile("\\d{6}-\\d{4}");
+    }
 
     /**
      * Initializes the controller class.
@@ -45,18 +61,112 @@ public class PersonalDataController implements Initializable
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
+        txtCprNr.setDisable(true);
+    }
+
+    @FXML
+    private void handleCheckIn(ActionEvent event) throws IOException {
+
+        if (CPRPATTERN.matcher(txtCprNr.getText()).matches()) {
+            for (Person person : SAM.getAllPersons()) {
+                if (person.getCpr().equals(txtCprNr.getText())) {
+                    if (person instanceof Student) {
+                        openStudentScreen(event);
+                        return;
+                    } else if (person instanceof Teacher) {
+                        openTeacherScreen(event);
+                        return;
+                    }
+                }
+            }
+            incorrectCprNumber();
+        } else {
+            incorrectCprPattern();
+        }
 
     }
 
     @FXML
-    private void handleCheckIn(ActionEvent event) throws IOException
-    {
-        int cprNr = Integer.parseInt(txtCprNr.getText());
-        if (cprNr == 1)
-        {
+    private void handleDeleteBtn(ActionEvent event) {
+        txtCprNr.clear();
+        textLimit = 0;
+    }
 
+    @FXML
+    private void btnOne(ActionEvent event) {
+        cprInputField(1);
+    }
+
+    @FXML
+    private void btnTwo(ActionEvent event) {
+        cprInputField(2);
+    }
+
+    @FXML
+    private void btnThree(ActionEvent event) {
+        cprInputField(3);
+    }
+
+    @FXML
+    private void btnFive(ActionEvent event) {
+        cprInputField(5);
+    }
+
+    @FXML
+    private void btnFour(ActionEvent event) {
+        cprInputField(4);
+    }
+
+    @FXML
+    private void btnSix(ActionEvent event) {
+        cprInputField(6);
+    }
+
+    @FXML
+    private void btnSeven(ActionEvent event) {
+        cprInputField(7);
+    }
+
+    @FXML
+    private void btnZero(ActionEvent event) {
+        cprInputField(0);
+    }
+
+    @FXML
+    private void btnNine(ActionEvent event) {
+        cprInputField(9);
+    }
+
+    @FXML
+    private void btnEight(ActionEvent event) {
+        cprInputField(8);
+    }
+
+    @FXML
+    private void backSpace(KeyEvent kEvent) {
+        if (kEvent.getCode() == KeyCode.BACK_SPACE) {
+            textLimit--;
+        }
+    }
+
+    private void cprInputField(int number) {
+        if (textLimit >= 11) {
+
+        } else {
+            if (textLimit == 6) {
+                String text = txtCprNr.getText();
+                txtCprNr.setText(text + "-");
+                textLimit++;
+            }
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + Integer.toString(number));
+            textLimit++;
+        }
+    }
+
+    private void openStudentScreen(ActionEvent event) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
             Parent root = (Parent) loader.load();
 
@@ -64,220 +174,39 @@ public class PersonalDataController implements Initializable
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-        } else if (cprNr == 2)
-        {
+            Stage stage2 = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
+            stage2.close();
+        } catch (IOException ex) {
+            Logger.getLogger(PersonalDataController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void openTeacherScreen(ActionEvent event) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
             Parent root = (Parent) loader.load();
             TeacherScreenController tscontroller = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            Stage stage2 = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
+            stage2.close();
+        } catch (IOException ex) {
+            Logger.getLogger(PersonalDataController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @FXML
-    private void handleDeleteBtn(ActionEvent event)
-    {
-        txtCprNr.clear();
-        textLimit = 0;
+    private void incorrectCprPattern() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid CPR-Number");
+        alert.setHeaderText("Invalid CPR-Number format");
+        alert.showAndWait();
     }
 
-    @FXML
-    private void btnOne(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "1");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnTwo(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "2");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnThree(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "3");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnFive(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "5");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnFour(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "4");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnSix(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "6");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnSeven(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "7");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnZero(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "0");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnNine(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "9");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void btnEight(ActionEvent event)
-    {
-        if (textLimit == 11)
-        {
-//            Do nothing
-        } else if (textLimit == 6)
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "-");
-            textLimit++;
-        } else
-        {
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + "8");
-            textLimit++;
-        }
-    }
-
-    @FXML
-    private void backSpace(KeyEvent kEvent)
-    {
-        if (kEvent.getCode() == KeyCode.BACK_SPACE)
-        {
-            textLimit--;
-        }
+    private void incorrectCprNumber() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Incorrect CPR-Number");
+        alert.setHeaderText("The CPR-Number you have typed is incorrect");
+        alert.showAndWait();
     }
 }
