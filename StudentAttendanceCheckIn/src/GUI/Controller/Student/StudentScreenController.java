@@ -35,6 +35,7 @@ public class StudentScreenController implements Initializable
     @FXML
     private void handlePersonalInfo(ActionEvent event)
     {
+        
     }
     
 }
