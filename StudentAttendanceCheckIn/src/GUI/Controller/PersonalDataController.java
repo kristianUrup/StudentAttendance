@@ -14,14 +14,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import GUI.Controller.Teacher.*;
+import GUI.Controller.Student.*;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -36,8 +35,13 @@ public class PersonalDataController implements Initializable
     
     int textLimit;
     
+    @FXML
+    private Label cprNrLabel;
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -49,12 +53,23 @@ public class PersonalDataController implements Initializable
     private void handleCheckIn(ActionEvent event) throws IOException
     {
         int cprNr = Integer.parseInt(txtCprNr.getText());
-        if (cprNr == 1)
+        if(cprNr == 1)
         {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreenController"));
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
             Parent root = (Parent) loader.load();
-
-            GUI.Controller.Student.StudentScreenController sccontroller = loader.getController();
+            
+            StudentScreenController sscontroller = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        else if(cprNr == 2)
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
+            Parent root = (Parent) loader.load();
+            GUI.Controller.Student.StudentScreenController sccontroller = loader.getController();   
+            TeacherScreenController tscontroller = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -73,7 +88,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "1");
@@ -86,7 +101,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "2");
@@ -99,7 +114,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "3");
@@ -112,7 +127,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "5");
@@ -125,7 +140,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "4");
@@ -138,7 +153,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "6");
@@ -151,7 +166,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "7");
@@ -164,7 +179,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "0");
@@ -177,7 +192,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "9");
@@ -190,7 +205,7 @@ public class PersonalDataController implements Initializable
     {
         if(textLimit == 10)
         {
-            
+//            Do nothing
         } else {
             String text = txtCprNr.getText();
             txtCprNr.setText(text + "8");
