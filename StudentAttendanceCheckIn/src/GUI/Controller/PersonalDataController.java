@@ -14,12 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import GUI.Controller.Teacher.*;
 import GUI.Controller.Student.*;
-import java.awt.event.MouseEvent;
 import javafx.scene.control.Label;
 
 /**
@@ -29,45 +29,30 @@ import javafx.scene.control.Label;
  */
 public class PersonalDataController implements Initializable
 {
-
-    @FXML
-    private Button one;
-    @FXML
-    private Button two;
-    @FXML
-    private Button three;
-    @FXML
-    private Button five;
-    @FXML
-    private Button four;
-    @FXML
-    private Button six;
-    @FXML
-    private Button seven;
-    @FXML
-    private Button zero;
-    @FXML
-    private Button nine;
-    @FXML
-    private Button eight;
+    
     @FXML
     private TextField txtCprNr;
+    
+    int textLimit;
+    
     @FXML
     private Label cprNrLabel;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
-    }    
+        
+    }
 
     @FXML
     private void handleCheckIn(ActionEvent event) throws IOException
     {
-        double cprNr = Integer.parseInt(txtCprNr.getText());
+        int cprNr = Integer.parseInt(txtCprNr.getText());
         if(cprNr == 1)
         {
         
@@ -83,7 +68,7 @@ public class PersonalDataController implements Initializable
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
             Parent root = (Parent) loader.load();
-            
+            GUI.Controller.Student.StudentScreenController sccontroller = loader.getController();   
             TeacherScreenController tscontroller = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -95,22 +80,145 @@ public class PersonalDataController implements Initializable
     private void handleDeleteBtn(ActionEvent event)
     {
         txtCprNr.clear();
+        textLimit = 0;
     }
-    
-    public void numberTabs()
+
+    @FXML
+    private void btnOne(ActionEvent event)
     {
-        String alreadyTyped = cprNrLabel.getText();
-        String txtValue = null;
-        if(one.isPressed())
+        if(textLimit == 10)
         {
-            txtValue = "1";
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "1");
+            textLimit++;
         }
-        else if(two.isPressed())
-        {
-            txtValue = "2";
-        }
-        
-        cprNrLabel.setText(alreadyTyped + txtValue);
     }
-    
+
+    @FXML
+    private void btnTwo(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "2");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnThree(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "3");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnFive(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "5");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnFour(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "4");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnSix(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "6");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnSeven(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "7");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnZero(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "0");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnNine(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "9");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void btnEight(ActionEvent event)
+    {
+        if(textLimit == 10)
+        {
+//            Do nothing
+        } else {
+            String text = txtCprNr.getText();
+            txtCprNr.setText(text + "8");
+            textLimit++;
+        }
+    }
+
+    @FXML
+    private void backSpace(KeyEvent kEvent)
+    {
+        if(kEvent.getCode() == KeyCode.BACK_SPACE)
+        {
+            textLimit --;
+        }
+    }
 }

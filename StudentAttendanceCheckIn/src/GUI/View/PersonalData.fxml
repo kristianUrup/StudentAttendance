@@ -13,43 +13,49 @@
    <center>
       <AnchorPane prefHeight="453.0" prefWidth="600.0" styleClass="background" stylesheets="@../data/StudentAttendance.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="one" layoutX="203.0" layoutY="145.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="1">
+            <Button layoutX="203.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnOne" prefHeight="65.0" prefWidth="65.0" text="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="268.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnTwo" prefHeight="65.0" prefWidth="65.0" text="2" AnchorPane.leftAnchor="268.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="333.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnThree" prefHeight="65.0" prefWidth="65.0" text="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="268.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnFive" prefHeight="65.0" prefWidth="65.0" text="5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="203.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnFour" prefHeight="65.0" prefWidth="65.0" text="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="333.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnSix" prefHeight="65.0" prefWidth="65.0" text="6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="203.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnSeven" prefHeight="65.0" prefWidth="65.0" text="7">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button fx:id="two" layoutX="268.0" layoutY="145.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="2" AnchorPane.leftAnchor="268.0">
+            <Button layoutX="268.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnZero" prefHeight="65.0" prefWidth="65.0" text="0">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button fx:id="three" layoutX="333.0" layoutY="145.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="3">
+            <Button layoutX="333.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnNine" prefHeight="65.0" prefWidth="65.0" text="9">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button fx:id="five" layoutX="268.0" layoutY="210.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="5">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="four" layoutX="203.0" layoutY="210.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="4">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="six" layoutX="333.0" layoutY="210.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="6">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="seven" layoutX="203.0" layoutY="275.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="7">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="zero" layoutX="268.0" layoutY="340.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="0">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="nine" layoutX="333.0" layoutY="275.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="9">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="eight" layoutX="268.0" layoutY="275.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="8">
+            <Button layoutX="268.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnEight" prefHeight="65.0" prefWidth="65.0" text="8">
                <font>
                   <Font size="18.0" />
                </font></Button>
@@ -62,7 +68,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCprNr" layoutX="214.0" layoutY="82.0" prefHeight="51.0" prefWidth="173.0" promptText="123456-7890" styleClass="textBox">
+            <TextField fx:id="txtCprNr" layoutX="214.0" layoutY="82.0" onKeyPressed="#backSpace" prefHeight="51.0" prefWidth="173.0" promptText="123456-7890">
                <font>
                   <Font size="24.0" />
                </font>
