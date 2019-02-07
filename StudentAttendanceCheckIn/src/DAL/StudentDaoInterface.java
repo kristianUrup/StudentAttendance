@@ -6,17 +6,13 @@
 package DAL;
 
 import BE.Student;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author Kristian Urup laptop
  */
-public class StudentDAO implements StudentDaoInterface
+public interface StudentDaoInterface
 {
-    public List<Student> getAllStudents() 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Student> getAllStudents();
 }
