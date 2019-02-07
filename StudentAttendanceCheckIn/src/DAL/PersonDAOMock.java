@@ -37,15 +37,15 @@ public class PersonDAOMock implements PersonDaoInterface
     {
         List<Teacher> teachers = new ArrayList();
         
-        Teacher mathias = new Teacher(2, "Mathias", 19, "020200-1888", "Megasej@gmail.com");
-        Teacher frederik = new Teacher(1, "Frederik", 20, "030399-1022", "noob@gmail.com");
-        Teacher jørgen = new Teacher(3, "Jørgen", 20, "202099-1021", "Flotfyr@hotmail.com");
-        Teacher kristian = new Teacher(4, "Kristian", 24, "200294-1001", "hejson@gmail.com");
+        Teacher søren = new Teacher(1, "Søren", 39, "020280-1888", "Søren@gmail.com");
+        Teacher jeppe = new Teacher(2, "Jeppe", 39, "030380-1022", "Jeppe@gmail.com");
+        Teacher stig = new Teacher(3, "Stig", 39, "202080-1021", "Stig@hotmail.com");
+        Teacher henning = new Teacher(4, "Henning", 40, "200279-1001", "Bent@gmail.com");
         
-        teachers.add(mathias);
-        teachers.add(frederik);
-        teachers.add(jørgen);
-        teachers.add(kristian);
+        teachers.add(søren);
+        teachers.add(jeppe);
+        teachers.add(stig);
+        teachers.add(henning);
         return teachers;
     } 
 }
