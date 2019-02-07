@@ -5,11 +5,19 @@
  */
 package DAL;
 
+
+import BE.Teacher;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Kristian Urup laptop
  */
-public class TeacherDAO
+public class TeacherDAO implements TeacherDaoInterface
 {
-    
+     public List<Teacher> getAllTeachers() 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
