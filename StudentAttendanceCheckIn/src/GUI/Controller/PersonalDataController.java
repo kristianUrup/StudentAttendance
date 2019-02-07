@@ -68,7 +68,6 @@ public class PersonalDataController implements Initializable
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
             Parent root = (Parent) loader.load();
-            GUI.Controller.Student.StudentScreenController sccontroller = loader.getController();
             TeacherScreenController tscontroller = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

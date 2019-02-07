@@ -5,6 +5,7 @@
  */
 package DAL;
 
+import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import java.util.List;
@@ -17,4 +18,5 @@ public interface PersonDaoInterface
 {
     public List<Student> getAllStudents();
     public List<Teacher> getAllTeachers();
+    public List<Person> getAllPersons();
 }
