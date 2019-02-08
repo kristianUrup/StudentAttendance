@@ -84,3 +84,10 @@ and open the template in the editor.
     -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
     -fx-background-color: transparent, derive(#1d1d1d,20%);
 }
+
+.text-field {
+    -fx-font-size: 24pt;
+    -fx-font-family: "Berlin Sans FB Demi";
+    -fx-opacity: 0.6;
+    -fx-text-fill: #ffffff;
+}

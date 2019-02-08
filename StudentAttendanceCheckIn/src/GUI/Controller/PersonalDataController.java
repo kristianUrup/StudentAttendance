@@ -20,6 +20,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import GUI.Controller.Teacher.*;
 import GUI.Controller.Student.*;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 
 /**
@@ -31,12 +33,10 @@ public class PersonalDataController implements Initializable
 {
 
     @FXML
-    private TextField txtCprNr;
+    private JFXPasswordField txtCprNr;
 
     int textLimit;
 
-    @FXML
-    private Label cprNrLabel;
 
     /**
      * Initializes the controller class.
@@ -273,7 +273,6 @@ public class PersonalDataController implements Initializable
         }
     }
 
-    @FXML
     private void backSpace(KeyEvent kEvent)
     {
         if (kEvent.getCode() == KeyCode.BACK_SPACE)
