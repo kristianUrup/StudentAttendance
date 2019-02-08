@@ -46,8 +46,6 @@ public class PersonalDataController implements Initializable {
     @FXML
     private TextField txtCprNr;
 
-    @FXML
-    private Label cprNrLabel;
 
     public PersonalDataController() {
         SAM = new SAModel();
