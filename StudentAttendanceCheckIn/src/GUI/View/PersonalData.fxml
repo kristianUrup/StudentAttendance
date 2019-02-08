@@ -68,7 +68,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCprNr" layoutX="214.0" layoutY="82.0" onKeyPressed="#backSpace" prefHeight="51.0" prefWidth="173.0" promptText="123456-7890">
+            <TextField fx:id="txtCprNr" layoutX="214.0" layoutY="82.0" prefHeight="51.0" prefWidth="173.0" promptText="123456-7890">
                <font>
                   <Font size="24.0" />
                </font>

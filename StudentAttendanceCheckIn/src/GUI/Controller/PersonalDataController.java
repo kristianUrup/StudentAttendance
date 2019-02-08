@@ -42,13 +42,16 @@ public class PersonalDataController implements Initializable {
     private final SAModel SAM;
     private int textLimit;
     private final Pattern CPRPATTERN;
-
+    
+    
     @FXML
     private TextField txtCprNr;
 
     @FXML
     private Label cprNrLabel;
 
+    
+    
     public PersonalDataController() {
         SAM = new SAModel();
         CPRPATTERN = Pattern.compile("\\d{6}-\\d{4}");
@@ -63,6 +66,7 @@ public class PersonalDataController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtCprNr.setDisable(true);
+        
     }
 
     @FXML
@@ -141,13 +145,6 @@ public class PersonalDataController implements Initializable {
     @FXML
     private void btnEight(ActionEvent event) {
         cprInputField(8);
-    }
-
-    @FXML
-    private void backSpace(KeyEvent kEvent) {
-        if (kEvent.getCode() == KeyCode.BACK_SPACE) {
-            textLimit--;
-        }
     }
 
     private void cprInputField(int number) {

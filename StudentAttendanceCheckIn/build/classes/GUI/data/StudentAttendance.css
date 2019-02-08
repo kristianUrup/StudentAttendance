@@ -34,36 +34,25 @@ and open the template in the editor.
 .label_header
 {
     -fx-text-fill: #FFFFFF;
-<<<<<<< HEAD
-=======
+    -fx-opacity: 0.8;
 }
 
-.table-view {
-    -fx-base: #1d1d1d;
-    -fx-control-inner-background: #a83f39   ;
-    -fx-background-color: #A83F39;
-    -fx-table-cell-border-color: transparent;
-    -fx-table-header-border-color: transparent;
-    -fx-padding: 5;
-    -fx-cursor:hand;
-    -fx-opacity: 0.6;
+
+
+.table-view
+{
+    -fx-padding: 2.5;
+    -fx-base: #FFFFFF;
+    -fx-control-inner-background: #666666;
+    -fx-background-color: #FFFFFF;
+    -fx-opacity: 0.5;
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
 }
 
-.table-view
-{
-    -fx-background-color: #FFFFFF;
-    -fx-opacity: 0.5;
-}
-
-.table-view .column-header-background {
-    -fx-background-color: transparent;
-}
-
 .table-view .column-header, .table-view .filler {
     -fx-size: 35;
-    -fx-border-width: 0 0 2 0;
+    -fx-border-width: 0 0 0 0;
     -fx-background-color: transparent;
     -fx-border-color: 
         transparent
@@ -71,16 +60,20 @@ and open the template in the editor.
         derive(-fx-base, 80%) 
         transparent;
     -fx-border-insets: 0 10 1 0;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 12pt;
+    -fx-font-size: 15pt;
     -fx-font-family: "SBerlin Sans FB Demi";
     -fx-alignment: center-left;
     -fx-text-fill: #FFFFFF;
     -fx-background-color: black;
     -fx-opacity: 0.5;
-    -fx-border-width: 0 0 6 0;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+    -fx-padding:2.5;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
@@ -90,5 +83,4 @@ and open the template in the editor.
 .split-pane:horizontal > .split-pane-divider {
     -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
     -fx-background-color: transparent, derive(#1d1d1d,20%);
->>>>>>> 0e1297825461bf5588d42b5a249bbf5b0533b873
 }
