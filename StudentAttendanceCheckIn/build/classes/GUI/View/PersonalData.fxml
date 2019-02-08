@@ -68,6 +68,14 @@
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
+=======
+            <TextField fx:id="txtCprNr" layoutX="214.0" layoutY="82.0" prefHeight="51.0" prefWidth="173.0" promptText="123456-7890">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+>>>>>>> b842d39c1985f3dc96e737dc4decf6e02692dc79
             <Button layoutX="333.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleDeleteBtn" prefHeight="65.0" prefWidth="65.0" text="Slet">
                <font>
                   <Font size="18.0" />

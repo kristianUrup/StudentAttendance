@@ -5,6 +5,8 @@
  */
 package DAL;
 
+
+import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import java.util.ArrayList;
@@ -22,6 +24,11 @@ public class PersonDAO implements PersonDaoInterface
     }
     
     public List<Teacher> getAllTeachers()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Person> getAllPersons()
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
