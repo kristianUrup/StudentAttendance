@@ -17,12 +17,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import GUI.Controller.Teacher.*;
 import GUI.Controller.Student.*;
+import com.jfoenix.controls.JFXPasswordField;
 import GUI.Model.SAModel;
 import java.util.EventObject;
 import java.util.logging.Level;
@@ -30,7 +30,6 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -43,15 +42,8 @@ public class PersonalDataController implements Initializable {
     private int textLimit;
     private final Pattern CPRPATTERN;
     
-    
     @FXML
-    private TextField txtCprNr;
-
-    @FXML
-    private Label cprNrLabel;
-
-    
-    
+    private JFXPasswordField txtCprNr;
     public PersonalDataController() {
         SAM = new SAModel();
         CPRPATTERN = Pattern.compile("\\d{6}-\\d{4}");
@@ -162,6 +154,15 @@ public class PersonalDataController implements Initializable {
         }
     }
 
+
+    private void backSpace(KeyEvent kEvent)
+    {
+        if (kEvent.getCode() == KeyCode.BACK_SPACE)
+        {
+            textLimit--;
+        }
+    }
+            
     private void openStudentScreen(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));

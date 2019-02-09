@@ -5,11 +5,13 @@
  */
 package GUI.Controller.Student;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -22,6 +24,16 @@ public class StudentScreenController implements Initializable
 
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private Label lblName;
+    @FXML
+    private Label lblKlasse;
+    @FXML
+    private JFXButton lblLogOff;
+    @FXML
+    private JFXButton btnShowAttendance;
+    @FXML
+    private JFXTextField txtDate;
 
     /**
      * Initializes the controller class.
@@ -32,10 +44,5 @@ public class StudentScreenController implements Initializable
         // TODO
     }    
 
-    @FXML
-    private void handlePersonalInfo(ActionEvent event)
-    {
-        
-    }
     
 }
