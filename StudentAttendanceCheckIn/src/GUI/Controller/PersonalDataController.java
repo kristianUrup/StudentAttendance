@@ -30,6 +30,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.stage.WindowEvent;
 
 /**
  * FXML Controller class
@@ -68,7 +69,7 @@ public class PersonalDataController implements Initializable {
             for (Person person : SAM.getAllPersons()) {
                 if (person.getCpr().equals(txtCprNr.getText())) {
                     if (person instanceof Student) {
-                        openStudentScreen(event);
+                        openStudentScreen(event, (Student) person);
                         return;
                     } else if (person instanceof Teacher) {
                         openTeacherScreen(event);
@@ -163,12 +164,12 @@ public class PersonalDataController implements Initializable {
         }
     }
             
-    private void openStudentScreen(ActionEvent event) {
+    private void openStudentScreen(ActionEvent event, Student student) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
             Parent root = (Parent) loader.load();
-
             StudentScreenController sscontroller = loader.getController();
+            sscontroller.setSTudent(student);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
