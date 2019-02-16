@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<<<<<<< HEAD
 <?import javafx.scene.control.Label?>
+=======
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+>>>>>>> 12ca554be70758a3bbb9fe04577e73e9df8f887e
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -14,7 +21,11 @@
             <Label layoutX="33.0" layoutY="40.0" text="Klasse:" />
             <Label fx:id="lblName" layoutX="84.0" layoutY="14.0" text="Label" />
             <Label fx:id="lblKlasse" layoutX="84.0" layoutY="40.0" text="Label" />
+<<<<<<< HEAD
             <JFXButton fx:id="lblLogOff" layoutX="500.0" layoutY="-1.0" onAction="#handlerLogOff" prefHeight="72.0" prefWidth="100.0" text="Log off" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+            <JFXButton fx:id="lblLogOff" layoutX="500.0" layoutY="-1.0" prefHeight="72.0" prefWidth="100.0" text="Log off" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+>>>>>>> 12ca554be70758a3bbb9fe04577e73e9df8f887e
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,7 +36,11 @@
    <bottom>
       <AnchorPane prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+<<<<<<< HEAD
             <JFXButton fx:id="btnShowAttendance" layoutX="251.0" layoutY="-1.0" onAction="#handlerShotAttendance" prefHeight="60.0" prefWidth="600.0" text="Show total attendance" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+=======
+            <JFXButton fx:id="btnShowAttendance" layoutX="251.0" layoutY="-1.0" prefHeight="60.0" prefWidth="600.0" text="Show total attendance" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+>>>>>>> 12ca554be70758a3bbb9fe04577e73e9df8f887e
                <font>
                   <Font size="24.0" />
                </font>
@@ -33,4 +48,30 @@
          </children>
       </AnchorPane>
    </bottom>
+<<<<<<< HEAD
+=======
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="64.0" layoutY="84.0" prefHeight="51.0" prefWidth="287.0" text="You have been registered" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="84.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="136.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/checkmark.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="64.0" layoutY="303.0" lineSpacing="10.0" prefHeight="51.0" prefWidth="287.0" text="Have a nice day :)">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="92.0" layoutY="50.0" text="Today:" />
+            <JFXTextField fx:id="txtDate" layoutX="145.0" layoutY="45.0" />
+         </children>
+      </AnchorPane>
+   </center>
+>>>>>>> 12ca554be70758a3bbb9fe04577e73e9df8f887e
 </BorderPane>
