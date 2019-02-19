@@ -10,8 +10,8 @@
    <top>
       <AnchorPane prefHeight="72.0" prefWidth="602.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="33.0" layoutY="14.0" prefHeight="21.0" prefWidth="40.0" text="Navn:" />
-            <Label layoutX="33.0" layoutY="40.0" text="Klasse:" />
+            <Label layoutX="33.0" layoutY="14.0" prefHeight="21.0" prefWidth="40.0" text="Name" />
+            <Label layoutX="33.0" layoutY="40.0" text="Class:" />
             <Label fx:id="lblName" layoutX="84.0" layoutY="14.0" text="Label" />
             <Label fx:id="lblKlasse" layoutX="84.0" layoutY="40.0" text="Label" />
             <JFXButton fx:id="lblLogOff" layoutX="500.0" layoutY="-1.0" onAction="#handlerLogOff" prefHeight="72.0" prefWidth="100.0" text="Log off" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
