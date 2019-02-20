@@ -34,14 +34,6 @@
       </AnchorPane>
    </top>
    <bottom>
-<<<<<<< HEAD
-      <AnchorPane prefHeight="58.0" prefWidth="415.0" BorderPane.alignment="CENTER" />
-   </bottom>
-   <left>
-      <TableView prefHeight="430.0" prefWidth="209.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="208.0" text="Studerende" />
-=======
       <AnchorPane prefHeight="58.0" prefWidth="333.0" BorderPane.alignment="CENTER">
          <children>
             <JFXButton fx:id="btnAbsence" layoutX="122.0" layoutY="13.0" onAction="#handlerStudentAbsence" prefHeight="35.0" prefWidth="171.0" text="Summary of absence" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="13.0" />
@@ -52,41 +44,21 @@
       <TableView fx:id="tableStudents" onMousePressed="#handlerStudentClicked" prefHeight="427.0" prefWidth="194.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="clmStudentName" prefWidth="208.0" text="Students" />
->>>>>>> ce3d80d416ea6d428de7b1a6ead4fbb8d2e0a08b
         </columns>
       </TableView>
    </left>
    <right>
-<<<<<<< HEAD
-      <AnchorPane prefHeight="316.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <GridPane layoutY="6.0" prefHeight="92.0" prefWidth="200.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-=======
       <AnchorPane fx:id="anchorStudentInfo" prefHeight="430.0" prefWidth="215.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane layoutY="6.0" prefHeight="121.0" prefWidth="200.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="97.0" />
->>>>>>> ce3d80d416ea6d428de7b1a6ead4fbb8d2e0a08b
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="97.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
-<<<<<<< HEAD
-              </rowConstraints>
-               <children>
-                  <Label text="Navn:" />
-                  <Label text="Klasse:" GridPane.rowIndex="1" />
-                  <Label text="Fravær:" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-=======
                   <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -98,7 +70,6 @@
                   <Label fx:id="lblAbsence" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Most day absence:" GridPane.rowIndex="3" />
                   <Label fx:id="lblMostDayAbsence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
->>>>>>> ce3d80d416ea6d428de7b1a6ead4fbb8d2e0a08b
                </children>
             </GridPane>
          </children>

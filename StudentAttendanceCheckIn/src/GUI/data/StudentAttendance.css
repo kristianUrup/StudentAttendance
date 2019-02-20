@@ -98,16 +98,6 @@ and open the template in the editor.
     -fx-text-fill: #ffffff;
 }
 
-<<<<<<< HEAD
-.scroll-pane >.viewport
-{
-    -fx-background-color: transparent;
-}
-
-.scroll-pane
-{
-    -fx-background-color: transparent;
-=======
 .chart-pie-label
 {
     -fx-fill: #ffffff;
@@ -118,13 +108,3 @@ and open the template in the editor.
    -fx-background-color:  #666666;
 }
 
-.chart
-{
--fx-background-color: #666666;    
-}
-
-.chart-plot-background
-{
-    -fx-background-color: #666666;
->>>>>>> ce3d80d416ea6d428de7b1a6ead4fbb8d2e0a08b
-}
