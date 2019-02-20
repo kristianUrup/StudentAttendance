@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/DAL/PersonDAOMock.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/BLL/PersonManager.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/View/Student/StudentScreen.fxml</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/DAL/PersonDaoInterface.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/BLL/BLLFacade.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/Controller/Student/StudentScreenController.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/Controller/PersonalDataController.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/Model/SAModel.java</file>
-            <file>file:/C:/Users/Frederik/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/Controller/Teacher/TeacherScreenController.java</file>
+            <file>file:/C:/Users/Kristian%20Urup%20laptop/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/Controller/Teacher/AbsenceSummaryController.java</file>
+            <file>file:/C:/Users/Kristian%20Urup%20laptop/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/Controller/Teacher/TeacherScreenController.java</file>
+            <file>file:/C:/Users/Kristian%20Urup%20laptop/Documents/GitHub/StudentAttendance/StudentAttendanceCheckIn/src/GUI/data/StudentAttendance.css</file>
         </group>
     </open-files>
 </project-private>

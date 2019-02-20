@@ -97,3 +97,23 @@ and open the template in the editor.
     -fx-opacity: 0.6;
     -fx-text-fill: #ffffff;
 }
+
+.chart-pie-label
+{
+    -fx-fill: #ffffff;
+}
+
+.chart-legend
+{
+   -fx-background-color:  #666666;
+}
+
+.chart
+{
+-fx-background-color: #666666;    
+}
+
+.chart-plot-background
+{
+    -fx-background-color: #666666;
+}
