@@ -24,6 +24,7 @@ import GUI.Controller.Teacher.*;
 import GUI.Controller.Student.*;
 import com.jfoenix.controls.JFXPasswordField;
 import GUI.Model.SAModel;
+import com.jfoenix.controls.JFXTextField;
 import java.util.EventObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,8 +43,9 @@ public class PersonalDataController implements Initializable {
     private int textLimit;
     private final Pattern CPRPATTERN;
     
-    @FXML
     private JFXPasswordField txtCprNr;
+    @FXML
+    private JFXTextField txtCprInput;
     public PersonalDataController() {
         SAM = new SAModel();
         CPRPATTERN = Pattern.compile("\\d{6}-\\d{4}");
@@ -57,16 +59,16 @@ public class PersonalDataController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtCprNr.setDisable(true);
+        txtCprInput.setDisable(true);
         
     }
 
     @FXML
     private void handleCheckIn(ActionEvent event) throws IOException {
 
-        if (CPRPATTERN.matcher(txtCprNr.getText()).matches()) {
+        if (CPRPATTERN.matcher(txtCprInput.getText()).matches()) {
             for (Person person : SAM.getAllPersons()) {
-                if (person.getCpr().equals(txtCprNr.getText())) {
+                if (person.getCpr().equals(txtCprInput.getText())) {
                     if (person instanceof Student) {
                         openStudentScreen(event, (Student) person);
                         return;
@@ -85,8 +87,14 @@ public class PersonalDataController implements Initializable {
 
     @FXML
     private void handleDeleteBtn(ActionEvent event) {
-        txtCprNr.clear();
-        textLimit = 0;
+        if (!txtCprInput.getText().isEmpty()) {
+        String currentCprInput = "";
+        for (int i = 0; i < txtCprInput.getText().length()-1; i++) {
+            currentCprInput = currentCprInput + txtCprInput.getText().charAt(i);
+        }
+        txtCprInput.setText(currentCprInput);
+        textLimit--;
+        }
     }
 
     @FXML
@@ -144,22 +152,13 @@ public class PersonalDataController implements Initializable {
 
         } else {
             if (textLimit == 6) {
-                String text = txtCprNr.getText();
-                txtCprNr.setText(text + "-");
+                String text = txtCprInput.getText();
+                txtCprInput.setText(text + "-");
                 textLimit++;
             }
-            String text = txtCprNr.getText();
-            txtCprNr.setText(text + Integer.toString(number));
+            String text = txtCprInput.getText();
+            txtCprInput.setText(text + Integer.toString(number));
             textLimit++;
-        }
-    }
-
-
-    private void backSpace(KeyEvent kEvent)
-    {
-        if (kEvent.getCode() == KeyCode.BACK_SPACE)
-        {
-            textLimit--;
         }
     }
             

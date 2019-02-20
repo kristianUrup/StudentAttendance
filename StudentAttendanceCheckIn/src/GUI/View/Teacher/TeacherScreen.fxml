@@ -25,7 +25,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnLogOff" layoutX="340.0" layoutY="-1.0" onAction="#handlerLogOff" prefHeight="72.0" prefWidth="75.0" text="LOG OFF" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+            <JFXButton fx:id="btnLogOff" layoutX="340.0" layoutY="-1.0" onAction="#handlerLogOff" prefHeight="71.0" prefWidth="89.0" text="LOG OFF" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -36,12 +36,12 @@
    <bottom>
       <AnchorPane prefHeight="58.0" prefWidth="333.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="btnAbsence" layoutX="134.0" layoutY="12.0" onAction="#handlerStudentAbsence" prefHeight="34.0" prefWidth="148.0" text="Summary of absence" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="12.0" />
-            <JFXButton fx:id="btnBack" layoutX="348.0" layoutY="13.0" onAction="#handlerBack" prefHeight="32.0" prefWidth="53.0" text="Back" AnchorPane.bottomAnchor="13.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="13.0" />
+            <JFXButton fx:id="btnAbsence" layoutX="122.0" layoutY="13.0" onAction="#handlerStudentAbsence" prefHeight="35.0" prefWidth="171.0" text="Summary of absence" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="13.0" />
+            <JFXButton fx:id="btnBack" layoutX="348.0" layoutY="13.0" onAction="#handlerBack" prefHeight="35.0" prefWidth="63.0" text="Back" AnchorPane.bottomAnchor="13.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="13.0" />
          </children></AnchorPane>
    </bottom>
    <left>
-      <TableView fx:id="tableStudents" onMousePressed="#handlerStudentClicked" prefHeight="430.0" prefWidth="193.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableStudents" onMousePressed="#handlerStudentClicked" prefHeight="427.0" prefWidth="194.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="clmStudentName" prefWidth="208.0" text="Students" />
         </columns>
