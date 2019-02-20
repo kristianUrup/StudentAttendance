@@ -21,4 +21,6 @@ public interface BLLFacade {
     public List<Student> getAllStudents();
     
     public List<Teacher> getAllTeachers();
+    
+    public List<Student> getSortedAbsenceList();
 }

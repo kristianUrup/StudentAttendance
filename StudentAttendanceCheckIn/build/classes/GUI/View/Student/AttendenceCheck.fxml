@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="415.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.Controller.Student.AttendenceCheckController">
+<AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="415.0" styleClass="background" stylesheets="@../../data/StudentAttendance.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Student.AttendenceCheckController">
    <children>
       <Label alignment="CENTER" layoutX="74.0" layoutY="94.0" prefHeight="51.0" prefWidth="287.0" text="You have been registered" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="84.0">
          <font>
@@ -26,6 +25,6 @@
          </font>
       </Label>
       <Label layoutX="100.0" layoutY="43.0" text="Today:" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="50.0" />
-      <JFXTextField fx:id="txtDate" layoutX="155.0" layoutY="55.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="45.0" />
+      <JFXTextField fx:id="txtDate" layoutX="143.0" layoutY="31.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="31.0" />
    </children>
 </AnchorPane>
