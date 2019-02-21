@@ -57,7 +57,4 @@ public class AbsenceSummaryController implements Initializable {
         absenceChart.setPrefWidth(400);
         scrollBarChart.setContent(absenceChart);
     }
-    
-    
-    
 }

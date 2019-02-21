@@ -9,7 +9,14 @@ and open the template in the editor.
 */
 
 
-.background {
+.root 
+{
+    -main-bg-color: #666666;
+    -main-txt-fill: #ffffff;
+}
+
+.background
+{
     -fx-background-color: #666666;
 }
 
@@ -48,9 +55,9 @@ and open the template in the editor.
 .table-view
 {
     -fx-padding: 2.5;
-    -fx-base: #FFFFFF;
-    -fx-control-inner-background: #666666;
-    -fx-background-color: #FFFFFF;
+    -fx-base: -main-txt-fill;
+    -fx-control-inner-background: -main-bg-color;
+    -fx-background-color: -main-txt-fill;
     -fx-opacity: 0.5;
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
@@ -74,7 +81,7 @@ and open the template in the editor.
     -fx-font-size: 15pt;
     -fx-font-family: "SBerlin Sans FB Demi";
     -fx-alignment: center-left;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: -main-txt-fill;
     -fx-background-color: black;
     -fx-opacity: 0.5;
     -fx-border-radius: 10 10 10 10;
@@ -98,42 +105,65 @@ and open the template in the editor.
     -fx-text-fill: #ffffff;
 }
 
+.chart-bar
+{
+    -fx-background-color: -main-txt-fill;
+    -fx-opacity: 0.6;
+}
+
 .chart-pie-label
 {
-    -fx-fill: #ffffff;
+    -fx-fill: -main-txt-fill;
 }
 
 .chart-legend
 {
-   -fx-background-color:  #666666;
+   -fx-background-color:  -main-bg-color;
+}
+
+.chart-plot-background
+{
+    -fx-background-color: -main-bg-color;
 }
 
 .scroll-pane >.viewport
 {
-    -fx-background-color: #666666;
+    -fx-background-color: -main-bg-color;
 }
 
 .scroll-pane
 {
-    -fx-background-color: #666666;
+    -fx-background-color: -main-bg-color;
 }
 
-.axis {
-    -fx-font-size: 1.4em;    
-    -fx-tick-label-fill: #914800;
-    -fx-font-family: Tahoma;
+.axis { 
+    -fx-tick-label-fill: -main-txt-fill;
+    -fx-tick-label-font-size: 1.1em;
     -fx-tick-length: 20;
     -fx-minor-tick-length: 10;
+    -fx-font-size:2.2em;
 }
  
 .axis-label {
-   -fx-text-fill: #462300; 
+   -fx-text-fill: -main-txt-fill; 
 }
  
 .axis-tick-mark {
     -fx-stroke: transparent;
-    -fx-stroke-width: 3; 
 }
-.axis-minor-tick-mark {
-    -fx-stroke: #859656;
+
+
+.axis-minor-tick-mark 
+{
+    -fx-stroke: transparent;
+}
+
+.chart-vertical-grid-lines
+{
+    -fx-stroke: -main-bg-color;
+}
+
+.chart-horizontal-grid-lines 
+{
+    -fx-stroke: -main-bg-color;
 }

@@ -138,7 +138,4 @@ public class TeacherScreenController implements Initializable
         btnAbsence.setVisible(true);
     }
     
-    
-    
-    
 }
