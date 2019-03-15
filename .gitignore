@@ -21,3 +21,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+StudentAttendanceCheckIn/build/built-jar.properties
+StudentAttendanceCheckIn/build/classes/GUI/View/Teacher/TeacherScreen.fxml
+StudentAttendanceCheckIn/dist/StudentAttendanceCheckIn.html
+StudentAttendanceCheckIn/dist/StudentAttendanceCheckIn.jnlp
+StudentAttendanceCheckIn/nbproject/private/private.properties
+StudentAttendanceCheckIn/nbproject/private/private.xml
+StudentAttendanceCheckIn/nbproject/project.properties

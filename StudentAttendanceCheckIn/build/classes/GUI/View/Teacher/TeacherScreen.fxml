@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,12 +16,12 @@
    <top>
       <AnchorPane prefHeight="70.0" prefWidth="415.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblTeacherName" layoutX="14.0" layoutY="35.0" prefHeight="24.0" prefWidth="147.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="35.0">
+            <Label fx:id="lblTeacherName" layoutX="119.0" layoutY="39.0" prefHeight="24.0" prefWidth="147.0" text="Label" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="39.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="3.0" prefHeight="32.0" prefWidth="134.0" text="Welcome">
+            <Label layoutX="119.0" layoutY="7.0" prefHeight="32.0" prefWidth="134.0" text="Welcome">
                <font>
                   <Font size="18.0" />
                </font>
@@ -30,6 +31,7 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
+            <JFXComboBox fx:id="comboClass" focusColor="#2e4794" layoutX="5.0" layoutY="13.0" prefHeight="31.0" prefWidth="107.0" promptText="Class" unFocusColor="#6b6b6b" />
          </children>
       </AnchorPane>
    </top>
@@ -50,10 +52,10 @@
    <right>
       <AnchorPane fx:id="anchorStudentInfo" prefHeight="430.0" prefWidth="215.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutY="6.0" prefHeight="121.0" prefWidth="200.0">
+            <GridPane layoutY="6.0" prefHeight="121.0" prefWidth="216.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="97.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="123.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="93.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
@@ -68,7 +70,7 @@
                   <Label fx:id="lblStudentName" GridPane.columnIndex="1" />
                   <Label fx:id="lblClass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="lblAbsence" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Most day absence:" GridPane.rowIndex="3" />
+                  <Label prefHeight="24.0" prefWidth="126.0" text="Most day absence:" GridPane.rowIndex="3" />
                   <Label fx:id="lblMostDayAbsence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>

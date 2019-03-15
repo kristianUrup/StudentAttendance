@@ -5,15 +5,18 @@
  */
 package GUI.Controller.Teacher;
 
+import BE.Klasse;
 import BE.Student;
 import BE.Teacher;
 import BLL.BLLFacade;
 import BLL.PersonManager;
 import GUI.Model.SAModel;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.EventObject;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,6 +72,9 @@ public class TeacherScreenController implements Initializable
     private AnchorPane anchorStudentInfo;
     @FXML
     private Label lblMostDayAbsence;
+    @FXML
+    private JFXComboBox<Klasse> comboClass;
+    
 
     public TeacherScreenController() {
         bllManager = new PersonManager();
@@ -83,6 +89,7 @@ public class TeacherScreenController implements Initializable
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
         tableStudents.setItems(SAM.getAllStudents());
+        comboClass.setItems(SAM.getAllClasses());
     }
     
     public void setTeacher(Teacher teacher) {

@@ -5,6 +5,7 @@
  */
 package GUI.Model;
 
+import BE.Klasse;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
@@ -20,8 +21,10 @@ import javafx.collections.ObservableList;
  */
 public class SAModel {
     
+    
+    private ObservableList<Klasse> classList;
     private BLLFacade pm;
-    private ObservableList<Student> studentList;
+    private ObservableList<Student> studentList ;
     private ObservableList<Student> sortedStudentList;
     
     public SAModel() {
@@ -30,6 +33,10 @@ public class SAModel {
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();
         sortedStudentList.addAll(pm.getSortedAbsenceList());
+        
+        classList = FXCollections.observableArrayList();
+        Klasse CS2018A = new Klasse(1,"CS2018A");
+        classList.add(CS2018A);
     }
     
     public List<Person> getAllPersons() {
@@ -46,5 +53,10 @@ public class SAModel {
     
     public ObservableList<Student> getSortedAbsenceList() {
         return sortedStudentList;
+    }
+    
+    public ObservableList<Klasse> getAllClasses()
+    {
+        return classList;
     }
 }
