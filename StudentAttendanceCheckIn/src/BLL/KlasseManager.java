@@ -5,11 +5,25 @@
  */
 package BLL;
 
+import BE.Klasse;
+import DAL.ClassDAO;
+import java.util.List;
+
 /**
  *
  * @author bonde
  */
 public class KlasseManager
 {
+    ClassDAO cdao;
+
+    public KlasseManager(ClassDAO cdao)
+    {
+        this.cdao = cdao;
+    }
     
+    public List<Klasse> getAllClasses()
+    {
+        return cdao.getAllClasses();
+    }
 }
