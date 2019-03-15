@@ -6,6 +6,11 @@
 package DAL;
 
 import BE.Klasse;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +35,23 @@ public class ClassDAO implements ClassInterface
     @Override
     public List<Klasse> getAllClasses()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Klasse> klasser = new ArrayList<>();
+        
+        try(Connection con = cd.getConnection()){
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM Klasse;");
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String name = rs.getString("klassename");
+                
+                Klasse klasse = new Klasse(id, name);
+                klasser.add(klasse);
+            }
+            
+        }catch(SQLException ex){
+            
+        }
+        return klasser;
     }
 }
