@@ -63,7 +63,7 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Label layoutX="79.0" layoutY="38.0" styleClass="label_header" text="Insert your Cpr- number">
+            <Label layoutX="90.0" layoutY="39.0" styleClass="label_header" text="Insert your Cpr- number">
                <font>
                   <Font size="24.0" />
                </font>

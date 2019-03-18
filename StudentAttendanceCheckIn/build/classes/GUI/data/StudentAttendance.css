@@ -171,3 +171,19 @@ and open the template in the editor.
 {
     -fx-stroke: -main-bg-color;
 }
+
+.combo-box
+{
+    -fx-background-color: #666666;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-opacity: 0.8;
+}
+
+.combo-box-base:hover
+{
+    -fx-border-color: green;
+}
