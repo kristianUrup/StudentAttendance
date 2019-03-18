@@ -11,6 +11,7 @@ import BE.Student;
 import BE.Teacher;
 import BLL.BLLFacade;
 import BLL.PersonManager;
+import DAL.PersonDAO;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +29,7 @@ public class SAModel {
     private ObservableList<Student> sortedStudentList;
     
     public SAModel() {
-        pm = new PersonManager();
+        pm = new PersonManager(new PersonDAO());
         studentList = FXCollections.observableArrayList();
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();

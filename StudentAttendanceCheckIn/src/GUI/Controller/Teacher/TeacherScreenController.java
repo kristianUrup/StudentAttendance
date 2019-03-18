@@ -45,7 +45,6 @@ import javafx.stage.Stage;
 public class TeacherScreenController implements Initializable
 {
 
-    private BLLFacade bllManager;
     private Teacher teacherLoggedIn;
     private final SAModel SAM;
     @FXML
@@ -77,7 +76,6 @@ public class TeacherScreenController implements Initializable
     
 
     public TeacherScreenController() {
-        bllManager = new PersonManager();
         SAM = new SAModel();
     }
     /**
