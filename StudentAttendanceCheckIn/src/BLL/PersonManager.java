@@ -8,9 +8,7 @@ package BLL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
-import DAL.PersonDAOMock;
 import DAL.PersonDaoInterface;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -23,8 +21,8 @@ public class PersonManager implements BLLFacade {
 
     PersonDaoInterface pdao;
 
-    public PersonManager() {
-        pdao = new PersonDAOMock();
+    public PersonManager(PersonDaoInterface pdao) {
+        this.pdao = pdao;
     }
 
     @Override

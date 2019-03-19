@@ -9,8 +9,8 @@ package DAL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -33,8 +34,9 @@ public class PersonDAO implements PersonDaoInterface
     {
         List<Student> studentList = new ArrayList<>();
         try (Connection con = cdao.getConnection()) {
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Student INNER JOIN Klasse ON Student.klasseid = Klasse.id");
+            String sql = "SELECT * FROM Student INNER JOIN Klasse ON Student.klasseid = Klasse.id";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String firstname = rs.getString("firstname");
@@ -60,11 +62,49 @@ public class PersonDAO implements PersonDaoInterface
     
     public List<Teacher> getAllTeachers()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Teacher> teacherList = new ArrayList<>();
+        try (Connection con = cdao.getConnection()) {
+            String sql = "SELECT * FROM Teacher";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                
+            }
+            return teacherList;
+        } catch (SQLException ex) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+        
     }
 
     public List<Person> getAllPersons()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Person> personList = new ArrayList<>();
+        List<Student> studentList = getAllStudents();
+        List<Teacher> teacherList = getAllTeachers();
+        
+        for (Student student : studentList) {
+            personList.add(student);
+        }
+        
+        for (Teacher teacher : teacherList) {
+            personList.add(teacher);
+        }
+        
+        return personList;
+    }
+    
+    public void updateStudentAbsence(Student student) {
+        try (Connection con = cdao.getConnection()) {
+            String sql = "UPDATE Student SET absence = ? WHERE id = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            pst.setDouble(1, student.getAbsence());
+            pst.setInt(2, student.getId());
+            
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

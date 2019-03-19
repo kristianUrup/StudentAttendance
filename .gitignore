@@ -28,7 +28,12 @@ StudentAttendanceCheckIn/dist/StudentAttendanceCheckIn.jnlp
 StudentAttendanceCheckIn/nbproject/private/private.properties
 StudentAttendanceCheckIn/nbproject/private/private.xml
 StudentAttendanceCheckIn/nbproject/project.properties
-StudentAttendanceCheckIn/build/built-jar.properties
-StudentAttendanceCheckIn/nbproject/private/private.xml
-StudentAttendanceCheckIn/nbproject/private/private.properties
+*.properties
+*.xml
+*.properties
+*.js
+*.jnlp
+*.html
+*.properties
+
 StudentAttendanceCheckIn/nbproject/project.properties
