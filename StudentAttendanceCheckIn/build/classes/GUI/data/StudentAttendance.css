@@ -22,12 +22,13 @@ and open the template in the editor.
 
 .button
 {
-    -fx-background-color: #FFFFFF;
-    -fx-text-fill: #666666;
-    -fx-border-color: #666666;
-    -fx-border-width: 2;
+    -fx-background-color: #666666;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2.5;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+    -fx-opacity: 0.8;
 }
 
 .textBox
@@ -41,13 +42,16 @@ and open the template in the editor.
 
 .label
 {
-  -fx-text-fill: #FFFFFF;  
+  -fx-text-fill: #FFFFFF;
+  -fx-opacity:0.8; 
+  -fx-font-family: "SBerlin Sans FB Demi";
 }
 
 .label_header
 {
     -fx-text-fill: #FFFFFF;
     -fx-opacity: 0.8;
+    -fx-font-family: "SBerlin Sans FB Demi";
 }
 
 
@@ -58,7 +62,7 @@ and open the template in the editor.
     -fx-base: -main-txt-fill;
     -fx-control-inner-background: -main-bg-color;
     -fx-background-color: -main-txt-fill;
-    -fx-opacity: 0.5;
+    -fx-opacity: 0.8;
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
 }
@@ -166,4 +170,20 @@ and open the template in the editor.
 .chart-horizontal-grid-lines 
 {
     -fx-stroke: -main-bg-color;
+}
+
+.combo-box
+{
+    -fx-background-color: #666666;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-opacity: 0.8;
+}
+
+.combo-box-base:hover
+{
+    -fx-border-color: green;
 }

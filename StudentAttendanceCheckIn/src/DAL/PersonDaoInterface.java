@@ -8,6 +8,7 @@ package DAL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
+import DAL.Exceptions.DalException;
 import java.util.List;
 
 /**

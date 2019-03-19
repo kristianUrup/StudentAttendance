@@ -27,4 +27,8 @@ public class Teacher extends Person
         return klasser;
     }
     
+    public void addKlasse(String klasse) {
+        klasser.add(klasse);
+    }
+    
 }

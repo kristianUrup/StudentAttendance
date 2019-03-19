@@ -6,6 +6,7 @@
 package DAL;
 
 import BE.Klasse;
+import DAL.Exceptions.DalException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ public class ClassDAO implements ClassInterface
     }
 
     @Override
-    public List<Klasse> getAllClasses()
+    public List<Klasse> getAllClasses() throws DalException
     {
         List<Klasse> klasser = new ArrayList<>();
         
@@ -50,7 +51,7 @@ public class ClassDAO implements ClassInterface
             }
             
         }catch(SQLException ex){
-            
+            throw new DalException("Could not get all classes: " + ex.getMessage());
         }
         return klasser;
     }

@@ -5,11 +5,33 @@
  */
 package BLL;
 
+import BE.Klasse;
+import BLL.Exceptions.BllException;
+import DAL.ClassDAO;
+import DAL.Exceptions.DalException;
+import java.util.List;
+
 /**
  *
  * @author bonde
  */
 public class KlasseManager
 {
+    ClassDAO cdao;
+
+    public KlasseManager(ClassDAO cdao)
+    {
+        this.cdao = cdao;
+    }
     
+    public List<Klasse> getAllClasses() throws BllException
+    {
+        try
+        {
+            return cdao.getAllClasses();
+        }catch(DalException ex){
+            throw new BllException("");
+        }
+        
+    }
 }
