@@ -8,8 +8,6 @@ package BLL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
-import DAL.PersonDAO;
-import DAL.PersonDAOMock;
 import DAL.PersonDaoInterface;
 import java.util.Collections;
 import java.util.Comparator;
