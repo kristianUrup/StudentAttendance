@@ -31,6 +31,12 @@ and open the template in the editor.
     -fx-opacity: 0.8;
 }
 
+.button:hover
+{
+    -fx-text-fill: red;
+    -fx-border-color: red;
+}
+
 .textBox
 {
     -fx-background-color: #FFFFFF;
@@ -181,9 +187,12 @@ and open the template in the editor.
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-opacity: 0.8;
+    -fx-prompt-text-fill: #ffffff;
 }
 
-.combo-box-base:hover
+.combo-box:hover
 {
-    -fx-border-color: green;
+    -fx-border-color: red;
+    -fx-text-fill: red;
 }
+
