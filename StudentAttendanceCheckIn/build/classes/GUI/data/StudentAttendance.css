@@ -13,11 +13,25 @@ and open the template in the editor.
 {
     -main-bg-color: #666666;
     -main-txt-fill: #ffffff;
+    -easv-red-color: #dc1a31;
+    -font: "SBerlin Sans FB Demi" "BOLD ";
 }
 
 .background
 {
-    -fx-background-color: #666666;
+    -fx-background-color: #9c9c9c;
+}
+
+.top-background
+{
+    -fx-background-color: #dc1a31;    
+    -fx-background-radius: 0 0 10 10;
+}
+
+.bottom-background
+{
+    -fx-background-color: #dc1a31;
+    -fx-background-radius: 10 10 0 0;   
 }
 
 .button
@@ -29,12 +43,15 @@ and open the template in the editor.
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-opacity: 0.8;
+    -fx-font-family: -font;
 }
 
 .button:hover
 {
     -fx-text-fill: red;
     -fx-border-color: red;
+    -fx-font-family: -font;
+    -fx-font-size: 18px;
 }
 
 .textBox
@@ -50,17 +67,22 @@ and open the template in the editor.
 {
   -fx-text-fill: #FFFFFF;
   -fx-opacity:0.8; 
-  -fx-font-family: "SBerlin Sans FB Demi";
+  -fx-font-family: -font;
 }
 
 .label_header
 {
     -fx-text-fill: #FFFFFF;
     -fx-opacity: 0.8;
-    -fx-font-family: "SBerlin Sans FB Demi";
+    -fx-font-family: -font;
 }
 
-
+.label-small
+{
+    -fx-text-fill: -main-txt-fill;
+    -fx-font-size: 14px;
+    -fx-font-family: "Berlin Sans FB Demi" "BOLD" ;
+}
 
 .table-view
 {
@@ -194,5 +216,27 @@ and open the template in the editor.
 {
     -fx-border-color: red;
     -fx-text-fill: red;
+}
+
+.combo-box:focused
+{
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-radius: 10 10 0 0;
+    -fx-border-color: #dc1a31;
+}
+
+.combo-box .list-view
+{
+    -fx-border-color: #7e575b;
+    -fx-background-color: #7e575b;
+    -fx-font-family: -font;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 0 10 10 10;
+    -fx-border-radius: 0 10 10 10;
+}
+
+.combo-box .list-view .list-cell
+{
+    -fx-background-color: transparent;
 }
 

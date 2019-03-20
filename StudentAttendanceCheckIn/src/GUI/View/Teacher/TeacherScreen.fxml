@@ -14,7 +14,7 @@
 
 <BorderPane fx:id="borderTeacherScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="415.0" styleClass="background" stylesheets="@../../data/StudentAttendance.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Teacher.TeacherScreenController">
    <top>
-      <AnchorPane prefHeight="70.0" prefWidth="415.0" styleClass="bottom-background" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="70.0" prefWidth="415.0" styleClass="top-background" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="lblTeacherName" layoutX="119.0" layoutY="39.0" prefHeight="24.0" prefWidth="147.0" text="Label" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="39.0">
                <font>
