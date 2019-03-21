@@ -12,6 +12,7 @@ import BE.Teacher;
 import BLL.BLLFacade;
 import BLL.PersonManager;
 import DAL.PersonDAO;
+import DAL.PersonDAOMock;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +26,7 @@ public class SAModel {
     
     private ObservableList<Klasse> classList;
     private BLLFacade pm;
-    private ObservableList<Student> studentList ;
+    private ObservableList<Student> studentList;
     private ObservableList<Student> sortedStudentList;
     
     public SAModel() {

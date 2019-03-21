@@ -68,7 +68,15 @@ public class PersonDAO implements PersonDaoInterface
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                
+                int id = rs.getInt("id");
+                String firstName = rs.getString("firstname");
+                String lastName = rs.getString("lastname");
+                String fullname = firstName + " " + lastName;
+                String cpr = rs.getString("cpr");
+                String email = rs.getString("email");
+                int age = rs.getInt("age");
+                Teacher teacher = new Teacher(id, fullname, age, cpr, email);
+                teacherList.add(teacher);
             }
             return teacherList;
         } catch (SQLException ex) {
