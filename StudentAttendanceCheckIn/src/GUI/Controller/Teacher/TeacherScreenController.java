@@ -9,6 +9,7 @@ import BE.Klasse;
 import BE.Student;
 import BE.Teacher;
 import BLL.BLLFacade;
+import BLL.Exceptions.BllException;
 import BLL.PersonManager;
 import GUI.Model.SAModel;
 import com.jfoenix.controls.JFXButton;
@@ -87,12 +88,12 @@ public class TeacherScreenController implements Initializable
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
         tableStudents.setItems(SAM.getAllStudents());
-        //comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn));
     }
     
     public void setTeacher(Teacher teacher) {
         teacherLoggedIn = teacher;
         lblTeacherName.setText(teacherLoggedIn.getName());
+        setComboBoxItems();
     }
 
     @FXML
@@ -141,5 +142,13 @@ public class TeacherScreenController implements Initializable
         borderTeacherScreen.setCenter(null);
         btnBack.setVisible(false);
         btnAbsence.setVisible(true);
+    }
+    
+    private void setComboBoxItems() {
+        try {
+            comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn));
+        } catch (BllException ex) {
+            Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

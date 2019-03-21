@@ -33,13 +33,12 @@ public class SAModel {
     private ObservableList<Klasse> classList;
     
     public SAModel() {
-        pm = new PersonManager(new PersonDAOMock());
+        pm = new PersonManager(new PersonDAO());
         studentList = FXCollections.observableArrayList();
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();
         sortedStudentList.addAll(pm.getSortedAbsenceList());
         classList = FXCollections.observableArrayList();
-        //classList.addAll(km.getTeacherClasses(Teacher));
     }
     
     public List<Person> getAllPersons() {
@@ -58,14 +57,13 @@ public class SAModel {
         return sortedStudentList;
     }
     
-    public ObservableList<Klasse> getclassList()
+    public ObservableList<Klasse> getTeacherClasses(Teacher teacher) throws BllException
     {
+        
+        for (Klasse klasse : km.getTeacherClasses(teacher)) {
+            classList.add(klasse);
+        }
         return classList;
-    }
-    
-    public List<Klasse> getTeacherClasses(Teacher teacher) throws BllException
-    {
-        return km.getTeacherClasses(teacher);
         
     }
 }
