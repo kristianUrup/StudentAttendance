@@ -9,6 +9,7 @@ import BE.Klasse;
 import BE.Teacher;
 import DAL.Exceptions.DalException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -65,7 +66,16 @@ public class ClassDAO implements ClassInterface
         List<Klasse> teacherclasses = new ArrayList<>();
         
         try(Connection con = cd.getConnection()) {
-            String sql = "SELECT ";
+            String sql = "SELECT * FROM TeacherKlasse INNER JOIN Klasse ON TeacherKlasse.klasseID = Klasse.id WHERE teacherID = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, teacher.getId());
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                int id = rs.getInt("klasseID");
+                String name = rs.getString("klassename");
+                Klasse klasse = new Klasse(id, name);
+                teacherclasses.add(klasse);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ClassDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
