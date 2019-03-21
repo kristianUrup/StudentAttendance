@@ -30,7 +30,7 @@ public class SAModel {
     private ObservableList<Student> sortedStudentList;
     
     public SAModel() {
-        pm = new PersonManager(new PersonDAO());
+        pm = new PersonManager(new PersonDAOMock());
         studentList = FXCollections.observableArrayList();
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();
