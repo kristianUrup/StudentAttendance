@@ -87,7 +87,7 @@ public class TeacherScreenController implements Initializable
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
         tableStudents.setItems(SAM.getAllStudents());
-        comboClass.setItems(SAM.getAllClasses());
+        //comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn));
     }
     
     public void setTeacher(Teacher teacher) {
@@ -142,5 +142,4 @@ public class TeacherScreenController implements Initializable
         btnBack.setVisible(false);
         btnAbsence.setVisible(true);
     }
-    
 }

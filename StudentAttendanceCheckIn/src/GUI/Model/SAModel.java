@@ -10,6 +10,8 @@ import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import BLL.BLLFacade;
+import BLL.Exceptions.BllException;
+import BLL.KlasseManager;
 import BLL.PersonManager;
 import DAL.PersonDAO;
 import DAL.PersonDAOMock;
@@ -24,10 +26,11 @@ import javafx.collections.ObservableList;
 public class SAModel {
     
     
-    private ObservableList<Klasse> classList;
     private BLLFacade pm;
+    private KlasseManager km;
     private ObservableList<Student> studentList;
     private ObservableList<Student> sortedStudentList;
+    private ObservableList<Klasse> classList;
     
     public SAModel() {
         pm = new PersonManager(new PersonDAOMock());
@@ -35,10 +38,8 @@ public class SAModel {
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();
         sortedStudentList.addAll(pm.getSortedAbsenceList());
-        
         classList = FXCollections.observableArrayList();
-        Klasse CS2018A = new Klasse(1,"CS2018A");
-        classList.add(CS2018A);
+        //classList.addAll(km.getTeacherClasses(Teacher));
     }
     
     public List<Person> getAllPersons() {
@@ -57,8 +58,14 @@ public class SAModel {
         return sortedStudentList;
     }
     
-    public ObservableList<Klasse> getAllClasses()
+    public ObservableList<Klasse> getclassList()
     {
         return classList;
+    }
+    
+    public List<Klasse> getTeacherClasses(Teacher teacher) throws BllException
+    {
+        return km.getTeacherClasses(teacher);
+        
     }
 }

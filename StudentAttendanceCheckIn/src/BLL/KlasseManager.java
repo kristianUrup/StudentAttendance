@@ -6,6 +6,7 @@
 package BLL;
 
 import BE.Klasse;
+import BE.Teacher;
 import BLL.Exceptions.BllException;
 import DAL.ClassDAO;
 import DAL.Exceptions.DalException;
@@ -33,5 +34,15 @@ public class KlasseManager
             throw new BllException("");
         }
         
+    }
+    
+    public List<Klasse> getTeacherClasses(Teacher teacher) throws BllException
+    {
+        try
+        {
+            return cdao.getTeacherClasses(teacher);
+        }catch(DalException ex){
+            throw new BllException("");
+        }
     }
 }
