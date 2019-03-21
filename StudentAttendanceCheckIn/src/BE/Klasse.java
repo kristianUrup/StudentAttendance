@@ -5,15 +5,18 @@
  */
 package BE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author bonde
  */
 public class Klasse
 {
-    private int id;
-    private String name;
-
+    final private int id;
+    final private String name;
+    final private List<Student> students;
     /**
      * Constructor of Class. Instantiate ClassID and name of class.
      * 
@@ -24,6 +27,7 @@ public class Klasse
     {
         this.id = id;
         this.name = name;
+        students = new ArrayList<>();
     }
      
     /**
@@ -42,5 +46,9 @@ public class Klasse
     public String getName()
     {
         return name;
+    }
+    
+    public void addStudent(Student student) {
+        students.add(student);
     }
 }

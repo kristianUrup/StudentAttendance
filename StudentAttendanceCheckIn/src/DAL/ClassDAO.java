@@ -6,6 +6,7 @@
 package DAL;
 
 import BE.Klasse;
+import BE.Teacher;
 import DAL.Exceptions.DalException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -55,4 +58,20 @@ public class ClassDAO implements ClassInterface
         }
         return klasser;
     }
+
+    @Override
+    public List<Klasse> getTeacherClasses(Teacher teacher) throws DalException 
+    {
+        List<Klasse> teacherclasses = new ArrayList<>();
+        
+        try(Connection con = cd.getConnection()) {
+            String sql = "SELECT ";
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return teacherclasses;
+    }
+    
+    
 }

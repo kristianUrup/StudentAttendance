@@ -6,6 +6,7 @@
 package DAL;
 
 import BE.Klasse;
+import BE.Teacher;
 import DAL.Exceptions.DalException;
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface ClassInterface
      * @throws DAL.Exceptions.DalException
      */
     public List<Klasse> getAllClasses() throws DalException;
+    
+    public List<Klasse> getTeacherClasses(Teacher teacher) throws DalException;
 }
