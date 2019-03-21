@@ -13,6 +13,7 @@ import BLL.BLLFacade;
 import BLL.Exceptions.BllException;
 import BLL.KlasseManager;
 import BLL.PersonManager;
+import DAL.ClassDAO;
 import DAL.PersonDAO;
 import DAL.PersonDAOMock;
 import java.util.List;
@@ -31,14 +32,17 @@ public class SAModel {
     private ObservableList<Student> studentList;
     private ObservableList<Student> sortedStudentList;
     private ObservableList<Klasse> classList;
+    private ObservableList<Student> studentFromClassList;
     
     public SAModel() {
         pm = new PersonManager(new PersonDAO());
+        km = new KlasseManager(new ClassDAO());
         studentList = FXCollections.observableArrayList();
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();
         sortedStudentList.addAll(pm.getSortedAbsenceList());
         classList = FXCollections.observableArrayList();
+        studentFromClassList = FXCollections.observableArrayList();
     }
     
     public List<Person> getAllPersons() {
@@ -57,13 +61,21 @@ public class SAModel {
         return sortedStudentList;
     }
     
-    public ObservableList<Klasse> getTeacherClasses(Teacher teacher) throws BllException
-    {
-        
-        for (Klasse klasse : km.getTeacherClasses(teacher)) {
+    public ObservableList<Klasse> getTeacherClasses(int id) throws BllException
+    {     
+        for(Klasse klasse : km.getTeacherClasses(id)) {
             classList.add(klasse);
-        }
+        }  
         return classList;
-        
+    }
+    
+    public ObservableList<Student> getStudentsFromClass(Klasse klasse) {
+        if (!studentFromClassList.isEmpty()) {
+            studentFromClassList.clear();
+        }
+        for (Student student : km.getStudentsFromClass(klasse)) {
+            studentFromClassList.add(student);
+        }
+        return studentFromClassList;
     }
 }

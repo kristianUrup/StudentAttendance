@@ -5,7 +5,6 @@
  */
 package BLL;
 
-import BE.Klasse;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;

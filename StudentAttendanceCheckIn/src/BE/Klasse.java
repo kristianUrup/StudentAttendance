@@ -51,4 +51,13 @@ public class Klasse
     public void addStudent(Student student) {
         students.add(student);
     }
+    
+    public List<Student> getStudents() {
+        return students;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
 }

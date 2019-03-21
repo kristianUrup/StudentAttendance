@@ -6,9 +6,11 @@
 package BLL;
 
 import BE.Klasse;
+import BE.Student;
 import BE.Teacher;
 import BLL.Exceptions.BllException;
 import DAL.ClassDAO;
+import DAL.ClassInterface;
 import DAL.Exceptions.DalException;
 import java.util.List;
 
@@ -18,31 +20,35 @@ import java.util.List;
  */
 public class KlasseManager
 {
-    ClassDAO cdao;
+    ClassInterface cli;
 
-    public KlasseManager(ClassDAO cdao)
+    public KlasseManager(ClassInterface cli)
     {
-        this.cdao = cdao;
+        this.cli = cli;
     }
     
     public List<Klasse> getAllClasses() throws BllException
     {
         try
         {
-            return cdao.getAllClasses();
+            return cli.getAllClasses();
         }catch(DalException ex){
             throw new BllException("");
         }
         
     }
     
-    public List<Klasse> getTeacherClasses(Teacher teacher) throws BllException
+    public List<Klasse> getTeacherClasses(int id) throws BllException
     {
         try
         {
-            return cdao.getTeacherClasses(teacher);
+            return cli.getTeacherClasses(id);
         }catch(DalException ex){
             throw new BllException("");
         }
+    }
+    
+    public List<Student> getStudentsFromClass(Klasse klasse) {
+        return cli.getStudentsFromClass(klasse);
     }
 }

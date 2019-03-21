@@ -87,13 +87,11 @@ public class TeacherScreenController implements Initializable
     {
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
-        tableStudents.setItems(SAM.getAllStudents());
     }
     
     public void setTeacher(Teacher teacher) {
         teacherLoggedIn = teacher;
         lblTeacherName.setText(teacherLoggedIn.getName());
-        setComboBoxItems();
     }
 
     @FXML
@@ -144,11 +142,23 @@ public class TeacherScreenController implements Initializable
         btnAbsence.setVisible(true);
     }
     
-    private void setComboBoxItems() {
+    public void setComboBoxItems(int teacherID) {
         try {
-            comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn));
+            comboClass.setItems(SAM.getTeacherClasses(teacherID));
+            comboClass.getSelectionModel().selectFirst();
+            setStudentsInList();
         } catch (BllException ex) {
             Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void setStudentsInList() {
+        Klasse klasse = comboClass.getSelectionModel().getSelectedItem();
+        tableStudents.setItems(SAM.getStudentsFromClass(klasse));
+    }
+
+    @FXML
+    private void handlerSelectClass(ActionEvent event) {
+        setStudentsInList();
     }
 }
