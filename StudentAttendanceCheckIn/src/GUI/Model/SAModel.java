@@ -10,7 +10,10 @@ import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import BLL.BLLFacade;
+import BLL.Exceptions.BllException;
+import BLL.KlasseManager;
 import BLL.PersonManager;
+import DAL.ClassDAO;
 import DAL.PersonDAO;
 import DAL.PersonDAOMock;
 import java.util.List;
@@ -24,21 +27,22 @@ import javafx.collections.ObservableList;
 public class SAModel {
     
     
-    private ObservableList<Klasse> classList;
     private BLLFacade pm;
-    private ObservableList<Student> studentList ;
+    private KlasseManager km;
+    private ObservableList<Student> studentList;
     private ObservableList<Student> sortedStudentList;
+    private ObservableList<Klasse> classList;
+    private ObservableList<Student> studentFromClassList;
     
     public SAModel() {
-        pm = new PersonManager(new PersonDAOMock());
+        pm = new PersonManager(new PersonDAO());
+        km = new KlasseManager(new ClassDAO());
         studentList = FXCollections.observableArrayList();
         studentList.addAll(pm.getAllStudents());
         sortedStudentList = FXCollections.observableArrayList();
         sortedStudentList.addAll(pm.getSortedAbsenceList());
-        
         classList = FXCollections.observableArrayList();
-        Klasse CS2018A = new Klasse(1,"CS2018A");
-        classList.add(CS2018A);
+        studentFromClassList = FXCollections.observableArrayList();
     }
     
     public List<Person> getAllPersons() {
@@ -57,8 +61,21 @@ public class SAModel {
         return sortedStudentList;
     }
     
-    public ObservableList<Klasse> getAllClasses()
-    {
+    public ObservableList<Klasse> getTeacherClasses(int id) throws BllException
+    {     
+        for(Klasse klasse : km.getTeacherClasses(id)) {
+            classList.add(klasse);
+        }  
         return classList;
+    }
+    
+    public ObservableList<Student> getStudentsFromClass(Klasse klasse) {
+        if (!studentFromClassList.isEmpty()) {
+            studentFromClassList.clear();
+        }
+        for (Student student : km.getStudentsFromClass(klasse)) {
+            studentFromClassList.add(student);
+        }
+        return studentFromClassList;
     }
 }

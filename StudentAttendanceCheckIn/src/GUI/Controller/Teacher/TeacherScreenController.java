@@ -9,6 +9,7 @@ import BE.Klasse;
 import BE.Student;
 import BE.Teacher;
 import BLL.BLLFacade;
+import BLL.Exceptions.BllException;
 import BLL.PersonManager;
 import GUI.Model.SAModel;
 import com.jfoenix.controls.JFXButton;
@@ -86,8 +87,6 @@ public class TeacherScreenController implements Initializable
     {
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
-        tableStudents.setItems(SAM.getAllStudents());
-        comboClass.setItems(SAM.getAllClasses());
     }
     
     public void setTeacher(Teacher teacher) {
@@ -149,4 +148,23 @@ public class TeacherScreenController implements Initializable
         
     }
     
+    public void setComboBoxItems(int teacherID) {
+        try {
+            comboClass.setItems(SAM.getTeacherClasses(teacherID));
+            comboClass.getSelectionModel().selectFirst();
+            setStudentsInList();
+        } catch (BllException ex) {
+            Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setStudentsInList() {
+        Klasse klasse = comboClass.getSelectionModel().getSelectedItem();
+        tableStudents.setItems(SAM.getStudentsFromClass(klasse));
+    }
+
+    @FXML
+    private void handlerSelectClass(ActionEvent event) {
+        setStudentsInList();
+    }
 }

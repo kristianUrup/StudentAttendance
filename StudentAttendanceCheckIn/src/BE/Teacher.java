@@ -5,8 +5,6 @@
  */
 package BE;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -14,21 +12,10 @@ import java.util.List;
  */
 public class Teacher extends Person
 {
- 
-    ArrayList<String> klasser;
     
     public Teacher(int id, String name, int age, String cpr, String email)
     {
         super(id, name, age, cpr, email);
-        klasser = new ArrayList<>();
-    }
-    
-    public List<String> getKlasser() {
-        return klasser;
-    }
-    
-    public void addKlasse(String klasse) {
-        klasser.add(klasse);
     }
     
 }

@@ -182,6 +182,7 @@ public class PersonalDataController implements Initializable {
             Parent root = (Parent) loader.load();
             TeacherScreenController tscontroller = loader.getController();
             tscontroller.setTeacher(teacher);
+            tscontroller.setComboBoxItems(teacher.getId());
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
