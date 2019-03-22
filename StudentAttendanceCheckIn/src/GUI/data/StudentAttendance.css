@@ -122,7 +122,7 @@ and open the template in the editor.
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: black;
+    -fx-background-color: #dc1a31;
 }
 
 .split-pane:horizontal > .split-pane-divider {

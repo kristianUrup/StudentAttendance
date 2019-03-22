@@ -72,13 +72,23 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="67.0" fitWidth="236.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../data/EASVLogo.png" />
-               </image>
-            </ImageView>
             <JFXTextField fx:id="txtCprInput" alignment="CENTER" layoutX="46.0" layoutY="83.0" prefHeight="60.0" prefWidth="323.0" />
          </children>
       </AnchorPane>
    </center>
+   <bottom>
+      <AnchorPane styleClass="background" stylesheets="@../data/StudentAttendance.css" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutY="3.0" prefHeight="55.0" prefWidth="415.0" styleClass="bottom-background" stylesheets="@../data/StudentAttendance.css">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="200.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../data/EASVLogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

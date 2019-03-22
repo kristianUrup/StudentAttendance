@@ -142,5 +142,11 @@ public class TeacherScreenController implements Initializable
         btnBack.setVisible(false);
         btnAbsence.setVisible(true);
     }
+
+    @FXML
+    private void handleComboKlasse(ActionEvent event)
+    {
+        
+    }
     
 }

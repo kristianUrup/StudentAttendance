@@ -31,7 +31,7 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXComboBox fx:id="comboClass" focusColor="#2e4794" layoutX="5.0" layoutY="13.0" prefHeight="31.0" prefWidth="107.0" promptText="Class" styleClass="combo-box" stylesheets="@../../data/StudentAttendance.css" unFocusColor="#6b6060" />
+            <JFXComboBox fx:id="comboClass" focusColor="#2e4794" layoutX="5.0" layoutY="13.0" onAction="#handleComboKlasse" prefHeight="31.0" prefWidth="107.0" promptText="Class" styleClass="combo-box" stylesheets="@../../data/StudentAttendance.css" unFocusColor="#6b6060" />
          </children>
       </AnchorPane>
    </top>
