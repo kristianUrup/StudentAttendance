@@ -170,6 +170,7 @@ public class TeacherScreenController implements Initializable
         tableStudents.setItems(SAM.getStudentsFromClass(klasse));
     }
 
+    @FXML
     private void handlerSelectClass(ActionEvent event) {
         setStudentsInList();
     }
