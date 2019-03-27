@@ -30,6 +30,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -72,8 +73,13 @@ public class TeacherScreenController implements Initializable
     private AnchorPane anchorStudentInfo;
     @FXML
     private Label lblMostDayAbsence;
-    @FXML
     private JFXComboBox<Klasse> comboClass;
+    @FXML
+    private RadioButton presentRadioBtn;
+    @FXML
+    private RadioButton absentRadioBtn;
+    @FXML
+    private Label lblAttendance;
     
 
     public TeacherScreenController() {
@@ -116,6 +122,9 @@ public class TeacherScreenController implements Initializable
         lblClass.setText(selectedStudent.getKlasse());
         lblAbsence.setText(Double.toString(selectedStudent.getAbsence()));
         lblMostDayAbsence.setText(selectedStudent.getDayMostAbsent());
+        lblAttendance.setVisible(true);
+        absentRadioBtn.setVisible(true);
+        presentRadioBtn.setVisible(true);
     }
 
     @FXML
@@ -142,15 +151,10 @@ public class TeacherScreenController implements Initializable
         btnAbsence.setVisible(true);
     }
 
-    @FXML
-    private void handleComboKlasse(ActionEvent event)
-    {
-        
-    }
     
-    public void setComboBoxItems(int teacherID) {
+    public void setComboBoxItems() {
         try {
-            comboClass.setItems(SAM.getTeacherClasses(teacherID));
+            comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn.getId()));
             comboClass.getSelectionModel().selectFirst();
             setStudentsInList();
         } catch (BllException ex) {
@@ -163,8 +167,17 @@ public class TeacherScreenController implements Initializable
         tableStudents.setItems(SAM.getStudentsFromClass(klasse));
     }
 
-    @FXML
     private void handlerSelectClass(ActionEvent event) {
         setStudentsInList();
+    }
+
+    @FXML
+    private void handlePresent(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void handleAbsent(ActionEvent event)
+    {
     }
 }

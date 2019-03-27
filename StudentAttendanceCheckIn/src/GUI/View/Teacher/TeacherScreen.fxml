@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -73,6 +73,9 @@
                   <Label fx:id="lblMostDayAbsence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <Label fx:id="lblAttendance" layoutX="42.0" layoutY="143.0" text="Student attendance" />
+            <RadioButton fx:id="presentRadioBtn" layoutX="26.0" layoutY="169.0" mnemonicParsing="false" onAction="#handlePresent" text="Present" />
+            <RadioButton fx:id="absentRadioBtn" layoutX="108.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleAbsent" text="Absent" />
          </children>
       </AnchorPane>
    </right>
