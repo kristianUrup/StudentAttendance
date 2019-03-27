@@ -142,11 +142,6 @@ public class TeacherScreenController implements Initializable
         btnAbsence.setVisible(true);
     }
 
-    @FXML
-    private void handleComboKlasse(ActionEvent event)
-    {
-        
-    }
     
     public void setComboBoxItems(int teacherID) {
         try {
