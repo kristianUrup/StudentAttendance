@@ -178,6 +178,7 @@ public class TeacherScreenController implements Initializable
     @FXML
     private void handlePresent(ActionEvent event)
     {
+        Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
     }
 
     @FXML
