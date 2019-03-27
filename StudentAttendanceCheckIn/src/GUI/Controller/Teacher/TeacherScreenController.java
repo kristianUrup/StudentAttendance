@@ -93,6 +93,9 @@ public class TeacherScreenController implements Initializable
     {
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
+        absentRadioBtn.setVisible(false);
+        presentRadioBtn.setVisible(false);
+        lblAttendance.setVisible(false);
     }
     
     public void setTeacher(Teacher teacher) {
