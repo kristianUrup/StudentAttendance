@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -31,7 +32,7 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
-           
+            <JFXComboBox fx:id="comboClass" layoutX="14.0" layoutY="16.0" onAction="#handlerSelectClass" prefHeight="37.0" prefWidth="93.0" />
          </children>
       </AnchorPane>
    </top>

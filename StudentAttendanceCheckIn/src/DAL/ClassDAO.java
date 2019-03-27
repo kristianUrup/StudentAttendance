@@ -80,7 +80,7 @@ public class ClassDAO implements ClassInterface {
     
     @Override
     public List<Student> getStudentsFromClass(Klasse klasse) {
-        
+        boolean studentAbsentToday = false;
         List<Student> studentsInClass = new ArrayList<>();
         try (Connection con = cd.getConnection()) {
 
@@ -99,7 +99,7 @@ public class ClassDAO implements ClassInterface {
                     double absence = rs.getDouble("absence");
                     String dayMostAbsence = rs.getString("daymostabsence");
                     
-                    Student student = new Student(id, fullname, age, cpr, email, absence, klasse.getName(),dayMostAbsence);
+                    Student student = new Student(id, fullname, age, cpr, email, absence, klasse.getName(),dayMostAbsence, studentAbsentToday);
                     studentsInClass.add(student);
                 }
         } catch (SQLException ex) {

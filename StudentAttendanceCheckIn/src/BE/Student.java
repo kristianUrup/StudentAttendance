@@ -20,12 +20,14 @@ public class Student extends Person
     private final DoubleProperty absence;
     private final StringProperty klasse;
     private final StringProperty dayMostAbsent;
+    private final boolean absentToday;
     
-    public Student(int id, String name, int age, String cpr, String email, double absence, String klasse, String dayMostAbsent) {
+    public Student(int id, String name, int age, String cpr, String email, double absence, String klasse, String dayMostAbsent, boolean absentToday) {
         super(id, name, age, cpr, email);
         this.absence = new SimpleDoubleProperty(absence);
         this.klasse = new SimpleStringProperty(klasse);
         this.dayMostAbsent = new SimpleStringProperty(dayMostAbsent);
+        this.absentToday = absentToday;
     }
     
     public String getDayMostAbsent()
@@ -71,5 +73,10 @@ public class Student extends Person
     public DoubleProperty absenceProperty()
     {
         return absence;
+    }
+    
+    public boolean getAbsenceToday()
+    {
+        return absentToday;
     }
 }

@@ -29,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -73,6 +74,7 @@ public class TeacherScreenController implements Initializable
     private AnchorPane anchorStudentInfo;
     @FXML
     private Label lblMostDayAbsence;
+    @FXML
     private JFXComboBox<Klasse> comboClass;
     @FXML
     private RadioButton presentRadioBtn;
@@ -174,15 +176,48 @@ public class TeacherScreenController implements Initializable
     private void handlerSelectClass(ActionEvent event) {
         setStudentsInList();
     }
-
+    
     @FXML
     private void handlePresent(ActionEvent event)
     {
-        Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
+        boolean absent = absentRadioBtn.isSelected();
+        if(absent)
+        {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Changing attendance for today");
+            alert.setHeaderText("Are you sure you want to change the attendance?");
+            alert.showAndWait();
+            absentRadioBtn.setSelected(false);
+        }
     }
 
     @FXML
     private void handleAbsent(ActionEvent event)
     {
+        boolean present = presentRadioBtn.isSelected();
+        if(present)
+        {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Changing attendance for today");
+            alert.setHeaderText("Are you sure you want to change the attendance?");
+            alert.showAndWait();
+            presentRadioBtn.setSelected(false);
+        }
+        
+    }
+    
+    public void showAttendanceToday(int id, String name, int age, String cpr, String email, double absence, String klasse, String dayMostAbsent, boolean absentToday)
+    {
+        Student student = new Student(id, name, age, cpr, email, absence, klasse, dayMostAbsent, absentToday);
+        boolean studentAbsenceToday = student.getAbsenceToday();
+        if(studentAbsenceToday)
+        {
+            presentRadioBtn.setSelected(!studentAbsenceToday);
+        }
+        else
+        {
+            absentRadioBtn.setSelected(studentAbsenceToday);
+        }
+        
     }
 }
