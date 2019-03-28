@@ -5,11 +5,22 @@
  */
 package DAL;
 
+import BE.Dato;
+import DAL.Exceptions.DalException;
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author Frederik Jensen
  */
 public interface DateInterface
 {
+    public List<Dato> getAllDates() throws DalException;
     
+    public void updateAbsence(int studentID, Date date, boolean isAbsence) throws DalException;
+    
+    public boolean isStudentAbsence(int studentID) throws DalException;
+    
+    public List<Dato> getStudentAbsenceDates(int studentID) throws DalException;
 }

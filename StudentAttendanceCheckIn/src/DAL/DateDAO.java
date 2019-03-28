@@ -17,7 +17,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +29,7 @@ import studentattendancecheckin.StudentAttendanceCheckIn;
  *
  * @author Frederik Jensen
  */
-public class DateDAO
+public class DateDAO implements DateInterface
 {
 
     ConnectionDAO dc;
@@ -40,7 +39,8 @@ public class DateDAO
         dc = new ConnectionDAO();
     }
 
-    public List<Dato> getAllDates()
+    @Override
+    public List<Dato> getAllDates() throws DalException
     {
         List<Dato> dates = new ArrayList<>();
         try (Connection con = dc.getConnection())
@@ -60,12 +60,13 @@ public class DateDAO
             }
         } catch (SQLException | ParseException ex)
         {
-            Logger.getLogger(DateDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not get all dates on database");
         }
         return dates;
     }
 
-    public void updateAbsence(int studentID, Date date, boolean isAbsence)
+    @Override
+    public void updateAbsence(int studentID, Date date, boolean isAbsence) throws DalException
     {
         try (Connection con = dc.getConnection())
         {
@@ -81,10 +82,11 @@ public class DateDAO
             
         } catch (SQLException ex)
         {
-            Logger.getLogger(DateDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not update students absence");
         }
     }
     
+    @Override
     public boolean isStudentAbsence(int studentID) throws DalException {
         try(Connection con = dc.getConnection()) {
             String sql = "SELECT * FROM StudentAbsenceDates INNER JOIN SchoolDates on StudentAbsenceDates.dateID = SchoolDates.id "
@@ -106,6 +108,7 @@ public class DateDAO
         return false;
     }
     
+    @Override
     public List<Dato> getStudentAbsenceDates(int studentID) throws DalException {
         List<Dato> studentDateList = new ArrayList<>();
         
@@ -134,7 +137,7 @@ public class DateDAO
 
     //We dont need this method anymore. This was just for adding random mockdata
     //to the database so we can calculate a students absent
-    public void addStudentAbsenceToTable()
+    public void addStudentAbsenceToTable() throws DalException
     {
         try
         {
@@ -177,11 +180,11 @@ public class DateDAO
                 }
             } catch (SQLException ex)
             {
-                Logger.getLogger(StudentAttendanceCheckIn.class.getName()).log(Level.SEVERE, null, ex);
+                throw new DalException("Shouldnt use this method");
             }
-        } catch (ParseException ex)
+        } catch (ParseException | DalException ex)
         {
-            Logger.getLogger(DateDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Seriously dont use this method it was just for adding things to the database easier for one time");
         }
     }
 }
