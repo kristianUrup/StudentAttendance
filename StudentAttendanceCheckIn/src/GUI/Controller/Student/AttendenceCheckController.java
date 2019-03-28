@@ -31,7 +31,7 @@ public class AttendenceCheckController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         LocalDate localDate = LocalDate.now();
-        txtDate.setText(DateTimeFormatter.ofPattern("dd/MM/yyy").format(localDate));
+        txtDate.setText(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(localDate));
     }    
     
 }

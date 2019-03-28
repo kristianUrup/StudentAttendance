@@ -5,6 +5,8 @@
  */
 package studentattendancecheckin;
 
+import DAL.DateDAO;
+import java.text.ParseException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,14 +19,14 @@ import javafx.stage.Stage;
  */
 public class StudentAttendanceCheckIn extends Application
 {
-    
+
     @Override
     public void start(Stage stage) throws Exception
     {
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/PersonalData.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -32,10 +34,9 @@ public class StudentAttendanceCheckIn extends Application
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws ParseException
     {
         launch(args);
-        
     }
-    
+
 }
