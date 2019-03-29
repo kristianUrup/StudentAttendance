@@ -32,7 +32,6 @@ public class PersonDAO implements PersonDaoInterface
     }
     public List<Student> getAllStudents() 
     {
-        boolean studentAbsentToday = false;
         List<Student> studentList = new ArrayList<>();
         try (Connection con = cdao.getConnection()) {
             String sql = "SELECT * FROM Student INNER JOIN Klasse ON Student.klasseid = Klasse.id";
@@ -50,7 +49,7 @@ public class PersonDAO implements PersonDaoInterface
                 String dayMostAbsence = rs.getString("daymostabsence");
                 String klasse = rs.getString("klassename");
                 
-                Student student = new Student(id, fullname, age, cpr, email, absence, klasse,dayMostAbsence, studentAbsentToday);
+                Student student = new Student(id, fullname, age, cpr, email, absence, klasse,dayMostAbsence);
                 studentList.add(student); 
             }
             return studentList;

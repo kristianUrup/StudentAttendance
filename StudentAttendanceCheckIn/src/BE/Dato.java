@@ -31,6 +31,8 @@ public class Dato
         this.day = day;
         this.isAbsent = isAbsent;
     }
+
+
     
     public int getId()
     {

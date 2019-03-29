@@ -180,9 +180,11 @@ public class PersonalDataController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
             Parent root = (Parent) loader.load();
+            
             TeacherScreenController tscontroller = loader.getController();
             tscontroller.setTeacher(teacher);
             tscontroller.setComboBoxItems();
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
