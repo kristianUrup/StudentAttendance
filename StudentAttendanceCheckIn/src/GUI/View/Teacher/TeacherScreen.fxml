@@ -76,8 +76,8 @@
                </children>
             </GridPane>
             <Label fx:id="lblAttendance" layoutX="42.0" layoutY="143.0" text="Student attendance" />
-            <RadioButton fx:id="presentRadioBtn" layoutX="26.0" layoutY="169.0" mnemonicParsing="false" onAction="#handlePresent" text="Present" />
-            <RadioButton fx:id="absentRadioBtn" layoutX="108.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleAbsent" text="Absent" />
+            <RadioButton fx:id="presentRadioBtn" layoutX="26.0" layoutY="169.0" mnemonicParsing="false" onAction="#handlerPresent" text="Present" />
+            <RadioButton fx:id="absentRadioBtn" layoutX="108.0" layoutY="169.0" mnemonicParsing="false" onAction="#handlerAbsent" text="Absent" />
          </children>
       </AnchorPane>
    </right>

@@ -183,9 +183,8 @@ public class TeacherScreenController implements Initializable
         setStudentsInList();
     }
     
-    @FXML
     private void handlePresent(int id, Date date, String day, boolean isAbsent)
-    {;
+    {
         boolean absent = absentRadioBtn.isSelected();
         if(absent)
         {
@@ -199,28 +198,11 @@ public class TeacherScreenController implements Initializable
         }
     }
 
-    @FXML
-    private void handleAbsent(int id, Date date, String day, boolean isAbsent)
-    {
-        
-        boolean present = presentRadioBtn.isSelected();
-        if(present)
-        {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Changing attendance for today");
-            alert.setHeaderText("Are you sure you want to change the attendance?");
-            alert.showAndWait();
-            presentRadioBtn.setSelected(false);
-            Dato dato = new Dato(id, date, day, isAbsent);
-            dato.setIsAbsent(true);
-        }
-        
-    }
     
     public void showAttendanceToday(int id, Date date, String day, boolean isAbsent)
     {
         Dato dato = new Dato(id, date, day, isAbsent);
-        boolean isAbsentToday = dato.isIsAbsent();
+        boolean isAbsentToday = dato.getIsAbsent();
         if(isAbsentToday)
         {
             presentRadioBtn.setSelected(!isAbsentToday);
@@ -230,5 +212,35 @@ public class TeacherScreenController implements Initializable
             absentRadioBtn.setSelected(isAbsentToday);
         }
         
+    }
+
+    @FXML
+    private void handlerPresent(ActionEvent event) {
+        boolean absent = absentRadioBtn.isSelected();
+        if(absent)
+        {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Changing attendance for today");
+            alert.setHeaderText("Are you sure you want to change the attendance?");
+            alert.showAndWait();
+            absentRadioBtn.setSelected(false);
+            //Dato dato = new Dato(id, date, day, isAbsent);
+            //dato.setIsAbsent(false);
+        }
+    }
+
+    @FXML
+    private void handlerAbsent(ActionEvent event) {
+        boolean present = presentRadioBtn.isSelected();
+        if(present)
+        {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Changing attendance for today");
+            alert.setHeaderText("Are you sure you want to change the attendance?");
+            alert.showAndWait();
+            presentRadioBtn.setSelected(false);
+            //Dato dato = new Dato(id, date, day, isAbsent);
+            //dato.setIsAbsent(true);
+        }
     }
 }
