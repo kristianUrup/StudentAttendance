@@ -73,13 +73,13 @@ public class ClassDAO implements ClassInterface {
                 teacherclasses.add(klasse);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClassDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not get the teacher's classes");
         }
         return teacherclasses;
     }
     
     @Override
-    public List<Student> getStudentsFromClass(Klasse klasse) {
+    public List<Student> getStudentsFromClass(Klasse klasse) throws DalException {
         boolean studentAbsentToday = false;
         List<Student> studentsInClass = new ArrayList<>();
         try (Connection con = cd.getConnection()) {
@@ -103,7 +103,7 @@ public class ClassDAO implements ClassInterface {
                     studentsInClass.add(student);
                 }
         } catch (SQLException ex) {
-            Logger.getLogger(ClassDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not get students from class");
         }
         return studentsInClass;
     }

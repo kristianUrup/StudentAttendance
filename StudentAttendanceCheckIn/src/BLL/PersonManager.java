@@ -8,10 +8,14 @@ package BLL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
+import BLL.Exceptions.BllException;
+import DAL.Exceptions.DalException;
 import DAL.PersonDaoInterface;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,33 +30,49 @@ public class PersonManager implements BLLFacade {
     }
 
     @Override
-    public List<Person> getAllPersons() {
-        return pdao.getAllPersons();
+    public List<Person> getAllPersons() throws BllException {
+        try {
+            return pdao.getAllPersons();
+        } catch (DalException ex) {
+            throw new BllException("Could not get all persons");
+        }
     }
 
     @Override
-    public List<Student> getAllStudents() {
-        return pdao.getAllStudents();
+    public List<Student> getAllStudents() throws BllException {
+        try {
+            return pdao.getAllStudents();
+        } catch (DalException ex) {
+            throw new BllException("Could not get all students");
+        }
     }
 
     @Override
-    public List<Teacher> getAllTeachers() {
-        return pdao.getAllTeachers();
+    public List<Teacher> getAllTeachers() throws BllException {
+        try {
+            return pdao.getAllTeachers();
+        } catch (DalException ex) {
+            throw new BllException("Could not get all teachers");
+        }
     }
 
     @Override
-    public List<Student> getSortedAbsenceList() {
-        List<Student> sortedStudentList = pdao.getAllStudents();
-        Comparator<Student> students;
-        students = new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                return Double.compare(o2.getAbsence(), o1.getAbsence());
-            }
-            
-        };
-        Collections.sort(sortedStudentList, students);
-        return sortedStudentList;
+    public List<Student> getSortedAbsenceList() throws BllException {
+        try {
+            List<Student> sortedStudentList = pdao.getAllStudents();
+            Comparator<Student> students;
+            students = new Comparator<Student>() {
+                @Override
+                public int compare(Student o1, Student o2) {
+                    return Double.compare(o2.getAbsence(), o1.getAbsence());
+                }
+                
+            };
+            Collections.sort(sortedStudentList, students);
+            return sortedStudentList;
+        } catch (DalException ex) {
+            throw new BllException("Could not get a sorted absence list of students");
+        }
     }
 
 }

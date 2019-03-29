@@ -27,5 +27,5 @@ public interface ClassInterface
     
     public List<Klasse> getTeacherClasses(int id) throws DalException;
     
-    public List<Student> getStudentsFromClass(Klasse klasse);
+    public List<Student> getStudentsFromClass(Klasse klasse) throws DalException;
 }

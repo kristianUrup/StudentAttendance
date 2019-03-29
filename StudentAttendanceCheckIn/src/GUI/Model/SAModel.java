@@ -34,7 +34,7 @@ public class SAModel {
     private ObservableList<Klasse> classList;
     private ObservableList<Student> studentFromClassList;
     
-    public SAModel() {
+    public SAModel() throws BllException {
         pm = new PersonManager(new PersonDAO());
         km = new KlasseManager(new ClassDAO());
         studentList = FXCollections.observableArrayList();
@@ -45,7 +45,7 @@ public class SAModel {
         studentFromClassList = FXCollections.observableArrayList();
     }
     
-    public List<Person> getAllPersons() {
+    public List<Person> getAllPersons() throws BllException {
         return pm.getAllPersons();
     }
     
@@ -53,7 +53,7 @@ public class SAModel {
         return studentList;
     }
     
-    public List<Teacher> getAllTeachers() {
+    public List<Teacher> getAllTeachers() throws BllException {
        return pm.getAllTeachers(); 
     }
     
@@ -69,7 +69,7 @@ public class SAModel {
         return classList;
     }
     
-    public ObservableList<Student> getStudentsFromClass(Klasse klasse) {
+    public ObservableList<Student> getStudentsFromClass(Klasse klasse) throws BllException {
         if (!studentFromClassList.isEmpty()) {
             studentFromClassList.clear();
         }

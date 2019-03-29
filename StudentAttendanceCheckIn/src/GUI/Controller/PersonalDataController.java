@@ -8,6 +8,7 @@ package GUI.Controller;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
+import BLL.Exceptions.BllException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,8 +46,12 @@ public class PersonalDataController implements Initializable {
     @FXML
     private JFXTextField txtCprInput;
     public PersonalDataController() {
-        SAM = new SAModel();
-        CPRPATTERN = Pattern.compile("\\d{6}-\\d{4}");
+        try {
+            SAM = new SAModel();
+            CPRPATTERN = Pattern.compile("\\d{6}-\\d{4}");
+        } catch (BllException ex) {
+            throw new UnsupportedOperationException();
+        }
     }
 
     /**
@@ -65,18 +70,22 @@ public class PersonalDataController implements Initializable {
     private void handleCheckIn(ActionEvent event) throws IOException {
 
         if (CPRPATTERN.matcher(txtCprInput.getText()).matches()) {
-            for (Person person : SAM.getAllPersons()) {
-                if (person.getCpr().equals(txtCprInput.getText())) {
-                    if (person instanceof Student) {
-                        openStudentScreen(event, (Student) person);
-                        return;
-                    } else if (person instanceof Teacher) {
-                        openTeacherScreen(event, (Teacher) person);
-                        return;
+            try {
+                for (Person person : SAM.getAllPersons()) {
+                    if (person.getCpr().equals(txtCprInput.getText())) {
+                        if (person instanceof Student) {
+                            openStudentScreen(event, (Student) person);
+                            return;
+                        } else if (person instanceof Teacher) {
+                            openTeacherScreen(event, (Teacher) person);
+                            return;
+                        }
                     }
                 }
+                incorrectCprNumber();
+            } catch (BllException ex) {
+                Logger.getLogger(PersonalDataController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            incorrectCprNumber();
         } else {
             incorrectCprPattern();
         }
