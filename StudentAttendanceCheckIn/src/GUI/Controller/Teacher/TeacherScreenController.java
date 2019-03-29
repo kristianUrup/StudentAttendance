@@ -185,7 +185,7 @@ public class TeacherScreenController implements Initializable
     
     @FXML
     private void handlePresent(int id, Date date, String day, boolean isAbsent)
-    {;
+    {
         boolean absent = absentRadioBtn.isSelected();
         if(absent)
         {
@@ -220,7 +220,7 @@ public class TeacherScreenController implements Initializable
     public void showAttendanceToday(int id, Date date, String day, boolean isAbsent)
     {
         Dato dato = new Dato(id, date, day, isAbsent);
-        boolean isAbsentToday = dato.isIsAbsent();
+        boolean isAbsentToday = dato.getIsAbsent();
         if(isAbsentToday)
         {
             presentRadioBtn.setSelected(!isAbsentToday);

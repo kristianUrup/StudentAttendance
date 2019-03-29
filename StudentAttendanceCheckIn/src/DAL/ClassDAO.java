@@ -78,13 +78,8 @@ public class ClassDAO implements ClassInterface {
         return teacherclasses;
     }
     
-    @Override
-<<<<<<< HEAD
-    public List<Student> getStudentsFromClass(Klasse klasse) {
-=======
+
     public List<Student> getStudentsFromClass(Klasse klasse) throws DalException {
-        boolean studentAbsentToday = false;
->>>>>>> 7585c55484fc9839ecadabbb075b695325cfe9f7
         List<Student> studentsInClass = new ArrayList<>();
         try (Connection con = cd.getConnection()) {
 
