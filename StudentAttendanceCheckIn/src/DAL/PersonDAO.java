@@ -9,6 +9,7 @@ package DAL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
+import DAL.Exceptions.DalException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class PersonDAO implements PersonDaoInterface
     public PersonDAO() {
         cdao = new ConnectionDAO();
     }
-    public List<Student> getAllStudents() 
+    public List<Student> getAllStudents() throws DalException 
     {
         List<Student> studentList = new ArrayList<>();
         try (Connection con = cdao.getConnection()) {
@@ -55,12 +56,12 @@ public class PersonDAO implements PersonDaoInterface
             return studentList;
         } catch (SQLException ex)
         {
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new DalException("Could not get all students");
         }
         
     }
     
-    public List<Teacher> getAllTeachers()
+    public List<Teacher> getAllTeachers() throws DalException
     {
         List<Teacher> teacherList = new ArrayList<>();
         try (Connection con = cdao.getConnection()) {
@@ -80,29 +81,33 @@ public class PersonDAO implements PersonDaoInterface
             }
             return teacherList;
         } catch (SQLException ex) {
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new DalException("Could not get all Teachers");
         }
         
     }
 
-    public List<Person> getAllPersons()
+    public List<Person> getAllPersons() throws DalException
     {
-        List<Person> personList = new ArrayList<>();
-        List<Student> studentList = getAllStudents();
-        List<Teacher> teacherList = getAllTeachers();
-        
-        for (Student student : studentList) {
-            personList.add(student);
+        try {
+            List<Person> personList = new ArrayList<>();
+            List<Student> studentList = getAllStudents();
+            List<Teacher> teacherList = getAllTeachers();
+            
+            for (Student student : studentList) {
+                personList.add(student);
+            }
+            
+            for (Teacher teacher : teacherList) {
+                personList.add(teacher);
+            }
+            
+            return personList;
+        } catch (DalException ex) {
+            throw new DalException("Could not get all students or teachers");
         }
-        
-        for (Teacher teacher : teacherList) {
-            personList.add(teacher);
-        }
-        
-        return personList;
     }
     
-    public void updateStudentAbsence(Student student) {
+    public void updateStudentAbsence(Student student) throws DalException {
         try (Connection con = cdao.getConnection()) {
             String sql = "UPDATE Student SET absence = ? WHERE id = ?";
             PreparedStatement pst = con.prepareStatement(sql);
@@ -112,7 +117,7 @@ public class PersonDAO implements PersonDaoInterface
             
             pst.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(PersonDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not update students absence");
         }
     }
 }

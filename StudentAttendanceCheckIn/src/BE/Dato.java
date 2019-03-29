@@ -59,7 +59,7 @@ public class Dato
         this.day = day;
     }
 
-    public boolean isIsAbsent()
+    public boolean getIsAbsent()
     {
         return isAbsent;
     }

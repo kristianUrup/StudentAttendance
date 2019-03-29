@@ -7,9 +7,7 @@ package BLL;
 
 import BE.Klasse;
 import BE.Student;
-import BE.Teacher;
 import BLL.Exceptions.BllException;
-import DAL.ClassDAO;
 import DAL.ClassInterface;
 import DAL.Exceptions.DalException;
 import java.util.List;
@@ -48,7 +46,11 @@ public class KlasseManager
         }
     }
     
-    public List<Student> getStudentsFromClass(Klasse klasse) {
-        return cli.getStudentsFromClass(klasse);
+    public List<Student> getStudentsFromClass(Klasse klasse) throws BllException {
+        try {
+            return cli.getStudentsFromClass(klasse);
+        } catch (DalException ex) {
+            throw new BllException("Could not get students from class");
+        }
     }
 }

@@ -18,11 +18,11 @@ import java.util.List;
  */
 public interface BLLFacade {
     
-    public List<Person> getAllPersons();
+    public List<Person> getAllPersons() throws BllException;
     
-    public List<Student> getAllStudents();
+    public List<Student> getAllStudents() throws BllException;
     
-    public List<Teacher> getAllTeachers();
+    public List<Teacher> getAllTeachers() throws BllException;
     
-    public List<Student> getSortedAbsenceList();
+    public List<Student> getSortedAbsenceList() throws BllException;
 }

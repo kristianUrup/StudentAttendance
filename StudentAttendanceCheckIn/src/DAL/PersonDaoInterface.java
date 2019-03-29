@@ -17,9 +17,9 @@ import java.util.List;
  */
 public interface PersonDaoInterface
 {
-    public List<Student> getAllStudents();
+    public List<Student> getAllStudents() throws DalException;
     
-    public List<Teacher> getAllTeachers();
+    public List<Teacher> getAllTeachers() throws DalException;
     
-    public List<Person> getAllPersons();
+    public List<Person> getAllPersons() throws DalException;
 }

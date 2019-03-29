@@ -9,9 +9,7 @@ import BE.Dato;
 import BE.Klasse;
 import BE.Student;
 import BE.Teacher;
-import BLL.BLLFacade;
 import BLL.Exceptions.BllException;
-import BLL.PersonManager;
 import GUI.Model.SAModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -19,11 +17,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.EventObject;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,7 +83,11 @@ public class TeacherScreenController implements Initializable
     
 
     public TeacherScreenController() {
-        SAM = new SAModel();
+        try {
+            SAM = new SAModel();
+        } catch (BllException ex) {
+            throw new UnsupportedOperationException();
+        }
     }
     /**
      * Initializes the controller class.
@@ -170,8 +170,12 @@ public class TeacherScreenController implements Initializable
     }
 
     private void setStudentsInList() {
-        Klasse klasse = comboClass.getSelectionModel().getSelectedItem();
-        tableStudents.setItems(SAM.getStudentsFromClass(klasse));
+        try {
+            Klasse klasse = comboClass.getSelectionModel().getSelectedItem();
+            tableStudents.setItems(SAM.getStudentsFromClass(klasse));
+        } catch (BllException ex) {
+            Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
