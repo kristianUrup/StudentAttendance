@@ -75,9 +75,9 @@ public class ClassDAO implements ClassInterface {
         return teacherclasses;
     }
     
+
     @Override
     public List<Student> getStudentsFromClass(Klasse klasse) throws DalException {
-        boolean studentAbsentToday = false;
         List<Student> studentsInClass = new ArrayList<>();
         try (Connection con = cd.getConnection()) {
 
