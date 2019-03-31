@@ -17,9 +17,14 @@ import java.util.List;
  *
  * @author KristianUrup
  */
-public class DateManager
+public class DateManager 
 {
     DateInterface ddao;
+    public DateManager(DateInterface ddao)
+    {
+        this.ddao = ddao;
+    }
+    
     public List<Dato> getAllDates() throws BllException
     {
         try

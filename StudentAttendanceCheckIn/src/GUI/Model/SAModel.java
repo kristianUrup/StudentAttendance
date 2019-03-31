@@ -35,7 +35,7 @@ public class SAModel {
     private ObservableList<Student> studentFromClassList;
     
     public SAModel() throws BllException {
-        pm = new PersonManager(new PersonDAO());
+        pm = (BLLFacade) new PersonManager(new PersonDAO());
         km = new KlasseManager(new ClassDAO());
         studentList = FXCollections.observableArrayList();
         studentList.addAll(pm.getAllStudents());

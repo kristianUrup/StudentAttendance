@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author Kristian Urup laptop
  */
-public class PersonManager implements BLLFacade {
+public class PersonManager{
 
     PersonDaoInterface pdao;
 
@@ -29,7 +29,6 @@ public class PersonManager implements BLLFacade {
         this.pdao = pdao;
     }
 
-    @Override
     public List<Person> getAllPersons() throws BllException {
         try {
             return pdao.getAllPersons();
@@ -38,7 +37,6 @@ public class PersonManager implements BLLFacade {
         }
     }
 
-    @Override
     public List<Student> getAllStudents() throws BllException {
         try {
             return pdao.getAllStudents();
@@ -47,7 +45,6 @@ public class PersonManager implements BLLFacade {
         }
     }
 
-    @Override
     public List<Teacher> getAllTeachers() throws BllException {
         try {
             return pdao.getAllTeachers();
@@ -56,7 +53,6 @@ public class PersonManager implements BLLFacade {
         }
     }
 
-    @Override
     public List<Student> getSortedAbsenceList() throws BllException {
         try {
             List<Student> sortedStudentList = pdao.getAllStudents();
@@ -74,10 +70,4 @@ public class PersonManager implements BLLFacade {
             throw new BllException("Could not get a sorted absence list of students");
         }
     }
-    
-    public void updateStudentAbsence(Student student)throws BllException
-    {
-        
-    }
-
 }

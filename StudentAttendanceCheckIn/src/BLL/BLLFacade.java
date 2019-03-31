@@ -5,11 +5,13 @@
  */
 package BLL;
 
+import BE.Dato;
 import BE.Klasse;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import BLL.Exceptions.BllException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,7 +19,23 @@ import java.util.List;
  * @author Frederik
  */
 public interface BLLFacade {
+    //DateManger
+    public List<Dato> getAllDates() throws BllException;
     
+    public void updateAbsence(int studentID, Date date, boolean isAbsence) throws BllException;
+    
+    public boolean isStudentAbsence(int studentID) throws BllException;
+    
+    public List<Dato> getStudentAbsenceDates(int studentID) throws BllException;
+    
+    //KlasseManager
+    public List<Klasse> getAllClasses() throws BllException;
+    
+    public List<Klasse> getTeacherClasses(int id) throws BllException;
+    
+    public List<Student> getStudentsFromClass(Klasse klasse) throws BllException;
+    
+    //PersonManager
     public List<Person> getAllPersons() throws BllException;
     
     public List<Student> getAllStudents() throws BllException;
