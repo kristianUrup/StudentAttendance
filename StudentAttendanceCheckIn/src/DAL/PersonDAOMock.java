@@ -8,6 +8,7 @@ package DAL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
+import DAL.Exceptions.DalException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,4 +70,5 @@ public class PersonDAOMock implements PersonDaoInterface
 
         return persons;
     }
+
 }

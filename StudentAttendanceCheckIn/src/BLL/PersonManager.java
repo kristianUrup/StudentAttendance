@@ -74,5 +74,10 @@ public class PersonManager implements BLLFacade {
             throw new BllException("Could not get a sorted absence list of students");
         }
     }
+    
+    public void updateStudentAbsence(Student student)throws BllException
+    {
+        
+    }
 
 }
