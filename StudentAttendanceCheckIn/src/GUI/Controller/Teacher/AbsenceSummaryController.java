@@ -6,9 +6,12 @@
 package GUI.Controller.Teacher;
 
 import BE.Student;
+import BLL.Exceptions.BllException;
 import GUI.Model.SAModel;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -32,8 +35,12 @@ public class AbsenceSummaryController implements Initializable {
     private ScrollPane scrollBarChart;
 
     public AbsenceSummaryController() {
-        absenceChart = new BarChart<>(xAxis,yAxis);
-        SAM = new SAModel();
+        try {
+            absenceChart = new BarChart<>(xAxis,yAxis);
+            SAM = new SAModel();
+        } catch (BllException ex) {
+            throw new UnsupportedOperationException();
+        }
     }
     
     /**

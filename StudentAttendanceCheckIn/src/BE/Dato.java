@@ -31,6 +31,8 @@ public class Dato
         this.day = day;
         this.isAbsent = isAbsent;
     }
+
+
     
     public int getId()
     {
@@ -57,7 +59,7 @@ public class Dato
         this.day = day;
     }
 
-    public boolean isIsAbsent()
+    public boolean getIsAbsent()
     {
         return isAbsent;
     }

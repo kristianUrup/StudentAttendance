@@ -8,6 +8,7 @@ package DAL;
 import BE.Person;
 import BE.Student;
 import BE.Teacher;
+import DAL.Exceptions.DalException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +20,15 @@ import java.util.List;
 
 public class PersonDAOMock implements PersonDaoInterface
 {
-    boolean studentAbsentToday = false;
     String dm = "CS2018A";
     Teacher søren = new Teacher(1, "Søren Henning", 39, "020280-1888", "Søren@gmail.com");
     Teacher jeppe = new Teacher(2, "Jeppe", 39, "030380-1022", "Jeppe@gmail.com");
     Teacher stig = new Teacher(3, "Stig", 39, "202080-1021", "Stig@hotmail.com");
     Teacher henning = new Teacher(4, "Henning", 40, "200279-1001", "Bent@gmail.com");
-    Student mathias = new Student(1, "Søren Paulsen", 30, "020288-1888", "søren@gmail.com", 2.5, dm, "Torsdag", studentAbsentToday);
-    Student frederik = new Student(2, "Frederik Jensen", 20, "030399-1022", "noob@gmail.com", 0.3, dm, "Tirsdag", studentAbsentToday);
-    Student jørgen = new Student(3, "Jørgen Svendsen", 20, "202099-1021", "Flotfyr@hotmail.com", 4.7, dm, "Onsdag", studentAbsentToday);
-    Student kristian = new Student(4, "Kristian Bertelsen", 24, "200294-1001", "hejson@gmail.com", 3.2, dm, "Fredag", studentAbsentToday);
+    Student mathias = new Student(1, "Søren Paulsen", 30, "020288-1888", "søren@gmail.com", 2.5, dm, "Torsdag");
+    Student frederik = new Student(2, "Frederik Jensen", 20, "030399-1022", "noob@gmail.com", 0.3, dm, "Tirsdag");
+    Student jørgen = new Student(3, "Jørgen Svendsen", 20, "202099-1021", "Flotfyr@hotmail.com", 4.7, dm, "Onsdag");
+    Student kristian = new Student(4, "Kristian Bertelsen", 24, "200294-1001", "hejson@gmail.com", 3.2, dm, "Fredag");
 
     @Override
     public List<Student> getAllStudents()
@@ -70,4 +70,6 @@ public class PersonDAOMock implements PersonDaoInterface
 
         return persons;
     }
+
+    
 }

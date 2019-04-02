@@ -7,7 +7,6 @@ package DAL;
 
 import BE.Klasse;
 import BE.Student;
-import BE.Teacher;
 import DAL.Exceptions.DalException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +15,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -73,14 +70,14 @@ public class ClassDAO implements ClassInterface {
                 teacherclasses.add(klasse);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClassDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not get the teacher's classes");
         }
         return teacherclasses;
     }
     
+
     @Override
-    public List<Student> getStudentsFromClass(Klasse klasse) {
-        boolean studentAbsentToday = false;
+    public List<Student> getStudentsFromClass(Klasse klasse) throws DalException {
         List<Student> studentsInClass = new ArrayList<>();
         try (Connection con = cd.getConnection()) {
 
@@ -99,11 +96,11 @@ public class ClassDAO implements ClassInterface {
                     double absence = rs.getDouble("absence");
                     String dayMostAbsence = rs.getString("daymostabsence");
                     
-                    Student student = new Student(id, fullname, age, cpr, email, absence, klasse.getName(),dayMostAbsence, studentAbsentToday);
+                    Student student = new Student(id, fullname, age, cpr, email, absence, klasse.getName(),dayMostAbsence);
                     studentsInClass.add(student);
                 }
         } catch (SQLException ex) {
-            Logger.getLogger(ClassDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DalException("Could not get students from class");
         }
         return studentsInClass;
     }
