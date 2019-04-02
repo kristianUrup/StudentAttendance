@@ -10,6 +10,7 @@ import BE.Student;
 import BE.Teacher;
 import BLL.Exceptions.BllException;
 import DAL.Exceptions.DalException;
+import DAL.PersonDAO;
 import DAL.PersonDaoInterface;
 import java.util.Collections;
 import java.util.Comparator;
@@ -25,8 +26,8 @@ public class PersonManager{
 
     PersonDaoInterface pdao;
 
-    public PersonManager(PersonDaoInterface pdao) {
-        this.pdao = pdao;
+    public PersonManager() {
+        pdao = new PersonDAO();
     }
 
     public List<Person> getAllPersons() throws BllException {

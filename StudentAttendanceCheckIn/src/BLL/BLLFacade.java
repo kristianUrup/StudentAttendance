@@ -11,36 +11,82 @@ import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import BLL.Exceptions.BllException;
+import DAL.ClassDAO;
+import DAL.DateDAO;
+import DAL.PersonDAO;
 import java.util.Date;
 import java.util.List;
 
 /**
  *
- * @author Frederik
+ * @author KristianUrup
  */
-public interface BLLFacade {
-    //DateManger
-    public List<Dato> getAllDates() throws BllException;
+public class BLLFacade implements IBLLFacade{
+    DateManager DaM;
+    KlasseManager KlM;
+    PersonManager PeM;
     
-    public void updateAbsence(int studentID, Date date, boolean isAbsence) throws BllException;
+    public BLLFacade()
+    {
+        DaM = new DateManager();
+        KlM = new KlasseManager();
+        PeM = new PersonManager();
+    }
+    //DateManager
+    public List<Dato> getAllDates() throws BllException
+    {
+            return DaM.getAllDates();     
+    }
     
-    public boolean isStudentAbsence(int studentID) throws BllException;
+    public void updateAbsence(int studentID, Date date, boolean isAbsence) throws BllException
+    {
+        DaM.updateAbsence(studentID, date, isAbsence);
+    }
     
-    public List<Dato> getStudentAbsenceDates(int studentID) throws BllException;
+    public boolean isStudentAbsence(int studentID) throws BllException
+    {
+        return DaM.isStudentAbsence(studentID);
+    }
+    
+    public List<Dato> getStudentAbsenceDates(int studentID) throws BllException
+    {
+        return DaM.getStudentAbsenceDates(studentID);
+    }
     
     //KlasseManager
-    public List<Klasse> getAllClasses() throws BllException;
+    public List<Klasse> getAllClasses() throws BllException
+    {
+        return KlM.getAllClasses();
+    }
     
-    public List<Klasse> getTeacherClasses(int id) throws BllException;
+    public List<Klasse> getTeacherClasses(int id) throws BllException
+    {
+        return KlM.getTeacherClasses(id);
+    }
     
-    public List<Student> getStudentsFromClass(Klasse klasse) throws BllException;
+    public List<Student> getStudentsFromClass(Klasse klasse) throws BllException 
+    {
+        return KlM.getStudentsFromClass(klasse);
+    }
     
     //PersonManager
-    public List<Person> getAllPersons() throws BllException;
+    public List<Person> getAllPersons() throws BllException
+    {
+        return PeM.getAllPersons();
+    }
     
-    public List<Student> getAllStudents() throws BllException;
+    public List<Student> getAllStudents() throws BllException
+    {
+        return PeM.getAllStudents();
+    }
     
-    public List<Teacher> getAllTeachers() throws BllException;
+    public List<Teacher> getAllTeachers() throws BllException
+    {
+        return PeM.getAllTeachers();
+    }
     
-    public List<Student> getSortedAbsenceList() throws BllException;
+    public List<Student> getSortedAbsenceList() throws BllException
+    {
+        return PeM.getSortedAbsenceList();
+    }
 }
