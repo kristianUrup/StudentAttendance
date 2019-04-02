@@ -80,16 +80,23 @@ public class DateManager
         try
         {
             List<Dato> tmp = new ArrayList();
-            tmp = ddao.getStudentAbsenceDates(studentID);
-            for (int i = 0; i < tmp.size(); i++)
+            List<Dato> list = new ArrayList();
+            list = ddao.getStudentAbsenceDates(studentID);
+            for (Dato dato : list)
             {
-                if (tmp.contains("false"))
+                if(dato.getIsAbsent() == true)
                 {
-                    tmp.remove(i);
+                    tmp.add(dato);
                 }
             }
-
-            absencePercentage = ((ddao.getAllDates().size() + 1) / (tmp.size() + 1)) * 100;
+            
+            int totalDays = list.size();
+            int absentDays = tmp.size();
+            
+            System.out.println("All dates: " + totalDays);
+            System.out.println("Absent days" + absentDays);
+            
+            absencePercentage = ((absentDays / totalDays) * 100);
             System.out.println("Yo dawg: " + absencePercentage + "% absence");
         } catch (DalException ex)
         {

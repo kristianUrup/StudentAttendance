@@ -21,6 +21,6 @@ public class Testermain
     public static void main(String[] args) throws BllException, DalException 
     {
         DateManager d = new DateManager();
-        d.absenseCalculator(1);
+        d.absenseCalculator(3);
     }
 }
