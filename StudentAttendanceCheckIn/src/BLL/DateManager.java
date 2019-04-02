@@ -7,6 +7,7 @@ package BLL;
 
 import BE.Dato;
 import BLL.Exceptions.BllException;
+import DAL.DateDAO;
 import DAL.DateInterface;
 import DAL.Exceptions.DalException;
 import java.util.Date;
@@ -20,9 +21,9 @@ import java.util.List;
 public class DateManager 
 {
     DateInterface ddao;
-    public DateManager(DateInterface ddao)
+    public DateManager()
     {
-        this.ddao = ddao;
+        ddao = new DateDAO();
     }
     
     public List<Dato> getAllDates() throws BllException

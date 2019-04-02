@@ -8,6 +8,7 @@ package BLL;
 import BE.Klasse;
 import BE.Student;
 import BLL.Exceptions.BllException;
+import DAL.ClassDAO;
 import DAL.ClassInterface;
 import DAL.Exceptions.DalException;
 import java.util.List;
@@ -20,9 +21,9 @@ public class KlasseManager
 {
     ClassInterface cli;
 
-    public KlasseManager(ClassInterface cli)
+    public KlasseManager()
     {
-        this.cli = cli;
+        cli = new ClassDAO();
     }
     
     public List<Klasse> getAllClasses() throws BllException
