@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import studentattendancecheckin.StudentAttendanceCheckIn;
 
 /**
  *
@@ -73,32 +70,35 @@ public class DateDAO implements DateInterface
             String sql = "UPDATE StudentAbsenceDates INNER JOIN SchoolDates on StudentAbsenceDates.dateID = SchoolDates.id "
                     + "SET isabsent = ? WHERE studentID = ? AND SchoolDates.date = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            
+
             pst.setString(1, String.valueOf(isAbsence));
             pst.setInt(2, studentID);
             pst.setString(3, new SimpleDateFormat("dd/MM/yyyy").format(date));
-            
+
             pst.executeUpdate();
-            
+
         } catch (SQLException ex)
         {
             throw new DalException("Could not update students absence");
         }
     }
-    
+
     @Override
-    public boolean isStudentAbsence(int studentID) throws DalException {
-        try(Connection con = dc.getConnection()) {
+    public boolean isStudentAbsence(int studentID) throws DalException
+    {
+        try (Connection con = dc.getConnection())
+        {
             String sql = "SELECT * FROM StudentAbsenceDates INNER JOIN SchoolDates on StudentAbsenceDates.dateID = SchoolDates.id "
                     + "WHERE studentID = ? AND SchoolDates.date = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            
+
             pst.setInt(1, studentID);
             LocalDate local = LocalDate.now();
             pst.setString(2, DateTimeFormatter.ofPattern("dd/MM/yyyy").format(local));
-            
+
             ResultSet rs = pst.executeQuery();
-            while(rs.next()) {
+            while (rs.next())
+            {
                 return Boolean.parseBoolean(rs.getString("isabsent"));
             }
         } catch (SQLException ex)
@@ -107,26 +107,34 @@ public class DateDAO implements DateInterface
         }
         return false;
     }
-    
+
     @Override
-    public List<Dato> getStudentAbsenceDates(int studentID) throws DalException {
+    public List<Dato> getStudentAbsenceDates(int studentID) throws DalException
+    {
         List<Dato> studentDateList = new ArrayList<>();
-        
-        try(Connection con = dc.getConnection()) {
+        try (Connection con = dc.getConnection())
+        {
+            LocalDate locatdate = LocalDate.now();
+            String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
+            Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
             String sql = "SELECT * FROM StudentAbsenceDates INNER JOIN SchoolDates on StudentAbsenceDates.dateID = SchoolDates.id "
                     + "WHERE studentID = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            
+
             pst.setInt(1, studentID);
-            
+
             ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id = rs.getInt("dateID");
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(rs.getString("date"));
                 String day = rs.getString("day");
                 boolean isAbsent = Boolean.parseBoolean(rs.getString("isabsent"));
                 Dato dato = new Dato(id, date, day, isAbsent);
-                studentDateList.add(dato);
+                if (!dato.getDate().after(today))
+                {
+                    studentDateList.add(dato);
+                }
             }
         } catch (SQLException | ParseException ex)
         {

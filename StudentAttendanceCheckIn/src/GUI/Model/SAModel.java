@@ -15,7 +15,6 @@ import BLL.KlasseManager;
 import BLL.PersonManager;
 import DAL.ClassDAO;
 import DAL.PersonDAO;
-import DAL.PersonDAOMock;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
