@@ -72,4 +72,9 @@ public class SAModel {
         }
         return studentFromClassList;
     }
+    
+    public boolean isStudentAbsence(int studentID) throws BllException
+    {
+        return pm.isStudentAbsence(studentID);
+    }
 }
