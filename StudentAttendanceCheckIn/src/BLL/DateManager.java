@@ -10,11 +10,14 @@ import BLL.Exceptions.BllException;
 import DAL.DateDAO;
 import DAL.DateInterface;
 import DAL.Exceptions.DalException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 /**
  *
@@ -90,18 +93,21 @@ public class DateManager
                 }
             }
             
-            int totalDays = list.size();
-            int absentDays = tmp.size();
+            double totalDays = list.size();
+            double absentDays = tmp.size();
             
-            System.out.println("All dates: " + totalDays);
-            System.out.println("Absent days" + absentDays);
-            
-            absencePercentage = ((absentDays / totalDays) * 100);
-            System.out.println("Yo dawg: " + absencePercentage + "% absence");
+            absencePercentage = (absentDays/totalDays)*100;
+
+            return formatCalculatedAbsence(absencePercentage);
         } catch (DalException ex)
         {
-            Logger.getLogger(DateManager.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BllException("Could not calculate absence");
         }
-        return absencePercentage;
+    }
+    
+    public double formatCalculatedAbsence(double absence) {
+        NumberFormat nf = new DecimalFormat("#0.00");
+        String formatPercentage = nf.format(absence);
+        return Double.parseDouble(formatPercentage.replace(",", "."));
     }
 }
