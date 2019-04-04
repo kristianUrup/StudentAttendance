@@ -54,7 +54,7 @@ public class AbsenceSummaryController implements Initializable {
         absenceChart.setTitle("Total Absence Summary");
         xAxis.setLabel("Student");
         yAxis.setLabel("Absence");
-        absenceChart.setPrefWidth(200);
+        absenceChart.setPrefWidth(400);
         scrollBarChart.setContent(absenceChart);
     }
 
