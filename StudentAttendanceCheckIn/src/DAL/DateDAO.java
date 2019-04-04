@@ -70,8 +70,11 @@ public class DateDAO implements DateInterface
             String sql = "UPDATE StudentAbsenceDates INNER JOIN SchoolDates on StudentAbsenceDates.dateID = SchoolDates.id "
                     + "SET isabsent = ? WHERE studentID = ? AND SchoolDates.date = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-
-            pst.setString(1, String.valueOf(isAbsence));
+            if (isAbsence == true) {
+                pst.setInt(1, 1);
+            } else {
+                pst.setInt(1, 0);
+            }
             pst.setInt(2, studentID);
             pst.setString(3, new SimpleDateFormat("dd/MM/yyyy").format(date));
 

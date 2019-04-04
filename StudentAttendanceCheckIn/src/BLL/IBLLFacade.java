@@ -28,6 +28,8 @@ public interface IBLLFacade {
     
     public List<Dato> getStudentAbsenceDates(int studentID) throws BllException;
     
+    public double calculateAbsence(int studentID) throws BllException;
+    
     //KlasseManager
     public List<Klasse> getAllClasses() throws BllException;
     
@@ -43,4 +45,6 @@ public interface IBLLFacade {
     public List<Teacher> getAllTeachers() throws BllException;
     
     public List<Student> getSortedAbsenceList() throws BllException;
+    
+    public void updateStudentAbsence(Student student) throws BllException;
 }

@@ -15,6 +15,8 @@ import DAL.PersonDaoInterface;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Kristian Urup laptop
@@ -66,6 +68,14 @@ public class PersonManager{
             return sortedStudentList;
         } catch (DalException ex) {
             throw new BllException("Could not get a sorted absence list of students");
+        }
+    }
+    
+    public void updateStudentAbsence(Student student) throws BllException {
+        try {
+            pdao.updateStudentAbsence(student);
+        } catch (DalException ex) {
+            throw new BllException("Could not update the students absence");
         }
     }
 }

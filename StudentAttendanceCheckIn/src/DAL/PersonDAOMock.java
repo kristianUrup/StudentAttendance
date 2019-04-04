@@ -71,5 +71,10 @@ public class PersonDAOMock implements PersonDaoInterface
         return persons;
     }
 
+    @Override
+    public void updateStudentAbsence(Student student) throws DalException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

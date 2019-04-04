@@ -15,6 +15,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.EventObject;
 import java.util.ResourceBundle;
@@ -210,10 +214,15 @@ public class TeacherScreenController implements Initializable
             presentRadioBtn.setSelected(false);
             try
             {
-                SAM.isStudentAbsence(studentID);
-                //Dato dato = new Dato(id, date, day, isAbsent);
-                //dato.setIsAbsent(true);
-            } catch (BllException ex)
+                LocalDate locatdate = LocalDate.now();
+                String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
+                Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
+                
+                SAM.updateAbsence(studentID, today, true);
+                double absence = SAM.calculateAbsence(studentID);
+                SAM.updateStudentAbsence(selectedStudent);
+                selectedStudent.setAbsence(absence);     
+            } catch (BllException | ParseException ex)
             {
                 Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -235,10 +244,15 @@ public class TeacherScreenController implements Initializable
             absentRadioBtn.setSelected(false);
             try
             {
-                SAM.isStudentAbsence(studentID);
-                //Dato dato = new Dato(id, date, day, isAbsent);
-                //dato.setIsAbsent(false);
-            } catch (BllException ex)
+                LocalDate locatdate = LocalDate.now();
+                String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
+                Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
+                
+                SAM.updateAbsence(studentID, today, true);
+                double absence = SAM.calculateAbsence(studentID);
+                SAM.updateStudentAbsence(selectedStudent);
+                selectedStudent.setAbsence(absence);
+            } catch (BllException | ParseException ex)
             {
                 Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
             }

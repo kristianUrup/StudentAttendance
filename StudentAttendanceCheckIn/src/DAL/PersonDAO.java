@@ -25,9 +25,12 @@ import java.util.List;
 public class PersonDAO implements PersonDaoInterface
 {
     ConnectionDAO cdao;
+    
     public PersonDAO() {
         cdao = new ConnectionDAO();
     }
+    
+    @Override
     public List<Student> getAllStudents() throws DalException 
     {
         List<Student> studentList = new ArrayList<>();
@@ -58,6 +61,7 @@ public class PersonDAO implements PersonDaoInterface
         
     }
     
+    @Override
     public List<Teacher> getAllTeachers() throws DalException
     {
         List<Teacher> teacherList = new ArrayList<>();
@@ -83,6 +87,7 @@ public class PersonDAO implements PersonDaoInterface
         
     }
 
+    @Override
     public List<Person> getAllPersons() throws DalException
     {
         try {
@@ -104,6 +109,7 @@ public class PersonDAO implements PersonDaoInterface
         }
     }
     
+    @Override
     public void updateStudentAbsence(Student student) throws DalException {
         try (Connection con = cdao.getConnection()) {
             String sql = "UPDATE Student SET absence = ? WHERE id = ?";

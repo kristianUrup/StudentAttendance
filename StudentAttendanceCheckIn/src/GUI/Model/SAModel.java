@@ -15,6 +15,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import BLL.IBLLFacade;
+import java.util.Date;
 
 /**
  *
@@ -76,5 +77,17 @@ public class SAModel {
     public boolean isStudentAbsence(int studentID) throws BllException
     {
         return pm.isStudentAbsence(studentID);
+    }
+    
+    public void updateAbsence(int studentID, Date date, boolean isAbsent) throws BllException {
+        pm.updateAbsence(studentID, date, isAbsent);
+    }
+    
+    public double calculateAbsence(int studentID) throws BllException {
+        return pm.calculateAbsence(studentID);
+    }
+    
+    public void updateStudentAbsence(Student student) throws BllException {
+        pm.updateStudentAbsence(student);
     }
 }

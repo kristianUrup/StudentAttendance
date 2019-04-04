@@ -83,8 +83,7 @@ public class DateManager
         try
         {
             List<Dato> tmp = new ArrayList();
-            List<Dato> list = new ArrayList();
-            list = ddao.getStudentAbsenceDates(studentID);
+            List<Dato> list = ddao.getStudentAbsenceDates(studentID);
             for (Dato dato : list)
             {
                 if(dato.getIsAbsent() == true)
@@ -105,7 +104,7 @@ public class DateManager
         }
     }
     
-    public double formatCalculatedAbsence(double absence) {
+    private double formatCalculatedAbsence(double absence) {
         NumberFormat nf = new DecimalFormat("#0.00");
         String formatPercentage = nf.format(absence);
         return Double.parseDouble(formatPercentage.replace(",", "."));

@@ -33,60 +33,81 @@ public class BLLFacade implements IBLLFacade{
         PeM = new PersonManager();
     }
     //DateManager
+    @Override
     public List<Dato> getAllDates() throws BllException
     {
             return DaM.getAllDates();     
     }
     
+    @Override
     public void updateAbsence(int studentID, Date date, boolean isAbsence) throws BllException
     {
         DaM.updateAbsence(studentID, date, isAbsence);
     }
     
+    @Override
     public boolean isStudentAbsence(int studentID) throws BllException
     {
         return DaM.isStudentAbsence(studentID);
     }
     
+    @Override
     public List<Dato> getStudentAbsenceDates(int studentID) throws BllException
     {
         return DaM.getStudentAbsenceDates(studentID);
     }
     
     //KlasseManager
+    @Override
     public List<Klasse> getAllClasses() throws BllException
     {
         return KlM.getAllClasses();
     }
     
+    @Override
     public List<Klasse> getTeacherClasses(int id) throws BllException
     {
         return KlM.getTeacherClasses(id);
     }
     
+    @Override
     public List<Student> getStudentsFromClass(Klasse klasse) throws BllException 
     {
         return KlM.getStudentsFromClass(klasse);
     }
     
     //PersonManager
+    @Override
     public List<Person> getAllPersons() throws BllException
     {
         return PeM.getAllPersons();
     }
     
+    @Override
     public List<Student> getAllStudents() throws BllException
     {
         return PeM.getAllStudents();
     }
     
+    @Override
     public List<Teacher> getAllTeachers() throws BllException
     {
         return PeM.getAllTeachers();
     }
     
+    @Override
     public List<Student> getSortedAbsenceList() throws BllException
     {
         return PeM.getSortedAbsenceList();
+    }
+
+    @Override
+    public double calculateAbsence(int studentID) throws BllException {
+        return DaM.absenseCalculator(studentID);
+    }
+
+    @Override
+    public void updateStudentAbsence(Student student) throws BllException {
+        PeM.updateStudentAbsence(student);
     }
 }
