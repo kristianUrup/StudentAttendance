@@ -72,9 +72,9 @@ public class DateDAO implements DateInterface
                     + "WHERE studentID = ? AND SchoolDates.date = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             if (isAbsence) {
-                pst.setInt(1, 1);
-            } else {
                 pst.setInt(1, 0);
+            } else {
+                pst.setInt(1, 1);
             }
             pst.setInt(2, studentID);
             pst.setString(3, new SimpleDateFormat("dd/MM/yyyy").format(date));
@@ -103,7 +103,7 @@ public class DateDAO implements DateInterface
             ResultSet rs = pst.executeQuery();
             while (rs.next())
             {
-                return rs.getInt("isAbsent") == 1;
+                return rs.getInt("isAbsent") == 0;
             }
         } catch (SQLException ex)
         {
