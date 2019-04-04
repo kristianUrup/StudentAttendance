@@ -30,7 +30,7 @@ public class SAModel {
     private ObservableList<Student> studentList;
     private ObservableList<Student> sortedStudentList;
     private ObservableList<Klasse> classList;
-    private ObservableList<Student> studentFromClassList;
+    public ObservableList<Student> studentFromClassList;
     
     public SAModel() throws BllException {
         pm = new BLLFacade();

@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -56,7 +57,7 @@ public class AbsenceSummaryController implements Initializable {
         xAxis.setLabel("Student");
         yAxis.setLabel("Absence");
         XYChart.Series studentData = new XYChart.Series();
-        for (Student student : SAM.getSortedAbsenceList()) {
+        for (Student student : SAM.studentFromClassList) {
             studentData.getData().add(new XYChart.Data(student.getName(), student.getAbsence()));
         }
         studentData.setName("Student absence in percentage");

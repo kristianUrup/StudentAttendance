@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.EventObject;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -239,6 +240,11 @@ public class TeacherScreenController implements Initializable {
         } catch (ParseException | BllException ex) {
             Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public JFXComboBox<Klasse> getList()
+    {
+        return comboClass;
     }
 
 }
