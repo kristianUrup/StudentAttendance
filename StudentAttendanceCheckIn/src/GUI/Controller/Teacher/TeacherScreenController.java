@@ -124,14 +124,27 @@ public class TeacherScreenController implements Initializable
 
     @FXML
     private void handlerStudentClicked(MouseEvent event) {
-        Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
-        lblStudentName.setText(selectedStudent.getName());
-        lblClass.setText(selectedStudent.getKlasse());
-        lblAbsence.setText(Double.toString(selectedStudent.getAbsence()));
-        lblMostDayAbsence.setText(selectedStudent.getDayMostAbsent());
-        lblAttendance.setVisible(true);
-        absentRadioBtn.setVisible(true);
-        presentRadioBtn.setVisible(true);
+        try
+        {
+            Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
+            lblStudentName.setText(selectedStudent.getName());
+            lblClass.setText(selectedStudent.getKlasse());
+            lblAbsence.setText(Double.toString(selectedStudent.getAbsence()));
+            lblMostDayAbsence.setText(selectedStudent.getDayMostAbsent());
+            lblAttendance.setVisible(true);
+            absentRadioBtn.setVisible(true);
+            presentRadioBtn.setVisible(true);
+            if(!SAM.isStudentAbsence(selectedStudent.getId())) {
+                presentRadioBtn.setSelected(true);
+                absentRadioBtn.setSelected(false);
+            }else {
+                absentRadioBtn.setSelected(true);
+                presentRadioBtn.setSelected(false);
+            }
+        } catch (BllException ex)
+        {
+            Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -182,56 +195,12 @@ public class TeacherScreenController implements Initializable
     private void handlerSelectClass(ActionEvent event) {
         setStudentsInList();
     }
-    
-    private void handlePresent(int id, Date date, String day, boolean isAbsent)
-    {
-        boolean absent = absentRadioBtn.isSelected();
-        if(absent)
-        {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Changing attendance for today");
-            alert.setHeaderText("Are you sure you want to change the attendance?");
-            alert.showAndWait();
-            absentRadioBtn.setSelected(false);
-            Dato dato = new Dato(id, date, day, isAbsent);
-            dato.setIsAbsent(false);
-        }
-    }
-
-    
-    public void showAttendanceToday(int id, Date date, String day, boolean isAbsent)
-    {
-        Dato dato = new Dato(id, date, day, isAbsent);
-        boolean isAbsentToday = dato.getIsAbsent();
-        if(isAbsentToday)
-        {
-            presentRadioBtn.setSelected(!isAbsentToday);
-        }
-        else
-        {
-            absentRadioBtn.setSelected(isAbsentToday);
-        }
-        
-    }
-
-    @FXML
-    private void handlerPresent(ActionEvent event) {
-        boolean absent = absentRadioBtn.isSelected();
-        if(absent)
-        {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Changing attendance for today");
-            alert.setHeaderText("Are you sure you want to change the attendance?");
-            alert.showAndWait();
-            absentRadioBtn.setSelected(false);
-            //Dato dato = new Dato(id, date, day, isAbsent);
-            //dato.setIsAbsent(false);
-        }
-    }
 
     @FXML
     private void handlerAbsent(ActionEvent event) {
         boolean present = presentRadioBtn.isSelected();
+        Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
+        int studentID = selectedStudent.getId();
         if(present)
         {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -239,8 +208,41 @@ public class TeacherScreenController implements Initializable
             alert.setHeaderText("Are you sure you want to change the attendance?");
             alert.showAndWait();
             presentRadioBtn.setSelected(false);
-            //Dato dato = new Dato(id, date, day, isAbsent);
-            //dato.setIsAbsent(true);
+            try
+            {
+                SAM.isStudentAbsence(studentID);
+                //Dato dato = new Dato(id, date, day, isAbsent);
+                //dato.setIsAbsent(true);
+            } catch (BllException ex)
+            {
+                Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
+
+    @FXML
+    private void handlerPresent(ActionEvent event)
+    {
+        boolean absent = absentRadioBtn.isSelected();
+        Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
+        int studentID = selectedStudent.getId();
+        if(absent)
+        {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Changing attendance for today");
+            alert.setHeaderText("Are you sure you want to change the attendance?");
+            alert.showAndWait();
+            absentRadioBtn.setSelected(false);
+            try
+            {
+                SAM.isStudentAbsence(studentID);
+                //Dato dato = new Dato(id, date, day, isAbsent);
+                //dato.setIsAbsent(false);
+            } catch (BllException ex)
+            {
+                Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
 }
