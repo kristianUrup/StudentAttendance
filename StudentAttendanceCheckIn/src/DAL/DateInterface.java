@@ -6,6 +6,7 @@
 package DAL;
 
 import BE.Dato;
+import BE.Student;
 import DAL.Exceptions.DalException;
 import java.util.Date;
 import java.util.List;
@@ -23,4 +24,6 @@ public interface DateInterface
     public boolean isStudentAbsence(int studentID) throws DalException;
     
     public List<Dato> getStudentAbsenceDates(int studentID) throws DalException;
+    
+    public void updateMostDayAbsent(Student student) throws DalException;
 }

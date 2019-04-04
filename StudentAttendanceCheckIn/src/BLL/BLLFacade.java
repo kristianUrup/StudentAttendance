@@ -11,9 +11,6 @@ import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import BLL.Exceptions.BllException;
-import DAL.ClassDAO;
-import DAL.DateDAO;
-import DAL.PersonDAO;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +52,11 @@ public class BLLFacade implements IBLLFacade{
     public List<Dato> getStudentAbsenceDates(int studentID) throws BllException
     {
         return DaM.getStudentAbsenceDates(studentID);
+    }
+    
+    @Override
+    public String updateMostDayAbsent(Student student) throws BllException {
+        return DaM.updateMostDayAbsent(student);
     }
     
     //KlasseManager

@@ -24,6 +24,11 @@ import GUI.Controller.Student.*;
 import com.jfoenix.controls.JFXPasswordField;
 import GUI.Model.SAModel;
 import com.jfoenix.controls.JFXTextField;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.EventObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -173,8 +178,11 @@ public class PersonalDataController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
             Parent root = (Parent) loader.load();
+            
             StudentScreenController sscontroller = loader.getController();
+            updateStudentAbsence(student);
             sscontroller.setSTudent(student);
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -216,5 +224,21 @@ public class PersonalDataController implements Initializable {
         alert.setTitle("Incorrect CPR-Number");
         alert.setHeaderText("The CPR-Number you have typed is incorrect");
         alert.showAndWait();
+    }
+    
+    private void updateStudentAbsence(Student student) {
+        try {
+            LocalDate locatdate = LocalDate.now();
+            String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
+            Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
+            SAM.updateAbsence(student.getId(), today, true);
+            double newAbsence = SAM.calculateAbsence(student.getId());
+            String dayMostAbsent = SAM.updateMostDayAbsent(student);
+            student.setDayMostAbsent(dayMostAbsent);
+            student.setAbsence(newAbsence);
+            SAM.updateStudentAbsence(student);
+        } catch (ParseException | BllException ex) {
+            Logger.getLogger(PersonalDataController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

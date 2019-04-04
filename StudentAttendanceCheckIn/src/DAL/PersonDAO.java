@@ -126,19 +126,4 @@ public class PersonDAO implements PersonDaoInterface
             throw new DalException("Could not update students absence");
         }
     }
-
-    @Override
-    public void updateMostDayAbsent(Student student) throws DalException {
-        try (Connection con =cdao.getConnection()) {
-            String sql = "UPDATE Student SET daymostabsence = ? WHERE id = ?";
-            PreparedStatement pst = con.prepareStatement(sql);
-            
-            pst.setString(1, student.getDayMostAbsent());
-            pst.setInt(2, student.getId());
-            
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            throw new DalException("Could not update students most day where he/her is absent");
-        } 
-    }
 }

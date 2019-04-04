@@ -30,6 +30,8 @@ public interface IBLLFacade {
     
     public double calculateAbsence(int studentID) throws BllException;
     
+    public String updateMostDayAbsent(Student student) throws BllException;
+    
     //KlasseManager
     public List<Klasse> getAllClasses() throws BllException;
     
