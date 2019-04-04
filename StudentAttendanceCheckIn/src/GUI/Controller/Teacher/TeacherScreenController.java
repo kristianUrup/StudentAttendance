@@ -229,14 +229,13 @@ public class TeacherScreenController implements Initializable {
             LocalDate locatdate = LocalDate.now();
             String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
             Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
-            System.out.println(today);
-            System.out.println(student.getId());
             SAM.updateAbsence(student.getId(), today, isAbsent);
             double absence = SAM.calculateAbsence(student.getId());
             String dayMostAbsent = SAM.updateMostDayAbsent(student);
             student.setDayMostAbsent(dayMostAbsent);
             student.setAbsence(absence);
             SAM.updateStudentAbsence(student);
+            lblAbsence.setText(Double.toString(student.getAbsence()));
         } catch (ParseException | BllException ex) {
             Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
