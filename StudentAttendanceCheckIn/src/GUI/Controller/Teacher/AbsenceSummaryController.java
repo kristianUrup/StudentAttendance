@@ -9,6 +9,7 @@ import BE.Student;
 import BLL.Exceptions.BllException;
 import GUI.Model.SAModel;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,22 +29,18 @@ import javafx.scene.control.ScrollPane;
  */
 public class AbsenceSummaryController implements Initializable {
 
-    private final SAModel SAM;
-    final BarChart<String,Number> absenceChart;
+    private SAModel SAM;
+    private List<Student> studentsFromClass;
+    BarChart<String, Number> absenceChart;
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
     @FXML
     private ScrollPane scrollBarChart;
 
     public AbsenceSummaryController() {
-        try {
-            absenceChart = new BarChart<>(xAxis,yAxis);
-            SAM = new SAModel();
-        } catch (BllException ex) {
-            throw new UnsupportedOperationException();
-        }
+        
     }
-    
+
     /**
      * Initializes the controller class.
      */
@@ -51,18 +48,34 @@ public class AbsenceSummaryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initializeAbsenceChart();
     }
-    
+
     private void initializeAbsenceChart() {
+        absenceChart = new BarChart<>(xAxis, yAxis);
         absenceChart.setTitle("Total Absence Summary");
         xAxis.setLabel("Student");
         yAxis.setLabel("Absence");
+        absenceChart.setPrefWidth(400);
+        scrollBarChart.setContent(absenceChart);
+    }
+
+    public void setModel(SAModel SAM) {
+        this.SAM = SAM;
+    }
+
+    public void setList(List<Student> studentsFromClass) {
+        this.studentsFromClass = studentsFromClass;
+    }
+
+    public void setBarChartData() {
+        if (!absenceChart.getData().isEmpty()) {
+            absenceChart.getData().clear();
+        }
         XYChart.Series studentData = new XYChart.Series();
-        for (Student student : SAM.studentFromClassList) {
+        for (Student student : studentsFromClass) {
             studentData.getData().add(new XYChart.Data(student.getName(), student.getAbsence()));
         }
         studentData.setName("Student absence in percentage");
         absenceChart.getData().add(studentData);
-        absenceChart.setPrefWidth(400);
-        scrollBarChart.setContent(absenceChart);
     }
+
 }

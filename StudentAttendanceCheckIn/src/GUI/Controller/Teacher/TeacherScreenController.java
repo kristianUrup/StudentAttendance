@@ -51,6 +51,7 @@ import javafx.stage.Stage;
 public class TeacherScreenController implements Initializable {
 
     private Teacher teacherLoggedIn;
+    AbsenceSummaryController asc;
     private final SAModel SAM;
     @FXML
     private Label lblTeacherName;
@@ -153,6 +154,10 @@ public class TeacherScreenController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/AbsenceSummary.fxml"));
             Parent root = (Parent) loader.load();
+            asc = loader.getController();
+            asc.setList(SAM.getStudentsFromClass());
+            asc.setModel(SAM);
+            asc.setBarChartData();
             borderTeacherScreen.setCenter(root);
             borderTeacherScreen.setRight(null);
             borderTeacherScreen.setLeft(null);
@@ -185,7 +190,8 @@ public class TeacherScreenController implements Initializable {
     private void setStudentsInList() {
         try {
             Klasse klasse = comboClass.getSelectionModel().getSelectedItem();
-            tableStudents.setItems(SAM.getStudentsFromClass(klasse));
+            SAM.setStudentsFromClass(klasse);
+            tableStudents.setItems(SAM.getStudentsFromClass());
         } catch (BllException ex) {
             Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -194,6 +200,10 @@ public class TeacherScreenController implements Initializable {
     @FXML
     private void handlerSelectClass(ActionEvent event) {
         setStudentsInList();
+        if (borderTeacherScreen.getCenter() != null) {
+            asc.setList(SAM.getStudentsFromClass());
+            asc.setBarChartData();
+        }
     }
 
     @FXML

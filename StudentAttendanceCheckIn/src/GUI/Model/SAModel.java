@@ -30,7 +30,7 @@ public class SAModel {
     private ObservableList<Student> studentList;
     private ObservableList<Student> sortedStudentList;
     private ObservableList<Klasse> classList;
-    public ObservableList<Student> studentFromClassList;
+    private ObservableList<Student> studentFromClassList;
     
     public SAModel() throws BllException {
         pm = new BLLFacade();
@@ -66,14 +66,17 @@ public class SAModel {
         return classList;
     }
     
-    public ObservableList<Student> getStudentsFromClass(Klasse klasse) throws BllException {
+    public ObservableList<Student> getStudentsFromClass() {
+        return studentFromClassList;
+    }
+    
+    public void setStudentsFromClass(Klasse klasse) throws BllException {
         if (!studentFromClassList.isEmpty()) {
             studentFromClassList.clear();
         }
         for (Student student : pm.getStudentsFromClass(klasse)) {
             studentFromClassList.add(student);
         }
-        return studentFromClassList;
     }
     
     public boolean isStudentAbsence(int studentID) throws BllException
