@@ -37,7 +37,7 @@ public class DateManager {
         try {
             return ddao.getAllDates();
         } catch (DalException ex) {
-            throw new BllException("Could not read all dates. " + ex.getMessage());
+            throw new BllException(ex.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class DateManager {
         try {
             ddao.updateAbsence(studentID, date, isAbsence);
         } catch (DalException ex) {
-            throw new BllException("Could not update absence. " + ex.getMessage());
+            throw new BllException(ex.getMessage());
         }
     }
 
@@ -53,7 +53,7 @@ public class DateManager {
         try {
             return ddao.isStudentAbsence(studentID);
         } catch (DalException ex) {
-            throw new BllException("Could not determine if student was absent. " + ex.getMessage());
+            throw new BllException(ex.getMessage());
         }
     }
 
@@ -61,7 +61,7 @@ public class DateManager {
         try {
             return ddao.getStudentAbsenceDates(studentID);
         } catch (DalException ex) {
-            throw new BllException("Could not read all absent dates. " + ex.getMessage());
+            throw new BllException(ex.getMessage());
         }
     }
 

@@ -19,9 +19,9 @@ import java.util.List;
  * @author KristianUrup
  */
 public class BLLFacade implements IBLLFacade{
-    DateManager DaM;
-    KlasseManager KlM;
-    PersonManager PeM;
+    private DateManager DaM;
+    private KlasseManager KlM;
+    private PersonManager PeM;
     
     public BLLFacade()
     {

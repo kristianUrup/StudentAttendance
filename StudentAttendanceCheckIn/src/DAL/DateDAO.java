@@ -67,10 +67,11 @@ public class DateDAO implements DateInterface
     {
         try (Connection con = dc.getConnection())
         {
-            String sql = "UPDATE StudentAbsenceDates INNER JOIN SchoolDates on StudentAbsenceDates.dateID = SchoolDates.id "
-                    + "SET isabsent = ? WHERE studentID = ? AND SchoolDates.date = ?";
+            String sql = "UPDATE StudentAbsenceDates SET isabsent = ? "
+                    + "FROM StudentAbsenceDates INNER JOIN SchoolDates ON StudentAbsenceDates.dateID = SchoolDates.id "
+                    + "WHERE studentID = ? AND SchoolDates.date = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            if (isAbsence == true) {
+            if (isAbsence) {
                 pst.setInt(1, 1);
             } else {
                 pst.setInt(1, 0);

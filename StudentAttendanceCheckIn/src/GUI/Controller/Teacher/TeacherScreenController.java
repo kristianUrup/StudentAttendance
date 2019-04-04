@@ -228,7 +228,8 @@ public class TeacherScreenController implements Initializable {
             LocalDate locatdate = LocalDate.now();
             String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
             Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
-            
+            System.out.println(today);
+            System.out.println(student.getId());
             SAM.updateAbsence(student.getId(), today, isAbsent);
             double absence = SAM.calculateAbsence(student.getId());
             String dayMostAbsent = SAM.updateMostDayAbsent(student);
