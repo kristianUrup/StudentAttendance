@@ -174,13 +174,15 @@ public class PersonalDataController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
             Parent root = (Parent) loader.load();
             StudentScreenController sscontroller = loader.getController();
+            double newAbsence = SAM.calculateAbsence(student.getId());
+            student.setAbsence(newAbsence);
             sscontroller.setSTudent(student);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
             Stage stage2 = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
             stage2.close();
-        } catch (IOException ex) {
+        } catch (IOException | BllException ex) {
             Logger.getLogger(PersonalDataController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
