@@ -24,6 +24,4 @@ public interface PersonDaoInterface
     public List<Person> getAllPersons() throws DalException;
     
     public void updateStudentAbsence(Student student) throws DalException; 
-    
-    public void updateMostDayAbsent(Student student) throws DalException;
 }

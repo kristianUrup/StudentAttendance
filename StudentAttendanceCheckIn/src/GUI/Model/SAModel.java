@@ -90,4 +90,8 @@ public class SAModel {
     public void updateStudentAbsence(Student student) throws BllException {
         pm.updateStudentAbsence(student);
     }
+    
+    public String updateMostDayAbsent(Student student) throws BllException {
+        return pm.updateMostDayAbsent(student);
+    }
 }

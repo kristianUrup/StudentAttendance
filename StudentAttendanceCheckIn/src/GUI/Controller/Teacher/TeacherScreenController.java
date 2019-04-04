@@ -47,8 +47,7 @@ import javafx.stage.Stage;
  *
  * @author Kristian Urup laptop
  */
-public class TeacherScreenController implements Initializable
-{
+public class TeacherScreenController implements Initializable {
 
     private Teacher teacherLoggedIn;
     private final SAModel SAM;
@@ -84,7 +83,6 @@ public class TeacherScreenController implements Initializable
     private RadioButton absentRadioBtn;
     @FXML
     private Label lblAttendance;
-    
 
     public TeacherScreenController() {
         try {
@@ -93,19 +91,19 @@ public class TeacherScreenController implements Initializable
             throw new UnsupportedOperationException();
         }
     }
+
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         clmStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnBack.setVisible(false);
         absentRadioBtn.setVisible(false);
         presentRadioBtn.setVisible(false);
         lblAttendance.setVisible(false);
     }
-    
+
     public void setTeacher(Teacher teacher) {
         teacherLoggedIn = teacher;
         lblTeacherName.setText(teacherLoggedIn.getName());
@@ -128,8 +126,7 @@ public class TeacherScreenController implements Initializable
 
     @FXML
     private void handlerStudentClicked(MouseEvent event) {
-        try
-        {
+        try {
             Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
             lblStudentName.setText(selectedStudent.getName());
             lblClass.setText(selectedStudent.getKlasse());
@@ -138,15 +135,14 @@ public class TeacherScreenController implements Initializable
             lblAttendance.setVisible(true);
             absentRadioBtn.setVisible(true);
             presentRadioBtn.setVisible(true);
-            if(!SAM.isStudentAbsence(selectedStudent.getId())) {
+            if (!SAM.isStudentAbsence(selectedStudent.getId())) {
                 presentRadioBtn.setSelected(true);
                 absentRadioBtn.setSelected(false);
-            }else {
+            } else {
                 absentRadioBtn.setSelected(true);
                 presentRadioBtn.setSelected(false);
             }
-        } catch (BllException ex)
-        {
+        } catch (BllException ex) {
             Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -175,7 +171,6 @@ public class TeacherScreenController implements Initializable
         btnAbsence.setVisible(true);
     }
 
-    
     public void setComboBoxItems() {
         try {
             comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn.getId()));
@@ -204,59 +199,45 @@ public class TeacherScreenController implements Initializable
     private void handlerAbsent(ActionEvent event) {
         boolean present = presentRadioBtn.isSelected();
         Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
-        int studentID = selectedStudent.getId();
-        if(present)
-        {
+        if (present) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Changing attendance for today");
             alert.setHeaderText("Are you sure you want to change the attendance?");
             alert.showAndWait();
             presentRadioBtn.setSelected(false);
-            try
-            {
-                LocalDate locatdate = LocalDate.now();
-                String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
-                Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
-                
-                SAM.updateAbsence(studentID, today, true);
-                double absence = SAM.calculateAbsence(studentID);
-                selectedStudent.setAbsence(absence);    
-                SAM.updateStudentAbsence(selectedStudent); 
-            } catch (BllException | ParseException ex)
-            {
-                Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            updateStudentAbsence(true, selectedStudent);
         }
     }
 
     @FXML
-    private void handlerPresent(ActionEvent event)
-    {
+    private void handlerPresent(ActionEvent event) {
         boolean absent = absentRadioBtn.isSelected();
         Student selectedStudent = tableStudents.getSelectionModel().getSelectedItem();
-        int studentID = selectedStudent.getId();
-        if(absent)
-        {
+        if (absent) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Changing attendance for today");
             alert.setHeaderText("Are you sure you want to change the attendance?");
             alert.showAndWait();
             absentRadioBtn.setSelected(false);
-            try
-            {
-                LocalDate locatdate = LocalDate.now();
-                String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
-                Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
-                
-                SAM.updateAbsence(studentID, today, true);
-                double absence = SAM.calculateAbsence(studentID);
-                selectedStudent.setAbsence(absence);
-                SAM.updateStudentAbsence(selectedStudent);
-            } catch (BllException | ParseException ex)
-            {
-                Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            updateStudentAbsence(false, selectedStudent);
         }
     }
-    
+
+    private void updateStudentAbsence(boolean isAbsent, Student student) {
+        try {
+            LocalDate locatdate = LocalDate.now();
+            String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
+            Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
+            
+            SAM.updateAbsence(student.getId(), today, isAbsent);
+            double absence = SAM.calculateAbsence(student.getId());
+            String dayMostAbsent = SAM.updateMostDayAbsent(student);
+            student.setDayMostAbsent(dayMostAbsent);
+            student.setAbsence(absence);
+            SAM.updateStudentAbsence(student);
+        } catch (ParseException | BllException ex) {
+            Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

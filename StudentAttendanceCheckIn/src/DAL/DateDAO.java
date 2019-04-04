@@ -152,6 +152,20 @@ public class DateDAO implements DateInterface
         return studentDateList;
     }
 
+    @Override
+    public void updateMostDayAbsent(Student student) throws DalException {
+        try (Connection con =dc.getConnection()) {
+            String sql = "UPDATE Student SET daymostabsence = ? WHERE id = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            pst.setString(1, student.getDayMostAbsent());
+            pst.setInt(2, student.getId());
+            
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            throw new DalException("Could not update students most day where he/her is absent");
+        } 
+    }
     //We dont need this method anymore. This was just for adding random mockdata
     //to the database so we can calculate a students absent
     public void addStudentAbsenceToTable() throws DalException

@@ -233,6 +233,8 @@ public class PersonalDataController implements Initializable {
             Date today = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
             SAM.updateAbsence(student.getId(), today, true);
             double newAbsence = SAM.calculateAbsence(student.getId());
+            String dayMostAbsent = SAM.updateMostDayAbsent(student);
+            student.setDayMostAbsent(dayMostAbsent);
             student.setAbsence(newAbsence);
             SAM.updateStudentAbsence(student);
         } catch (ParseException | BllException ex) {
