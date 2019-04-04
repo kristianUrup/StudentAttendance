@@ -16,6 +16,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import BLL.IBLLFacade;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -83,8 +85,15 @@ public class SAModel {
         pm.updateAbsence(studentID, date, isAbsent);
     }
     
-    public double calculateAbsence(int studentID) throws BllException {
-        return pm.calculateAbsence(studentID);
+    public double calculateAbsence(int studentID) {
+        try
+        {
+            return pm.calculateAbsence(studentID);
+        } catch (BllException ex)
+        {
+            Logger.getLogger(SAModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
     
     public void updateStudentAbsence(Student student) throws BllException {
