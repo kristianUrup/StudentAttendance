@@ -220,8 +220,8 @@ public class TeacherScreenController implements Initializable
                 
                 SAM.updateAbsence(studentID, today, true);
                 double absence = SAM.calculateAbsence(studentID);
-                SAM.updateStudentAbsence(selectedStudent);
-                selectedStudent.setAbsence(absence);     
+                selectedStudent.setAbsence(absence);    
+                SAM.updateStudentAbsence(selectedStudent); 
             } catch (BllException | ParseException ex)
             {
                 Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);
@@ -250,8 +250,8 @@ public class TeacherScreenController implements Initializable
                 
                 SAM.updateAbsence(studentID, today, true);
                 double absence = SAM.calculateAbsence(studentID);
-                SAM.updateStudentAbsence(selectedStudent);
                 selectedStudent.setAbsence(absence);
+                SAM.updateStudentAbsence(selectedStudent);
             } catch (BllException | ParseException ex)
             {
                 Logger.getLogger(TeacherScreenController.class.getName()).log(Level.SEVERE, null, ex);

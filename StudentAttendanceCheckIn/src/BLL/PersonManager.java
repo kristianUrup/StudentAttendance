@@ -15,8 +15,6 @@ import DAL.PersonDaoInterface;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Kristian Urup laptop
@@ -57,13 +55,7 @@ public class PersonManager{
         try {
             List<Student> sortedStudentList = pdao.getAllStudents();
             Comparator<Student> students;
-            students = new Comparator<Student>() {
-                @Override
-                public int compare(Student o1, Student o2) {
-                    return Double.compare(o2.getAbsence(), o1.getAbsence());
-                }
-                
-            };
+            students = (Student o1, Student o2) -> Double.compare(o2.getAbsence(), o1.getAbsence());
             Collections.sort(sortedStudentList, students);
             return sortedStudentList;
         } catch (DalException ex) {
@@ -77,5 +69,10 @@ public class PersonManager{
         } catch (DalException ex) {
             throw new BllException("Could not update the students absence");
         }
+    }
+    
+    public String updateDayMostAbsent(Student student) {
+        //TODO
+        return "";
     }
 }

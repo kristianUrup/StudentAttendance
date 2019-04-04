@@ -109,4 +109,6 @@ public class DateManager
         String formatPercentage = nf.format(absence);
         return Double.parseDouble(formatPercentage.replace(",", "."));
     }
+    
+    
 }

@@ -10,12 +10,15 @@ import BE.Person;
 import BE.Student;
 import BE.Teacher;
 import DAL.Exceptions.DalException;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -122,5 +125,20 @@ public class PersonDAO implements PersonDaoInterface
         } catch (SQLException ex) {
             throw new DalException("Could not update students absence");
         }
+    }
+
+    @Override
+    public void updateMostDayAbsent(Student student) throws DalException {
+        try (Connection con =cdao.getConnection()) {
+            String sql = "UPDATE Student SET daymostabsence = ? WHERE id = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            pst.setString(1, student.getDayMostAbsent());
+            pst.setInt(2, student.getId());
+            
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            throw new DalException("Could not update students most day where he/her is absent");
+        } 
     }
 }
