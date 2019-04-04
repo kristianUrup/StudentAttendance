@@ -7,7 +7,6 @@ package studentattendancecheckin;
 
 import BLL.DateManager;
 import BLL.Exceptions.BllException;
-import DAL.DateDAO;
 import DAL.Exceptions.DalException;
 
 
@@ -21,6 +20,8 @@ public class Testermain
     public static void main(String[] args) throws BllException, DalException 
     {
         DateManager d = new DateManager();
-        d.absenseCalculator(3);
+        d.absenseCalculator(1);
+        System.out.println(d.absenseCalculator(1));
+        
     }
 }

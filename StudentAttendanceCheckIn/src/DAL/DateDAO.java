@@ -99,7 +99,7 @@ public class DateDAO implements DateInterface
             ResultSet rs = pst.executeQuery();
             while (rs.next())
             {
-                return Boolean.parseBoolean(rs.getString("isabsent"));
+                return rs.getInt("isAbsent") == 1;
             }
         } catch (SQLException ex)
         {
@@ -129,7 +129,13 @@ public class DateDAO implements DateInterface
                 int id = rs.getInt("dateID");
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(rs.getString("date"));
                 String day = rs.getString("day");
-                boolean isAbsent = Boolean.parseBoolean(rs.getString("isabsent"));
+                boolean isAbsent;
+                int absence = rs.getInt("isAbsent");
+                if(absence == 0) {
+                    isAbsent = false;
+                }else {
+                    isAbsent = true;
+                }
                 Dato dato = new Dato(id, date, day, isAbsent);
                 if (!dato.getDate().after(today))
                 {
@@ -150,13 +156,13 @@ public class DateDAO implements DateInterface
         try
         {
             PersonDAO pdao = new PersonDAO();
-            String[] isAbsent = new String[2];
+            int[] isAbsent = new int[2];
             LocalDate locatdate = LocalDate.now();
             String localdateString = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(locatdate);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(localdateString);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            isAbsent[0] = "true";
-            isAbsent[1] = "false";
+            isAbsent[0] = 0;
+            isAbsent[1] = 1;
 
             Random random = new Random();
 
@@ -174,13 +180,13 @@ public class DateDAO implements DateInterface
                         pst.setInt(2, student.getId());
                         if (date1.after(dato.getDate()))
                         {
-                            pst.setString(3, isAbsent[random.nextInt(isAbsent.length)]);
+                            pst.setInt(3, isAbsent[random.nextInt(isAbsent.length)]);
                         } else if (date1.before(dato.getDate()))
                         {
-                            pst.setString(3, isAbsent[1]);
+                            pst.setInt(3, isAbsent[1]);
                         } else if (date1.equals(dato.getDate()))
                         {
-                            pst.setString(3, isAbsent[random.nextInt(isAbsent.length)]);
+                            pst.setInt(3, isAbsent[random.nextInt(isAbsent.length)]);
                         }
 
                         pst.executeUpdate();
