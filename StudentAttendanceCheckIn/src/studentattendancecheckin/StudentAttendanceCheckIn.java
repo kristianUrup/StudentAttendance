@@ -5,13 +5,7 @@
  */
 package studentattendancecheckin;
 
-import BLL.DateManager;
-import BLL.Exceptions.BllException;
-import DAL.DateDAO;
-import DAL.Exceptions.DalException;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
