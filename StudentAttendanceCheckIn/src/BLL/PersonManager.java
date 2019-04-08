@@ -27,6 +27,12 @@ public class PersonManager{
         pdao = new PersonDAO();
     }
 
+    /**
+     * Gets all persons from the database
+     * 
+     * @return  a list with all Persons
+     * @throws BllException 
+     */
     public List<Person> getAllPersons() throws BllException {
         try {
             return pdao.getAllPersons();
@@ -35,6 +41,12 @@ public class PersonManager{
         }
     }
 
+    /**
+     * Gets all students from Student table
+     * 
+     * @return a list with all Students
+     * @throws BllException 
+     */
     public List<Student> getAllStudents() throws BllException {
         try {
             return pdao.getAllStudents();
@@ -43,6 +55,12 @@ public class PersonManager{
         }
     }
 
+    /**
+     * Gets all teachers from Teacher table
+     * 
+     * @return allTeachers
+     * @throws BllException      
+     */
     public List<Teacher> getAllTeachers() throws BllException {
         try {
             return pdao.getAllTeachers();
@@ -51,6 +69,12 @@ public class PersonManager{
         }
     }
 
+    /**
+     * Gets a list of Students which is sorted
+     * 
+     * @return sortedStudentList 
+     * @throws BllException 
+     */
     public List<Student> getSortedAbsenceList() throws BllException {
         try {
             List<Student> sortedStudentList = pdao.getAllStudents();
@@ -63,6 +87,12 @@ public class PersonManager{
         }
     }
     
+    /**
+     * Updates the absence of a specific student
+     * 
+     * @param student
+     * @throws BllException 
+     */
     public void updateStudentAbsence(Student student) throws BllException {
         try {
             pdao.updateStudentAbsence(student);

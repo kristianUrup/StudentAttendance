@@ -33,6 +33,12 @@ public class ClassDAO implements ClassInterface {
         cd = new ConnectionDAO();
     }
     
+    /**
+     * Gets all classes from the database
+     * 
+     * @return klasser
+     * @throws DalException 
+     */
     @Override
     public List<Klasse> getAllClasses() throws DalException {
         List<Klasse> klasser = new ArrayList<>();
@@ -54,9 +60,16 @@ public class ClassDAO implements ClassInterface {
         return klasser;
     }
     
+    /**
+     * Gets all classes for a specific teacher
+     * 
+     * @param teacherID
+     * @return teacherClasses
+     * @throws DalException 
+     */
     @Override
     public List<Klasse> getTeacherClasses(int teacherID) throws DalException {
-        List<Klasse> teacherclasses = new ArrayList<>();
+        List<Klasse> teacherClasses = new ArrayList<>();
         
         try (Connection con = cd.getConnection()) {
             String sql = "SELECT * FROM TeacherKlasse INNER JOIN Klasse ON TeacherKlasse.klasseID = Klasse.id WHERE TeacherKlasse.teacherID = ?";
@@ -67,15 +80,21 @@ public class ClassDAO implements ClassInterface {
                 int id = rs.getInt("klasseID");
                 String name = rs.getString("klassename");
                 Klasse klasse = new Klasse(id, name);
-                teacherclasses.add(klasse);
+                teacherClasses.add(klasse);
             }
         } catch (SQLException ex) {
             throw new DalException("Could not get the teacher's classes");
         }
-        return teacherclasses;
+        return teacherClasses;
     }
     
-
+    /**
+     * Gets all student from a specific class
+     * 
+     * @param klasse
+     * @return studentsInClass
+     * @throws DalException 
+     */
     @Override
     public List<Student> getStudentsFromClass(Klasse klasse) throws DalException {
         List<Student> studentsInClass = new ArrayList<>();
