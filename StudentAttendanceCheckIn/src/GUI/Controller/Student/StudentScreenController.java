@@ -61,6 +61,9 @@ public class StudentScreenController implements Initializable
         setCenterToAttendanceCheck();
     }
 
+    /**
+     * Sets the center of the borderpane to AttendanceCheck screen
+     */
     public void setCenterToAttendanceCheck()
     {
         try
@@ -74,6 +77,11 @@ public class StudentScreenController implements Initializable
         }
     }
 
+    /**
+     * Shows the piechart in the borderpanes center
+     * 
+     * @param event 
+     */
     @FXML
     private void handlerShotAttendance(ActionEvent event)
     {
@@ -99,13 +107,24 @@ public class StudentScreenController implements Initializable
         }
     }
 
-    public void setSTudent(Student student)
+    /**
+     * Sets the student's name and class
+     * 
+     * @param student 
+     */
+    public void setStudent(Student student)
     {
         studentLoggedIn = student;
         lblName.setText(studentLoggedIn.getName());
         lblKlasse.setText(studentLoggedIn.getKlasse());
     }
 
+    /**
+     * Logging the student out and 
+     * goes to PersonalData screen
+     * 
+     * @param event 
+     */
     @FXML
     private void handlerLogOff(ActionEvent event)
     {
