@@ -5,7 +5,6 @@
  */
 package GUI.Controller.Teacher;
 
-import BE.Dato;
 import BE.Klasse;
 import BE.Student;
 import BE.Teacher;
@@ -21,7 +20,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.EventObject;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,11 +104,19 @@ public class TeacherScreenController implements Initializable {
         lblAttendance.setVisible(false);
     }
 
+    /**
+     * Sets the teachers name in the teacherLabel
+     * @param teacher 
+     */
     public void setTeacher(Teacher teacher) {
         teacherLoggedIn = teacher;
         lblTeacherName.setText(teacherLoggedIn.getName());
     }
 
+    /**
+     * Logging out the teacher and sets the PersonalData screen
+     * @param event 
+     */
     @FXML
     private void handlerLogOff(ActionEvent event) {
         try {
@@ -126,6 +132,12 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Handle when clicked on a student and puts the data of the student
+     * in  the lblStudentName, lblClass etc.
+     * 
+     * @param event 
+     */
     @FXML
     private void handlerStudentClicked(MouseEvent event) {
         try {
@@ -149,6 +161,10 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Sets the AbsenceSummary AnchorPane into the center of borderPane
+     * @param event 
+     */
     @FXML
     private void handlerStudentAbsence(ActionEvent event) {
         try {
@@ -168,6 +184,11 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Sets the right and left to the main and 
+     * sets the center to null
+     * @param event 
+     */
     @FXML
     private void handlerBack(ActionEvent event) {
         borderTeacherScreen.setRight(anchorStudentInfo);
@@ -177,6 +198,9 @@ public class TeacherScreenController implements Initializable {
         btnAbsence.setVisible(true);
     }
 
+    /**
+     * Set the items in the Combobox (klasser)
+     */
     public void setComboBoxItems() {
         try {
             comboClass.setItems(SAM.getTeacherClasses(teacherLoggedIn.getId()));
@@ -187,6 +211,9 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Puts the students in the list in table view
+     */
     private void setStudentsInList() {
         try {
             Klasse klasse = comboClass.getSelectionModel().getSelectedItem();
@@ -197,6 +224,10 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Changes the data in the chart
+     * @param event 
+     */
     @FXML
     private void handlerSelectClass(ActionEvent event) {
         setStudentsInList();
@@ -206,6 +237,11 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Changes the attendance to absent instead of present
+     * Asks if the teacher is sure about the change
+     * @param event 
+     */
     @FXML
     private void handlerAbsent(ActionEvent event) {
         boolean present = presentRadioBtn.isSelected();
@@ -220,6 +256,11 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Changes the attendance to present instead of absent
+     * Asks if the teacher is sure about the change
+     * @param event 
+     */
     @FXML
     private void handlerPresent(ActionEvent event) {
         boolean absent = absentRadioBtn.isSelected();
@@ -234,6 +275,12 @@ public class TeacherScreenController implements Initializable {
         }
     }
 
+    /**
+     * Updates the studentAbsence in the database,
+     * Uses the localdate, so it is the right day that changes
+     * @param isAbsent
+     * @param student 
+     */
     private void updateStudentAbsence(boolean isAbsent, Student student) {
         try {
             LocalDate locatdate = LocalDate.now();
@@ -251,6 +298,10 @@ public class TeacherScreenController implements Initializable {
         }
     }
     
+    /** 
+     * The list of classes in the comboBox
+     * @return returns the list
+     */
     public JFXComboBox<Klasse> getList()
     {
         return comboClass;

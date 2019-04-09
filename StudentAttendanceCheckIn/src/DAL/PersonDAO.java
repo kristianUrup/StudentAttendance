@@ -33,6 +33,12 @@ public class PersonDAO implements PersonDaoInterface
         cdao = new ConnectionDAO();
     }
     
+    /**
+     * Gets a List containing all the students
+     * 
+     * @return studentList
+     * @throws DalException 
+     */
     @Override
     public List<Student> getAllStudents() throws DalException 
     {
@@ -64,6 +70,12 @@ public class PersonDAO implements PersonDaoInterface
         
     }
     
+    /**
+     * Gets a List containing all the teachers
+     * 
+     * @return teacherList
+     * @throws DalException 
+     */
     @Override
     public List<Teacher> getAllTeachers() throws DalException
     {
@@ -90,6 +102,13 @@ public class PersonDAO implements PersonDaoInterface
         
     }
 
+    /**
+     * Gets a List containing all the persons
+     * both students and teachers
+     * 
+     * @return personList
+     * @throws DalException 
+     */
     @Override
     public List<Person> getAllPersons() throws DalException
     {
@@ -112,6 +131,12 @@ public class PersonDAO implements PersonDaoInterface
         }
     }
     
+    /**
+     * Updates a specific student absence
+     * 
+     * @param student
+     * @throws DalException 
+     */
     @Override
     public void updateStudentAbsence(Student student) throws DalException {
         try (Connection con = cdao.getConnection()) {
