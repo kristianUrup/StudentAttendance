@@ -70,9 +70,4 @@ public class PersonManager{
             throw new BllException("Could not update the students absence");
         }
     }
-    
-    public String updateDayMostAbsent(Student student) {
-        //TODO
-        return "";
-    }
 }
