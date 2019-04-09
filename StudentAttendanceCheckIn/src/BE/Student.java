@@ -28,26 +28,43 @@ public class Student extends Person
         this.dayMostAbsent = new SimpleStringProperty(dayMostAbsent);
     }
     
+    /**
+     * Gets the day that the student is most absent
+     * @return dayMostAbsent
+     */
     public String getDayMostAbsent()
     {
         return dayMostAbsent.get();
     }
 
+    /**
+     * Sets the day that the student is most absent
+     * @param value 
+     */
     public void setDayMostAbsent(String value)
     {
         dayMostAbsent.set(value);
     }
 
+    
     public StringProperty dayMostAbsentProperty()
     {
         return dayMostAbsent;
     } 
 
+    /**
+     * Gets the student's klasse
+     * @return klasse
+     */
     public String getKlasse()
     {
         return klasse.get();
     }
 
+    /**
+     * Sets the klasse of a student
+     * @param value 
+     */
     public void setKlasse(String value)
     {
         klasse.set(value);
@@ -58,6 +75,10 @@ public class Student extends Person
         return klasse;
     }
 
+    /**
+     * Gets the absence of a student
+     * @return absence
+     */
     public double getAbsence()
     {
         return absence.get();

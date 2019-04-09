@@ -32,7 +32,7 @@ public class Klasse
      
     /**
      * Returns ID of class.
-     * @return 
+     * @return id
      */
     public int getId()
     {
@@ -41,17 +41,25 @@ public class Klasse
 
     /**
      * Returns name of class.
-     * @return 
+     * @return name
      */
     public String getName()
     {
         return name;
     }
     
+    /**
+     * Adds a new student to the class
+     * @param student 
+     */
     public void addStudent(Student student) {
         students.add(student);
     }
     
+    /**
+     * Gets all of the students
+     * @return list of students
+     */
     public List<Student> getStudents() {
         return students;
     }
