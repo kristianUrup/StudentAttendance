@@ -6,7 +6,6 @@
 package GUI.Controller.Student;
 
 import BE.Student;
-import GUI.Controller.Teacher.TeacherScreenController;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
