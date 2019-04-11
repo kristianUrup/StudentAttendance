@@ -46,11 +46,7 @@ public class StudentScreenController implements Initializable
     @FXML
     private Label lblKlasse;
     @FXML
-    private JFXButton lblLogOff;
-    @FXML
     private JFXButton btnShowAttendance;
-    @FXML
-    private PieChart piechartAbsence;
 
     /**
      * Initializes the controller class.

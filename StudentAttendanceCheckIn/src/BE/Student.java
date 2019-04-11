@@ -17,15 +17,15 @@ import javafx.beans.property.StringProperty;
 public class Student extends Person
 {
 
-    private final DoubleProperty absence;
-    private final StringProperty klasse;
-    private final StringProperty dayMostAbsent;
+    private final DoubleProperty ABSENCE;
+    private final StringProperty KLASSE;
+    private final StringProperty DAYMOSTABSENT;
     
     public Student(int id, String name, int age, String cpr, String email, double absence, String klasse, String dayMostAbsent) {
         super(id, name, age, cpr, email);
-        this.absence = new SimpleDoubleProperty(absence);
-        this.klasse = new SimpleStringProperty(klasse);
-        this.dayMostAbsent = new SimpleStringProperty(dayMostAbsent);
+        this.ABSENCE = new SimpleDoubleProperty(absence);
+        this.KLASSE = new SimpleStringProperty(klasse);
+        this.DAYMOSTABSENT = new SimpleStringProperty(dayMostAbsent);
     }
     
     /**
@@ -34,7 +34,7 @@ public class Student extends Person
      */
     public String getDayMostAbsent()
     {
-        return dayMostAbsent.get();
+        return DAYMOSTABSENT.get();
     }
 
     /**
@@ -43,13 +43,13 @@ public class Student extends Person
      */
     public void setDayMostAbsent(String value)
     {
-        dayMostAbsent.set(value);
+        DAYMOSTABSENT.set(value);
     }
 
     
     public StringProperty dayMostAbsentProperty()
     {
-        return dayMostAbsent;
+        return DAYMOSTABSENT;
     } 
 
     /**
@@ -58,7 +58,7 @@ public class Student extends Person
      */
     public String getKlasse()
     {
-        return klasse.get();
+        return KLASSE.get();
     }
 
     /**
@@ -67,12 +67,12 @@ public class Student extends Person
      */
     public void setKlasse(String value)
     {
-        klasse.set(value);
+        KLASSE.set(value);
     }
 
     public StringProperty klasseProperty()
     {
-        return klasse;
+        return KLASSE;
     }
 
     /**
@@ -81,17 +81,17 @@ public class Student extends Person
      */
     public double getAbsence()
     {
-        return absence.get();
+        return ABSENCE.get();
     }
 
     public void setAbsence(double value)
     {
-        absence.set(value);
+        ABSENCE.set(value);
     }
 
     public DoubleProperty absenceProperty()
     {
-        return absence;
+        return ABSENCE;
     }
     
 }
