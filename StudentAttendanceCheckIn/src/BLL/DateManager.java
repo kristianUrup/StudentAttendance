@@ -95,7 +95,7 @@ public class DateManager {
     }
 
     /**
-     * Gets the absence in percentage
+     * Calculates the absence for a single student
      * 
      * @param studentID
      * @return The calculated absence
@@ -124,7 +124,7 @@ public class DateManager {
     }
 
     /**
-     * formatting the decimals
+     * formats the absence so it onlt has two decimals
      * 
      * @param absence
      * @return 

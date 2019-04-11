@@ -304,7 +304,7 @@ public class PersonalDataController implements Initializable {
     }
     
     /**
-     * Updates the student's attendance for the day, when logging in with student cpr.
+     * Updates the student's attendance for the day, when logging in with his/her cpr-number.
      * 
      * @param student 
      */

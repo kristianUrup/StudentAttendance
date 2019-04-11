@@ -136,7 +136,7 @@ public class SAModel {
     }
     
     /**
-     * Calculates the absence for 1 student
+     * Calculates the absence for a student
      * 
      * @param studentID
      * @return calculatedAbsence
