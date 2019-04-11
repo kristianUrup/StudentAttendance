@@ -27,7 +27,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnLogOff" layoutX="340.0" layoutY="-1.0" onAction="#handlerLogOff" prefHeight="71.0" prefWidth="89.0" text="LOG OFF" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+            <JFXButton layoutX="340.0" layoutY="-1.0" onAction="#handlerLogOff" prefHeight="71.0" prefWidth="89.0" text="LOG OFF" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                <font>
                   <Font size="14.0" />
                </font>

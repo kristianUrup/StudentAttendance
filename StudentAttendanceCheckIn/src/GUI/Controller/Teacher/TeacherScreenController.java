@@ -54,8 +54,6 @@ public class TeacherScreenController implements Initializable {
     @FXML
     private Label lblTeacherName;
     @FXML
-    private JFXButton btnLogOff;
-    @FXML
     private TableView<Student> tableStudents;
     @FXML
     private JFXButton btnAbsence;
