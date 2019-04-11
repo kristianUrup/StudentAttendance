@@ -164,9 +164,9 @@ public class DateDAO implements DateInterface
                 boolean isAbsent;
                 int absence = rs.getInt("isAbsent");
                 if(absence == 0) {
-                    isAbsent = true;
-                }else {
                     isAbsent = false;
+                }else {
+                    isAbsent = true;
                 }
                 Dato dato = new Dato(id, date, day, isAbsent);
                 if (!dato.getDate().after(today))
