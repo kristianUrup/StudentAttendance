@@ -34,17 +34,6 @@ public class DateDAOTest
     {
     }
 
-    /**
-     * Test of isStudentAbsence method, of class DateDAO.
-     */
-    @Test
-    public void testIsStudentAbsence() throws Exception
-    {
-    }
-
-    /**
-     * Test of getStudentAbsenceDates method, of class DateDAO.
-     */
     @Test
     public void testGetStudentAbsenceDates() throws Exception
     {
