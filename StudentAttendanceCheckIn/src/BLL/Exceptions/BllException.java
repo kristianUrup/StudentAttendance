@@ -12,7 +12,7 @@ package BLL.Exceptions;
 public class BllException extends Exception
 {
     /**
-     * A cunstructor of the exception class MTBllException
+     * A cunstructor of the exception class BllException
      */
     public BllException() 
     {
@@ -20,7 +20,7 @@ public class BllException extends Exception
     }
     
     /**
-     * A cunstructor of the exception class MTBllException class. 
+     * A cunstructor of the exception class BllException class. 
      * Throws a message if an exception has been catched
      * @param message the message getting thrown
      */
@@ -30,7 +30,7 @@ public class BllException extends Exception
     }
     
     /**
-     * A cunstructor of the exception class MTBllExceptio class.
+     * A cunstructor of the exception class BllExceptio class.
      * Throws a message and the exception if an exception has been catched
      * @param message the message getting thrown
      * @param ex the exception getting thrown

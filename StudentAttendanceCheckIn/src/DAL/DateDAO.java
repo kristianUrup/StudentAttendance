@@ -36,6 +36,12 @@ public class DateDAO implements DateInterface
         dc = new ConnectionDAO();
     }
 
+    /**
+     * Gets all the schooldates from the SchoolDates Table. 
+     * 
+     * @return dates
+     * @throws DalException 
+     */
     @Override
     public List<Dato> getAllDates() throws DalException
     {
@@ -61,7 +67,15 @@ public class DateDAO implements DateInterface
         }
         return dates;
     }
-
+    
+    /**
+     * Updates the absence of a student
+     * 
+     * @param studentID
+     * @param date
+     * @param isAbsence
+     * @throws DalException 
+     */
     @Override
     public void updateAbsence(int studentID, Date date, boolean isAbsence) throws DalException
     {
@@ -87,6 +101,13 @@ public class DateDAO implements DateInterface
         }
     }
 
+    /**
+     * Checks if the student is absent or not
+     * 
+     * @param studentID
+     * @return false
+     * @throws DalException 
+     */
     @Override
     public boolean isStudentAbsence(int studentID) throws DalException
     {
@@ -112,6 +133,13 @@ public class DateDAO implements DateInterface
         return false;
     }
 
+    /**
+     * Gets a list of all the dates that the student was absent
+     * 
+     * @param studentID
+     * @return studentDateList
+     * @throws DalException 
+     */
     @Override
     public List<Dato> getStudentAbsenceDates(int studentID) throws DalException
     {
@@ -136,9 +164,9 @@ public class DateDAO implements DateInterface
                 boolean isAbsent;
                 int absence = rs.getInt("isAbsent");
                 if(absence == 0) {
-                    isAbsent = true;
-                }else {
                     isAbsent = false;
+                }else {
+                    isAbsent = true;
                 }
                 Dato dato = new Dato(id, date, day, isAbsent);
                 if (!dato.getDate().after(today))
@@ -153,6 +181,12 @@ public class DateDAO implements DateInterface
         return studentDateList;
     }
 
+    /**
+     * 
+     * 
+     * @param student
+     * @throws DalException 
+     */
     @Override
     public void updateMostDayAbsent(Student student) throws DalException {
         try (Connection con =dc.getConnection()) {

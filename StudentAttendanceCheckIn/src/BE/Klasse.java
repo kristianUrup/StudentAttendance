@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class Klasse
 {
-    final private int id;
-    final private String name;
-    final private List<Student> students;
+    final private int ID;
+    final private String NAME;
+    final private List<Student> STUDENTS;
     /**
      * Constructor of Class. Instantiate ClassID and name of class.
      * 
@@ -25,39 +25,47 @@ public class Klasse
      */
     public Klasse(int id, String name)
     {
-        this.id = id;
-        this.name = name;
-        students = new ArrayList<>();
+        this.ID = id;
+        this.NAME = name;
+        STUDENTS = new ArrayList<>();
     }
      
     /**
      * Returns ID of class.
-     * @return 
+     * @return id
      */
     public int getId()
     {
-        return id;
+        return ID;
     }
 
     /**
      * Returns name of class.
-     * @return 
+     * @return name
      */
     public String getName()
     {
-        return name;
+        return NAME;
     }
     
+    /**
+     * Adds a new student to the class
+     * @param student 
+     */
     public void addStudent(Student student) {
-        students.add(student);
+        STUDENTS.add(student);
     }
     
+    /**
+     * Gets all of the students
+     * @return list of students
+     */
     public List<Student> getStudents() {
-        return students;
+        return STUDENTS;
     }
     
     @Override
     public String toString() {
-        return name;
+        return NAME;
     }
 }

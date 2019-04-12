@@ -17,88 +17,88 @@ import javafx.beans.property.StringProperty;
 public abstract class Person
 {
 
-    private final StringProperty name;
-    private final StringProperty cpr;
-    private final StringProperty email;
-    private final IntegerProperty id;
-    private final IntegerProperty age;
+    private final StringProperty NAME;
+    private final StringProperty CPR;
+    private final StringProperty EMAIL;
+    private final IntegerProperty ID;
+    private final IntegerProperty AGE;
 
     
     public Person(int id, String name, int age, String cpr, String email) {
-        this.name = new SimpleStringProperty(name);
-        this.id = new SimpleIntegerProperty(id);
-        this.age = new SimpleIntegerProperty(age);
-        this.cpr = new SimpleStringProperty(cpr);
-        this.email = new SimpleStringProperty(email);
+        this.NAME = new SimpleStringProperty(name);
+        this.ID = new SimpleIntegerProperty(id);
+        this.AGE = new SimpleIntegerProperty(age);
+        this.CPR = new SimpleStringProperty(cpr);
+        this.EMAIL = new SimpleStringProperty(email);
     }
      
     public String getName()
     {
-        return name.get();
+        return NAME.get();
     }
 
     public void setName(String value)
     {
-        name.set(value);
+        NAME.set(value);
     }
 
     public StringProperty nameProperty()
     {
-        return name;
+        return NAME;
     }
     
     public String getEmail()
     {
-        return email.get();
+        return EMAIL.get();
     }
 
     public void setEmail(String value)
     {
-        email.set(value);
+        EMAIL.set(value);
     }
 
     public StringProperty emailProperty()
     {
-        return email;
+        return EMAIL;
     }
 
     public String getCpr()
     {
-        return cpr.get();
+        return CPR.get();
     }
 
     public void setCpr(String value)
     {
-        cpr.set(value);
+        CPR.set(value);
     }
 
     public StringProperty cprProperty()
     {
-        return cpr;
+        return CPR;
     }
     
     public int getAge()
     {
-        return age.get();
+        return AGE.get();
     }
 
     public void setAge(int value)
     {
-        age.set(value);
+        AGE.set(value);
     }
 
     public IntegerProperty ageProperty()
     {
-        return age;
+        return AGE;
     }
     
     public int getId()
     {
-        return id.get();
+        return ID.get();
     }
 
     public IntegerProperty idProperty()
     {
-        return id;
+        return ID;
     }
 }

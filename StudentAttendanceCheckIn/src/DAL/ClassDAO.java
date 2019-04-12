@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class ClassDAO implements ClassInterface {
 
-    private final ConnectionDAO cd;
+    private final ConnectionDAO CD;
 
     /**
      * Constructor of Class DAO. Instantiates the connection to the database.
@@ -30,14 +30,20 @@ public class ClassDAO implements ClassInterface {
      * @param cd
      */
     public ClassDAO() {
-        cd = new ConnectionDAO();
+        CD = new ConnectionDAO();
     }
     
+    /**
+     * Gets all classes from the database
+     * 
+     * @return klasser
+     * @throws DalException 
+     */
     @Override
     public List<Klasse> getAllClasses() throws DalException {
         List<Klasse> klasser = new ArrayList<>();
         
-        try (Connection con = cd.getConnection()) {
+        try (Connection con = CD.getConnection()) {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM Klasse;");
             while (rs.next()) {
@@ -54,11 +60,18 @@ public class ClassDAO implements ClassInterface {
         return klasser;
     }
     
+    /**
+     * Gets all classes for a specific teacher
+     * 
+     * @param teacherID
+     * @return teacherClasses
+     * @throws DalException 
+     */
     @Override
     public List<Klasse> getTeacherClasses(int teacherID) throws DalException {
-        List<Klasse> teacherclasses = new ArrayList<>();
+        List<Klasse> teacherClasses = new ArrayList<>();
         
-        try (Connection con = cd.getConnection()) {
+        try (Connection con = CD.getConnection()) {
             String sql = "SELECT * FROM TeacherKlasse INNER JOIN Klasse ON TeacherKlasse.klasseID = Klasse.id WHERE TeacherKlasse.teacherID = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, teacherID);
@@ -67,19 +80,25 @@ public class ClassDAO implements ClassInterface {
                 int id = rs.getInt("klasseID");
                 String name = rs.getString("klassename");
                 Klasse klasse = new Klasse(id, name);
-                teacherclasses.add(klasse);
+                teacherClasses.add(klasse);
             }
         } catch (SQLException ex) {
             throw new DalException("Could not get the teacher's classes");
         }
-        return teacherclasses;
+        return teacherClasses;
     }
     
-
+    /**
+     * Gets all student from a specific class
+     * 
+     * @param klasse
+     * @return studentsInClass
+     * @throws DalException 
+     */
     @Override
     public List<Student> getStudentsFromClass(Klasse klasse) throws DalException {
         List<Student> studentsInClass = new ArrayList<>();
-        try (Connection con = cd.getConnection()) {
+        try (Connection con = CD.getConnection()) {
 
                 String sql = "SELECT * FROM Student INNER JOIN Klasse ON Student.klasseid = Klasse.id WHERE klasseid = ?";
                 PreparedStatement pst = con.prepareStatement(sql);

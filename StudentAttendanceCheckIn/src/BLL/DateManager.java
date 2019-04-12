@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static jdk.nashorn.internal.objects.NativeMath.round;
 
 /**
  *
@@ -33,6 +30,12 @@ public class DateManager {
         ddao = new DateDAO();
     }
 
+    /**
+     * Gets all the dates from the SchoolDates table
+     * 
+     * @return List of Dates
+     * @throws BllException 
+     */
     public List<Dato> getAllDates() throws BllException {
         try {
             return ddao.getAllDates();
@@ -41,6 +44,14 @@ public class DateManager {
         }
     }
 
+    /**
+     * Updates the absence of a specific student
+     * 
+     * @param studentID
+     * @param date
+     * @param isAbsence
+     * @throws BllException 
+     */
     public void updateAbsence(int studentID, Date date, boolean isAbsence) throws BllException {
         try {
             ddao.updateAbsence(studentID, date, isAbsence);
@@ -48,7 +59,15 @@ public class DateManager {
             throw new BllException(ex.getMessage());
         }
     }
-
+    
+    /**
+     * Gets a students absence of the day today
+     * true if absent
+     * 
+     * @param studentID
+     * @return student absence of the day
+     * @throws BllException 
+     */
     public boolean isStudentAbsence(int studentID) throws BllException {
         try {
             return ddao.isStudentAbsence(studentID);
@@ -57,6 +76,13 @@ public class DateManager {
         }
     }
 
+    /**
+     * Get all the dates of that the student is absent
+     * 
+     * @param studentID
+     * @return List of dates
+     * @throws BllException 
+     */
     public List<Dato> getStudentAbsenceDates(int studentID) throws BllException {
         try {
             return ddao.getStudentAbsenceDates(studentID);
@@ -65,6 +91,13 @@ public class DateManager {
         }
     }
 
+    /**
+     * Calculates the absence for a single student
+     * 
+     * @param studentID
+     * @return The calculated absence
+     * @throws BllException 
+     */
     public double absenseCalculator(int studentID) throws BllException {
         double absencePercentage = 0;
         try {
@@ -87,12 +120,25 @@ public class DateManager {
         }
     }
 
+    /**
+     * formats the absence so it onlt has two decimals
+     * 
+     * @param absence
+     * @return 
+     */
     private double formatCalculatedAbsence(double absence) {
         NumberFormat nf = new DecimalFormat("#0.00");
         String formatPercentage = nf.format(absence);
         return Double.parseDouble(formatPercentage.replace(",", "."));
     }
 
+    /**
+     * Updates the day which is most absent after a day where a student is absent
+     * 
+     * @param student
+     * @return 
+     * @throws BllException 
+     */
     public String updateMostDayAbsent(Student student) throws BllException {
         try {
             int amountOfDaysAbsence = -1;

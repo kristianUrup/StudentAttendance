@@ -71,6 +71,13 @@ public class PersonalDataController implements Initializable {
         
     }
 
+    /**
+     * Checks if the CprPattern is correct
+     * Checks whether its a student or a teacher, then opens a new screen
+     * 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void handleCheckIn(ActionEvent event) throws IOException {
 
@@ -97,6 +104,11 @@ public class PersonalDataController implements Initializable {
 
     }
 
+    /**
+     * Deletes the last digit that was inserted in the Cpr textfield
+     * 
+     * @param event 
+     */
     @FXML
     private void handleDeleteBtn(ActionEvent event) {
         if (!txtCprInput.getText().isEmpty()) {
@@ -109,56 +121,103 @@ public class PersonalDataController implements Initializable {
         }
     }
 
+    /**
+     * Inserts the value 1 if 1 is pressed
+     * @param event 
+     */
     @FXML
     private void btnOne(ActionEvent event) {
         cprInputField(1);
     }
 
+    /**
+     * Inserts the value 2 if 2 is pressed
+     * @param event 
+     */
     @FXML
     private void btnTwo(ActionEvent event) {
         cprInputField(2);
     }
 
+    /**
+     * Inserts the value 3 if 3 is pressed
+     * @param event 
+     */
     @FXML
     private void btnThree(ActionEvent event) {
         cprInputField(3);
     }
 
+    /**
+     * Inserts the value 5 if 5 is pressed
+     * @param event 
+     */
     @FXML
     private void btnFive(ActionEvent event) {
         cprInputField(5);
     }
 
+    /**
+     * Inserts the value 4 if 4 is pressed
+     * @param event 
+     */
     @FXML
     private void btnFour(ActionEvent event) {
         cprInputField(4);
     }
 
+    /**
+     * Inserts the value 6 if 6 is pressed
+     * @param event 
+     */
     @FXML
     private void btnSix(ActionEvent event) {
         cprInputField(6);
     }
 
+    /**
+     * Inserts the value 7 if 7 is pressed
+     * @param event 
+     */
     @FXML
     private void btnSeven(ActionEvent event) {
         cprInputField(7);
     }
 
+    /**
+     * Inserts the value 0 if 0 is pressed
+     * @param event 
+     */
     @FXML
     private void btnZero(ActionEvent event) {
         cprInputField(0);
     }
 
+    /**
+     * Inserts the value 9 if 9 is pressed
+     * @param event 
+     */
     @FXML
     private void btnNine(ActionEvent event) {
         cprInputField(9);
     }
 
+    /**
+     * Inserts the value 8 if 8 is pressed
+     * @param event 
+     */
     @FXML
     private void btnEight(ActionEvent event) {
         cprInputField(8);
     }
 
+    /**
+     * Makes the limit so you cant type a cpr nr over 10 numbers and
+     * divides the cpr number, so birthdate and personal 4 digits
+     * are separated with a "-"
+     * 
+     * @param number 
+     */
     private void cprInputField(int number) {
         if (textLimit >= 11) {
 
@@ -174,6 +233,12 @@ public class PersonalDataController implements Initializable {
         }
     }
             
+    /**
+     * Opens a new screen for the student
+     * 
+     * @param event
+     * @param student 
+     */
     private void openStudentScreen(ActionEvent event, Student student) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Student/StudentScreen.fxml"));
@@ -181,7 +246,7 @@ public class PersonalDataController implements Initializable {
             
             StudentScreenController sscontroller = loader.getController();
             updateStudentAbsence(student);
-            sscontroller.setSTudent(student);
+            sscontroller.setStudent(student);
             
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -193,6 +258,12 @@ public class PersonalDataController implements Initializable {
         }
     }
 
+    /**
+     * Opens a new screen for the teacher 
+     * 
+     * @param event
+     * @param teacher 
+     */
     private void openTeacherScreen(ActionEvent event, Teacher teacher) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Teacher/TeacherScreen.fxml"));
@@ -212,6 +283,9 @@ public class PersonalDataController implements Initializable {
         }
     }
 
+    /**
+     * Opens an alertbox if the numbers isn't the ddmmyy-xxxx format
+     */
     private void incorrectCprPattern() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Invalid CPR-Number");
@@ -219,6 +293,9 @@ public class PersonalDataController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Shows an alertbox if the cpr number is incorrect
+     */
     private void incorrectCprNumber() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Incorrect CPR-Number");
@@ -226,6 +303,11 @@ public class PersonalDataController implements Initializable {
         alert.showAndWait();
     }
     
+    /**
+     * Updates the student's attendance for the day, when logging in with his/her cpr-number.
+     * 
+     * @param student 
+     */
     private void updateStudentAbsence(Student student) {
         try {
             LocalDate locatdate = LocalDate.now();

@@ -49,6 +49,9 @@ public class AbsenceSummaryController implements Initializable {
         initializeAbsenceChart();
     }
 
+    /**
+     * Makes a barchart of the absence
+     */
     private void initializeAbsenceChart() {
         absenceChart = new BarChart<>(xAxis, yAxis);
         absenceChart.setTitle("Total Absence Summary");
@@ -62,10 +65,17 @@ public class AbsenceSummaryController implements Initializable {
         this.SAM = SAM;
     }
 
+    /**
+     * Sets the list of Student in a class
+     * @param studentsFromClass 
+     */
     public void setList(List<Student> studentsFromClass) {
         this.studentsFromClass = studentsFromClass;
     }
 
+    /**
+     * Sets the data in the barChart
+     */
     public void setBarChartData() {
         if (!absenceChart.getData().isEmpty()) {
             absenceChart.getData().clear();
